@@ -224,7 +224,7 @@
 <div class="mast"><div class="wrap">
   <a class="mast-name" href="#top">30dayPSATplan.com</a>
   <div class="mast-right">
-    <span class="mast-date">PSAT/NMSQT &middot; October 1&ndash;30, 2026</span>
+    <span class="mast-date">PSAT &middot; October 1 to 30, 2026</span>
     <button class="mast-btn" onclick="openEnroll()">Start the plan</button>
   </div>
 </div></div>
@@ -528,13 +528,10 @@
       sub.textContent = 'Lifetime access';
       return;
     }
-    if (toOpen > 30){
-      line.innerHTML = 'Start today and you finish with <b>' + (toOpen - 30) + ' days to spare</b> before the window opens.';
-    } else if (toOpen > 0){
-      line.innerHTML = 'The window opens in <b>' + toOpen + ' days</b>. Start today and you are ' +
-        Math.round((toOpen / 30) * 100) + '% through the plan when it does.';
+    if (toOpen > 0){
+      line.innerHTML = 'Start today and be ready before the window opens.';
     } else {
-      line.innerHTML = 'The window is open and schools are testing now. Start today.';
+      line.innerHTML = 'Schools are testing now. Start today and be ready for your date.';
     }
     sub.textContent = 'Thirty days from today is ' +
       finish.toLocaleDateString('en-US', { month:'long', day:'numeric' });

@@ -5,127 +5,186 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>You are enrolled | 30 Day PSAT Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #1a3a5c;
-    --gold: #c9902a;
-    --cream: #f5f5f0;
+  :root{
+    --oat:#EDE6D6;
+    --oat-deep:#E2D9C5;
+    --ink:#241C22;
+    --ink-soft:#4A3F46;
+    --oxblood:#A32B3F;
+    --pencil:#8C8577;
+    --graph:#B9C6D2;
+    --card:#F7F2E7;
+    --green:#2F6B4F;
   }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--cream);
-    color: #222;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 17px;
-    line-height: 1.65;
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--oat);color:var(--ink);
+    font-family:"Karla",system-ui,-apple-system,sans-serif;
+    font-size:17.5px;line-height:1.62;-webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(var(--graph) 1px,transparent 1px),
+      linear-gradient(90deg,var(--graph) 1px,transparent 1px);
+    background-size:28px 28px;background-position:-1px -1px;
   }
-  .bar {
-    background: var(--navy);
-    padding: 18px 20px;
-    text-align: center;
+  .wrap{max-width:1060px;margin:0 auto;padding:0 34px}
+  @media(max-width:640px){.wrap{padding:0 20px}}
+  a{color:var(--oxblood)}
+
+  .mast{background:var(--ink);color:var(--oat)}
+  .mast .wrap{display:flex;justify-content:space-between;align-items:center;padding:15px 34px;gap:14px;flex-wrap:wrap}
+  @media(max-width:640px){.mast .wrap{padding:13px 20px}}
+  .mast-name{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.05rem;letter-spacing:-.01em;color:var(--oat);text-decoration:none}
+  .mast-date{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.08em;color:#C9BFAE}
+  @media(max-width:520px){.mast-date{display:none}}
+
+  .head{padding:60px 0 46px}
+  .kicker{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:20px}
+  h1{font-family:"Zilla Slab",serif;font-weight:700;font-size:clamp(2rem,4.4vw,3.1rem);line-height:1.08;letter-spacing:-.02em;max-width:20ch}
+  h1 span{display:block;color:var(--oxblood)}
+  .lede{margin-top:22px;max-width:52ch;color:var(--ink-soft);font-size:1.08rem}
+  .lede b{color:var(--ink);font-weight:700}
+
+  .cols{padding-bottom:70px}
+  .cols-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
+  @media(max-width:900px){.cols-grid{grid-template-columns:1fr;gap:34px}}
+
+  h2{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.45rem;line-height:1.18;letter-spacing:-.015em;margin-bottom:16px}
+
+  .steps{list-style:none}
+  .steps li{display:grid;grid-template-columns:30px 1fr;gap:15px;align-items:start;padding:13px 0;border-bottom:1px dashed var(--pencil)}
+  .steps li:last-child{border-bottom:none}
+  .step-n{font-family:"Zilla Slab",serif;font-weight:700;font-size:1rem;color:#fff;background:var(--ink);width:30px;height:30px;display:flex;align-items:center;justify-content:center;line-height:1}
+  .steps p{font-size:.98rem;color:var(--ink-soft);line-height:1.5}
+  .steps b{color:var(--ink);font-weight:700}
+
+  .panel{background:var(--card);border:2px solid var(--ink);box-shadow:9px 9px 0 var(--ink)}
+  .panel-top{background:var(--green);color:#F1F7F3;padding:14px 24px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .panel-title{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.2rem;letter-spacing:-.01em}
+  .panel-tag{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#CBE0D4}
+  .panel-body{padding:22px 24px 24px}
+  .panel-body p{font-size:.97rem;color:var(--ink-soft);margin-bottom:14px}
+  .panel-body p:last-child{margin-bottom:0}
+  .panel-body b{color:var(--ink);font-weight:700}
+  .panel-foot{background:var(--oat-deep);border-top:2px solid var(--ink);padding:14px 24px;font-size:.88rem;color:var(--ink-soft);line-height:1.5}
+
+  .btn{
+    display:inline-block;text-decoration:none;
+    font-family:"Zilla Slab",serif;font-size:1.05rem;font-weight:700;
+    padding:15px 32px;border:2px solid var(--ink);cursor:pointer;
+    background:var(--ink);color:var(--oat);box-shadow:5px 5px 0 rgba(36,28,34,.32);
+    transition:transform .12s ease,box-shadow .12s ease;margin-top:22px;
   }
-  .bar a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 19px;
-    letter-spacing: 0.5px;
-  }
-  .wrap {
-    max-width: 620px;
-    margin: 0 auto;
-    padding: 40px 22px 70px;
-  }
-  .card {
-    background: #fff;
-    border-top: 5px solid var(--gold);
-    border-radius: 4px;
-    padding: 34px 30px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  }
-  h1 {
-    font-size: 27px;
-    color: var(--navy);
-    margin: 0 0 18px;
-    line-height: 1.3;
-  }
-  h2 {
-    font-size: 19px;
-    color: var(--navy);
-    margin: 30px 0 10px;
-  }
-  p { margin: 0 0 16px; }
-  .email {
-    font-weight: bold;
-    color: var(--navy);
-  }
-  ol { margin: 0 0 16px; padding-left: 22px; }
-  li { margin-bottom: 10px; }
-  .btn {
-    display: inline-block;
-    background: var(--gold);
-    color: #fff;
-    text-decoration: none;
-    padding: 13px 26px;
-    border-radius: 3px;
-    font-size: 17px;
-    margin-top: 8px;
-  }
-  .note {
-    margin-top: 28px;
-    padding-top: 20px;
-    border-top: 1px solid #e3e3dc;
-    font-size: 15px;
-    color: #555;
-  }
-  .sig { margin-top: 26px; color: var(--navy); }
+  .btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 rgba(36,28,34,.32)}
+  .btn:active{transform:translate(5px,5px);box-shadow:0 0 0 rgba(36,28,34,.32)}
+  .btn:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px}
+  @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover,.btn:active{transform:none}}
+
+  .strip{background:var(--ink);color:var(--oat)}
+  .strip-in{display:grid;grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.strip-in{grid-template-columns:repeat(2,1fr)}}
+  .stat{padding:26px 24px;border-right:1px solid #3D3239}
+  .stat:last-child{border-right:none}
+  .stat-n{font-family:"Zilla Slab",serif;font-size:1.85rem;font-weight:700;line-height:1;letter-spacing:-.02em}
+  .stat-l{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#C9BFAE;margin-top:9px}
+
+  .note{margin-top:0;background:var(--oat-deep);border:2px solid var(--ink);padding:24px 26px;max-width:64ch}
+  .note h3{font-family:"Zilla Slab",serif;font-size:1.05rem;margin-bottom:7px}
+  .note p{font-size:.97rem;color:var(--ink-soft)}
+
+  footer{background:var(--ink);color:#C9BFAE;padding:38px 0;margin-top:60px}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:baseline}
+  footer p{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  footer a{color:var(--oat)}
 </style>
 </head>
 <body>
 
-<div class="bar"><a href="/">30 Day PSAT Plan</a></div>
+<div class="mast"><div class="wrap">
+  <a class="mast-name" href="/">30dayPSATplan.com</a>
+  <span class="mast-date">PSAT &middot; October 1 to 30, 2026</span>
+</div></div>
 
-<div class="wrap">
-  <div class="card">
-    <h1>Thank you. Your enrollment is confirmed.</h1>
+<header class="head"><div class="wrap">
+  <div class="kicker">Payment received</div>
+  <h1>Thank you.<span>Your place is secured.</span></h1>
+  <p class="lede">A login link is on its way to <b id="emailTarget">your email address</b>. It usually lands within a minute.</p>
+</div></header>
 
-    <p>Your payment went through and your place on the 30 Day PSAT Plan is secured.</p>
-
-    <p id="emailLine">A login link is on its way to <span class="email" id="emailTarget">your email address</span>. It usually arrives within a minute.</p>
-
-    <h2>What to do now</h2>
-    <ol>
-      <li>Open the email from 30 Day PSAT Plan.</li>
-      <li>Click the login link inside it. That signs you in and sets up your account.</li>
-      <li>Bookmark the page you land on. That is your home for the next thirty days.</li>
-    </ol>
-
-    <p><strong>If you do not see the email, check your spam or promotions folder.</strong> Mark it as not spam so the rest of your daily emails reach you.</p>
-
-    <a class="btn" href="/dashboard/">Go to my dashboard</a>
-
-    <div class="note">
-      <p>Something not right? Reply to your receipt email, or write to dasbrink@gmail.com and I will sort it out personally.</p>
-      <p>There is a 7 day money-back guarantee. If the plan is not for you, just ask.</p>
+<section class="cols"><div class="wrap">
+  <div class="cols-grid">
+    <div>
+      <h2>What to do now</h2>
+      <ul class="steps">
+        <li>
+          <div class="step-n">1</div>
+          <p>Open the email from <b>30 Day PSAT Plan</b>. If it is not in your inbox, look in spam or promotions.</p>
+        </li>
+        <li>
+          <div class="step-n">2</div>
+          <p>Click the login link inside it. That signs you in and finishes setting up your account. There is no password to create.</p>
+        </li>
+        <li>
+          <div class="step-n">3</div>
+          <p><b>Mark the email as not spam.</b> Every day of the plan is announced by email, so this one matters more than it looks.</p>
+        </li>
+        <li>
+          <div class="step-n">4</div>
+          <p>Bookmark the page you land on. That is your home for the next thirty days.</p>
+        </li>
+      </ul>
+      <a class="btn" href="/dashboard/">Go to my dashboard</a>
     </div>
 
-    <p class="sig">Dr. Brink<br>Ph.D., 32 years of mathematics education</p>
+    <div class="panel">
+      <div class="panel-top">
+        <span class="panel-title">Enrollment confirmed</span>
+        <span class="panel-tag">Lifetime access</span>
+      </div>
+      <div class="panel-body">
+        <p>Your payment has gone through and nothing else is needed from you today.</p>
+        <p>The plan runs thirty days. It opens with four Foundations days, then your first full timed test, and from there it follows what your own results say.</p>
+        <p><b>You will be emailed the moment Day 1 is open.</b></p>
+      </div>
+      <div class="panel-foot">Seven day money back guarantee. If it is not right, write to me and it is done, no explanation needed.</div>
+    </div>
   </div>
-</div>
+</div></section>
+
+<div class="strip"><div class="wrap"><div class="strip-in">
+  <div class="stat"><div class="stat-n">30</div><div class="stat-l">Days planned</div></div>
+  <div class="stat"><div class="stat-n">7</div><div class="stat-l">Timed tests</div></div>
+  <div class="stat"><div class="stat-n">24</div><div class="stat-l">Desmos walkthroughs</div></div>
+  <div class="stat"><div class="stat-n">160&ndash;760</div><div class="stat-l">Math scale</div></div>
+</div></div></div>
+
+<section style="padding:60px 0 0"><div class="wrap">
+  <div class="note">
+    <h3>Something not right?</h3>
+    <p>Write to <a href="mailto:dasbrink@gmail.com">dasbrink@gmail.com</a> and I will answer personally, usually the same day. If the login email has not arrived within ten minutes, that is worth telling me about rather than waiting.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p>&copy; 2026 Dr. Brink SAT Math</p>
+  <p><a href="mailto:dasbrink@gmail.com">dasbrink@gmail.com</a></p>
+</div></footer>
 
 <script>
-  // Stripe appends ?session_id=... on return. We do not read anything
-  // sensitive from it, it just confirms the buyer arrived from checkout.
-  (function () {
-    try {
-      var params = new URLSearchParams(window.location.search);
-      var stored = window.name || '';
-      // Nothing to do with the id itself. Kept only so the page can be
-      // told apart from a direct visit in the traffic log below.
-      var fromCheckout = params.has('session_id');
-      if (window.__PSAT_LOG) window.__PSAT_LOG(fromCheckout);
-    } catch (e) {}
-  })();
+(function(){
+  // Stripe returns with ?session_id=... Nothing sensitive is read from it.
+  try{
+    var params = new URLSearchParams(window.location.search);
+    var e = params.get('email');
+    if (e && e.indexOf('@') > 0){
+      var t = document.getElementById('emailTarget');
+      if (t) t.textContent = e;
+    }
+  }catch(err){}
+})();
 </script>
 
 </body>

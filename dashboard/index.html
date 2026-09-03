@@ -107,8 +107,11 @@
 
   /* ---------- sign in form ---------- */
   .signin{padding:58px 0 80px}
-  .signin-grid{display:grid;grid-template-columns:1fr .9fr;gap:44px;align-items:start}
+  .signin-grid{display:grid;grid-template-columns:1fr .82fr;gap:52px;align-items:start}
   @media(max-width:860px){.signin-grid{grid-template-columns:1fr;gap:34px}}
+  .signin .lede{margin-bottom:8px}
+  .note-top{margin-top:52px}
+  @media(max-width:860px){.note-top{margin-top:0}}
   label{display:block;font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);margin-bottom:6px;margin-top:16px}
   input[type=email]{width:100%;padding:13px 14px;border:2px solid var(--ink);background:#fff;font-family:"Karla",sans-serif;font-size:1rem;color:var(--ink)}
   input[type=email]:focus{outline:none;border-color:var(--oxblood)}
@@ -162,15 +165,13 @@
 
 <!-- ============ signed out ============ -->
 <div id="signedOut" class="hidden">
-  <header class="head"><div class="wrap">
-    <div class="kicker warn">Sign in</div>
-    <h1>Welcome back.<span>No password needed.</span></h1>
-    <p class="lede">Enter the email address you used when you enrolled and I will send you a link that signs you straight in.</p>
-  </div></header>
-
   <section class="signin"><div class="wrap">
     <div class="signin-grid">
       <div>
+        <div class="kicker warn">Sign in</div>
+        <h1>Welcome back.<span>No password needed.</span></h1>
+        <p class="lede">Enter the email address you used when you enrolled and I will send you a link that signs you straight in.</p>
+
         <label for="emailInput">Email address</label>
         <input type="email" id="emailInput" placeholder="you@example.com" autocomplete="email" inputmode="email" spellcheck="false">
         <p class="hint">Use the same address the plan was bought with. If a parent paid using their own address, try that one.</p>
@@ -178,7 +179,7 @@
         <div class="status" id="signinStatus"></div>
       </div>
 
-      <div class="note">
+      <div class="note note-top">
         <h3>Not enrolled yet?</h3>
         <p>The 30 Day PSAT Plan is one payment of $79, with lifetime access and a seven day money back guarantee.</p>
         <p><a href="/">Read what is in the thirty days</a></p>
@@ -278,20 +279,17 @@
 
 <!-- ============ signed in, no enrollment ============ -->
 <div id="noEnrol" class="hidden">
-  <header class="head"><div class="wrap">
-    <div class="kicker warn">Account found, enrollment not found</div>
-    <h1>You are signed in,<span>but I cannot find your enrollment.</span></h1>
-    <p class="lede">Signed in as <b id="whoAmI2"></b>. There is no enrollment recorded on that address.</p>
-  </div></header>
-
   <section class="signin"><div class="wrap">
     <div class="signin-grid">
       <div class="prose">
-        <h2>The usual cause is two different addresses</h2>
+        <div class="kicker warn">Account found, enrollment not found</div>
+        <h1>You are signed in,<span>but I cannot find your enrollment.</span></h1>
+        <p class="lede">Signed in as <b id="whoAmI2"></b>. There is no enrollment recorded on that address.</p>
+        <h2 style="margin-top:34px">The usual cause is two different addresses</h2>
         <p>Paying with one email and signing in with another is by far the most common reason for this. If a parent paid using their own address, sign out and sign back in with that one instead.</p>
         <p>If that is not it, write to <a href="mailto:dasbrink@gmail.com">dasbrink@gmail.com</a> with the email address on your receipt. I will move the enrollment across the same day.</p>
       </div>
-      <div class="note">
+      <div class="note note-top">
         <h3>Not enrolled yet?</h3>
         <p>One payment of $79, lifetime access, seven day money back guarantee.</p>
         <p><a href="/">Read what is in the thirty days</a></p>

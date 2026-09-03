@@ -130,7 +130,7 @@
 
   <!-- Signed in and enrolled -->
   <div class="card hidden" id="enrolledCard">
-    <div class="badge">Enrolment confirmed</div>
+    <div class="badge">Enrollment confirmed</div>
     <h1>You are in. Here is what happens next.</h1>
     <p>Signed in as <strong id="whoAmI"></strong>.</p>
     <p id="enrolledOn" class="muted"></p>
@@ -149,8 +149,8 @@
     </ul>
 
     <h2>While you wait</h2>
-    <p>Ask your counsellor which day your school is running the PSAT. Schools choose their own date inside the October window, so yours may differ from a friend's. Once you know it, count back thirty days and that is your start date.</p>
-    <p>You can also practise free at <a href="https://freepracticesat.com" style="color:#1a3a5c;">freepracticesat.com</a> in the meantime.</p>
+    <p>Ask your counselor which day your school is running the PSAT. Schools choose their own date inside the October window, so yours may differ from a friend's. Once you know it, count back thirty days and that is your start date.</p>
+    <p>You can also practice free at <a href="https://freepracticesat.com" style="color:#1a3a5c;">freepracticesat.com</a> in the meantime.</p>
 
     <div class="divider">
       <p class="muted">Questions, or something not working? Write to dasbrink@gmail.com and I will answer personally. The 7 day money-back guarantee stands.</p>
@@ -159,12 +159,12 @@
     <p class="sig">Dr. Brink<br>Ph.D., 32 years of mathematics education</p>
   </div>
 
-  <!-- Signed in but no enrolment found -->
+  <!-- Signed in but no enrollment found -->
   <div class="card hidden" id="noEnrolCard">
-    <h1>Signed in, but I cannot find your enrolment</h1>
-    <p>You are signed in as <strong id="whoAmI2"></strong>, but there is no enrolment on this address.</p>
+    <h1>Signed in, but I cannot find your enrollment</h1>
+    <p>You are signed in as <strong id="whoAmI2"></strong>, but there is no enrollment on this address.</p>
     <p>The usual cause is paying with one email and signing in with another. If you paid with a parent's address, try signing in with that one instead.</p>
-    <p>Write to dasbrink@gmail.com with the email on your receipt and I will move your enrolment across the same day.</p>
+    <p>Write to dasbrink@gmail.com with the email on your receipt and I will move your enrollment across the same day.</p>
     <p class="sig">Dr. Brink</p>
   </div>
 
@@ -211,7 +211,7 @@
     el('whoAmI2').textContent = email;
     show('signOutBtn');
 
-    // Look for an enrolment. Row security only ever returns their own.
+    // Look for an enrollment. Row security only ever returns their own.
     let row = null;
     try {
       const { data, error } = await sb

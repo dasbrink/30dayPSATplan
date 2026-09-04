@@ -131,6 +131,17 @@
   .btn-alt{background:var(--card);color:var(--ink)}
   @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover,.btn:active{transform:none}}
 
+  /* ---------- foundations progress rows ---------- */
+  .frow{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--pencil)}
+  .frow:last-child{border-bottom:none}
+  .frow-tag{font-family:"Space Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.05em;color:#fff;background:var(--ink);padding:4px 8px;text-align:center}
+  .frow.done .frow-tag{background:var(--green)}
+  .frow-name{font-size:.94rem;line-height:1.35;color:var(--ink);font-weight:700;margin-bottom:6px}
+  .fbar{background:var(--oat-deep);border:1px solid var(--ink);height:10px}
+  .fbar-fill{background:var(--green);height:100%;width:0}
+  .frow-count{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--pencil);margin-top:5px}
+  .btn-found{margin-top:0;padding:12px 24px;font-size:1rem;box-shadow:4px 4px 0 rgba(36,28,34,.3)}
+
   .status{display:none;margin-top:18px;padding:13px 15px;font-size:.94rem;font-weight:600;line-height:1.5}
   .status.show{display:block}
   .status.ok{background:#E7F1EB;color:var(--green);border-left:4px solid var(--green)}
@@ -199,9 +210,11 @@
   <section class="cols"><div class="wrap">
     <div class="cols-grid">
       <div class="prose">
-        <h2>The plan is being finished right now</h2>
-        <p>The daily pages are built and released in order, starting with the four Foundations days and your first full timed test.</p>
-        <p><b>You will be emailed the moment Day 1 is open.</b> Watch for mail from 30 Day PSAT Plan, and if the first one landed in spam, mark it as not spam so the rest reach you.</p>
+        <h2>Start with Foundations</h2>
+        <p>Days 1 to 4 are open now. They rebuild the basics that most lost points actually sit on, before anything gets measured. Work them in order.</p>
+        <p>Your progress saves to your account as you go, so you can stop halfway and pick it up on any device.</p>
+        <h2 style="margin-top:34px">The rest is coming</h2>
+        <p>Day 5 onward is being built and released in order, starting with your first full timed test. <b>You will be emailed the moment each one opens.</b> If the first email landed in spam, mark it as not spam so the rest reach you.</p>
         <h2 style="margin-top:34px">While you wait</h2>
         <p>Ask your counselor which day your school is running the PSAT. Schools choose their own date inside the October window, so yours may differ from a friend's. Once you know it, count back thirty days and that is your start date.</p>
         <p>You can also practice free at <a href="https://freepracticesat.com">freepracticesat.com</a>, which uses the same question bank.</p>
@@ -209,24 +222,15 @@
 
       <div class="panel">
         <div class="panel-top ink">
-          <span class="panel-title">Day 1 of 30</span>
-          <span class="panel-tag">Opening soon</span>
+          <span class="panel-title">Foundations</span>
+          <span class="panel-tag" id="foundTag">Days 1 to 4</span>
         </div>
-        <div class="panel-body">
-          <div class="task">
-            <div class="tick"></div>
-            <div><span class="task-kind">Foundations</span><span class="task-what">Module 1. Fractions, ratios and percentages, rebuilt from the floor up</span></div>
-          </div>
-          <div class="task">
-            <div class="tick"></div>
-            <div><span class="task-kind">Practice</span><span class="task-what">Worked questions on today's ground, easy through hard</span></div>
-          </div>
-          <div class="task">
-            <div class="tick"></div>
-            <div><span class="task-kind">Check</span><span class="task-what">A short set to see whether it has stuck before tomorrow</span></div>
-          </div>
+        <div class="panel-body" id="foundBody">
+          <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading your progress</p>
         </div>
-        <div class="panel-foot">Every day looks like this. You never have to decide what to study, how long to spend, or whether it is working.</div>
+        <div class="panel-foot">
+          <a class="btn btn-found" href="/foundations/" id="foundBtn">Open Foundations</a>
+        </div>
       </div>
     </div>
   </div></section>
@@ -361,12 +365,75 @@
         el('enrolledLede').innerHTML =
           'Your place is secured and paid for, enrolled on <b>' +
           d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) +
-          '</b>. Nothing is expected of you yet.';
+          '</b>. Days 1 to 4 are open now.';
       }
       show('enrolled');
+      loadFoundations();
     } else {
       show('noEnrol');
     }
+  }
+
+  // ---------- Foundations progress ----------
+  // These counts must match foundations/data.js. If a day gains or loses
+  // a concept there, change the number here too, otherwise the bar lies.
+  const FOUNDATION_DAYS = [
+    { day: 1, name: 'Number Sense and Algebra Foundations', total: 58 },
+    { day: 2, name: 'Linear Algebra, Exponents, and Radicals', total: 67 },
+    { day: 3, name: 'Quadratics, Nonlinear Algebra, and Functions', total: 84 },
+    { day: 4, name: 'Geometry and Statistics', total: 70 }
+  ];
+
+  async function loadFoundations(){
+    const body = el('foundBody');
+    let rows = [];
+    try {
+      const { data, error } = await sb
+        .from('day_progress')
+        .select('day_number, detail')
+        .in('day_number', [1, 2, 3, 4]);
+      if (error) console.error(error);
+      rows = data || [];
+    } catch (e) {
+      console.error(e);
+      body.innerHTML = '<p style="font-size:.95rem;color:var(--ink-soft);margin:0">' +
+        'Your progress could not be loaded just now. It is safe. Reload the page to try again.</p>';
+      return;
+    }
+
+    const doneByDay = {};
+    rows.forEach(r => {
+      const d = (r.detail && typeof r.detail === 'object') ? r.detail : {};
+      doneByDay[r.day_number] = Object.keys(d).length;
+    });
+
+    let anyStarted = false;
+    let daysFinished = 0;
+
+    const html = FOUNDATION_DAYS.map(f => {
+      const done = Math.min(doneByDay[f.day] || 0, f.total);
+      const pct  = f.total ? Math.round((done / f.total) * 100) : 0;
+      const finished = done >= f.total && f.total > 0;
+      if (done > 0) anyStarted = true;
+      if (finished) daysFinished++;
+      return '<div class="frow' + (finished ? ' done' : '') + '">' +
+        '<span class="frow-tag">Day ' + f.day + '</span>' +
+        '<div>' +
+          '<div class="frow-name">' + f.name + '</div>' +
+          '<div class="fbar"><div class="fbar-fill" style="width:' + pct + '%"></div></div>' +
+          '<div class="frow-count">' + done + ' of ' + f.total + ' done</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    body.innerHTML = html;
+
+    el('foundTag').textContent =
+      daysFinished === 4 ? 'All four complete' : daysFinished + ' of 4 complete';
+
+    el('foundBtn').textContent =
+      daysFinished === 4 ? 'Review Foundations' :
+      anyStarted ? 'Continue Foundations' : 'Start Foundations';
   }
 
   el('sendLinkBtn').addEventListener('click', async () => {

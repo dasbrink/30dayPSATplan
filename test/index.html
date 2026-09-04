@@ -114,7 +114,11 @@
   .qn{width:100%;aspect-ratio:1;border:2px solid var(--ink);background:#fff;color:var(--ink);font-family:"Space Mono",monospace;font-size:.78rem;font-weight:700}
   .qn.answered{background:var(--oat-deep)}
   .qn.current{background:var(--ink);color:var(--oat)}
-  .qflag{position:absolute;top:-5px;right:-4px;font-size:.7rem;color:var(--oxblood);pointer-events:none;font-weight:700}
+  .qw.flagged .qn{border-color:var(--oxblood);box-shadow:inset 0 0 0 1px var(--oxblood)}
+  .qw.flagged::after{
+    content:"";position:absolute;top:0;right:0;width:0;height:0;
+    border-top:14px solid var(--oxblood);border-left:14px solid transparent;pointer-events:none;
+  }
   .markbtn{margin-top:14px;width:100%;padding:9px 6px;background:#fff;border:2px solid var(--ink);font-size:.8rem;font-weight:700;color:var(--ink-soft)}
   .markbtn.on{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
 
@@ -144,8 +148,9 @@
   /* calculator */
   #calc{position:fixed;right:-640px;top:0;bottom:0;width:var(--calc-w,520px);background:#fff;border-left:2px solid var(--ink);z-index:100;transition:right .25s ease;display:flex;flex-direction:column}
   #calc.open{right:0}
-  #calcGrip{position:absolute;left:0;top:0;bottom:0;width:9px;cursor:ew-resize}
-  #calcGrip:hover{background:rgba(163,43,63,.35)}
+  #calcGrip{position:absolute;left:0;top:0;bottom:0;width:10px;cursor:ew-resize;z-index:20;background:transparent}
+  #calcGrip:hover{background:var(--oxblood)}
+  #calcGrip.dragging{background:var(--oxblood)}
   #calcHead{background:var(--ink);color:var(--oat);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-family:"Zilla Slab",serif;font-weight:700;font-size:.95rem;flex-shrink:0}
   #calcHead button{background:none;border:none;color:var(--oat);font-size:1.5rem;line-height:1;padding:0 4px}
   #calcMount{flex:1}
@@ -630,16 +635,35 @@ function toggleFs(){
 (function calcResize(){
   const g = el('calcGrip');
   let on = false;
-  const move = e => { if (!on) return; const c = e.touches?e.touches[0]:e; setCalcWidth(window.innerWidth - c.clientX); };
-  const end = () => {
-    on = false; document.body.style.userSelect=''; document.body.style.cursor='';
-    document.removeEventListener('mousemove',move); document.removeEventListener('mouseup',end);
+  const move = e => {
+    if (!on) return;
+    e.preventDefault();
+    const c = e.touches ? e.touches[0] : e;
+    setCalcWidth(window.innerWidth - c.clientX);
   };
-  g.addEventListener('mousedown', e => {
-    e.preventDefault(); on = true;
+  const end = () => {
+    if (!on) return;
+    on = false;
+    g.classList.remove('dragging');
+    document.body.style.userSelect=''; document.body.style.cursor='';
+    document.removeEventListener('mousemove',move);
+    document.removeEventListener('touchmove',move);
+    document.removeEventListener('mouseup',end);
+    document.removeEventListener('touchend',end);
+  };
+  const startDrag = e => {
+    e.preventDefault(); e.stopPropagation();
+    on = true;
+    g.classList.add('dragging');
     document.body.style.userSelect='none'; document.body.style.cursor='ew-resize';
-    document.addEventListener('mousemove',move); document.addEventListener('mouseup',end);
-  });
+    document.addEventListener('mousemove',move);
+    document.addEventListener('touchmove',move,{passive:false});
+    document.addEventListener('mouseup',end);
+    document.addEventListener('touchend',end);
+  };
+  g.addEventListener('mousedown', startDrag);
+  g.addEventListener('touchstart', startDrag, {passive:false});
+  window.addEventListener('resize', () => { if (calcOpen) setCalcWidth(calcW); });
 })();
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
@@ -706,9 +730,7 @@ function updateGrid(){
     const b = el('qn'+i), w = el('qw'+i);
     if (!b || !w) return;
     b.className = 'qn' + (isAnswered(i)?' answered':'') + (i===idx?' current':'');
-    let f = w.querySelector('.qflag');
-    if (marked[i]){ if (!f){ f = document.createElement('span'); f.className='qflag'; f.textContent='!'; w.appendChild(f); } }
-    else if (f) f.remove();
+    w.className = 'qw' + (marked[i]?' flagged':'');
   });
   const mb = el('markBtn');
   mb.classList.toggle('on', !!marked[idx]);

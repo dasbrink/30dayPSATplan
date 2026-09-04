@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Foundations | 30 Day PSAT Plan</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+  :root{
+    --oat:#EDE6D6; --oat-deep:#E2D9C5; --ink:#241C22; --ink-soft:#4A3F46;
+    --oxblood:#A32B3F; --pencil:#8C8577; --graph:#B9C6D2; --card:#F7F2E7; --green:#2F6B4F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--oat);color:var(--ink);
+    font-family:"Karla",system-ui,-apple-system,sans-serif;
+    font-size:17.5px;line-height:1.62;-webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(var(--graph) 1px,transparent 1px),
+      linear-gradient(90deg,var(--graph) 1px,transparent 1px);
+    background-size:28px 28px;background-position:-1px -1px;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 34px}
+  @media(max-width:640px){.wrap{padding:0 20px}}
+  a{color:var(--oxblood)}
+
+  .mast{background:var(--ink);color:var(--oat);position:sticky;top:0;z-index:40}
+  .mast .wrap{display:flex;justify-content:space-between;align-items:center;padding:15px 34px;gap:14px;flex-wrap:wrap}
+  @media(max-width:640px){.mast .wrap{padding:13px 20px}}
+  .mast-name{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.05rem;color:var(--oat);text-decoration:none}
+  .mast-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .mast-who{font-family:"Space Mono",monospace;font-size:11.5px;color:#C9BFAE}
+  @media(max-width:700px){.mast-who{display:none}}
+  .mast-btn{font-family:"Karla",sans-serif;font-size:.84rem;font-weight:700;background:none;color:var(--oat);border:1px solid rgba(237,230,214,.45);padding:7px 14px;cursor:pointer}
+  .mast-btn:hover{background:rgba(237,230,214,.12)}
+
+  .head{padding:52px 0 34px}
+  .kicker{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--oxblood);margin-bottom:18px}
+  h1{font-family:"Zilla Slab",serif;font-weight:700;font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.09;letter-spacing:-.02em;max-width:22ch}
+  h1 span{display:block;color:var(--oxblood)}
+  .lede{margin-top:20px;max-width:56ch;color:var(--ink-soft);font-size:1.06rem}
+  .lede b{color:var(--ink);font-weight:700}
+
+  h2{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.4rem;line-height:1.2;letter-spacing:-.015em;margin-bottom:14px}
+
+  /* day cards */
+  .days{padding-bottom:70px}
+  .day-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:820px){.day-grid{grid-template-columns:1fr}}
+  .daycard{background:var(--card);border:2px solid var(--ink);padding:22px 24px;cursor:pointer;text-align:left;font:inherit;color:inherit;display:block;width:100%;transition:transform .12s ease,box-shadow .12s ease}
+  .daycard:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .daycard:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px}
+  .daycard-tag{font-family:"Space Mono",monospace;font-size:11.5px;font-weight:700;letter-spacing:.06em;color:#fff;background:var(--ink);padding:5px 10px;display:inline-block}
+  .daycard.done .daycard-tag{background:var(--green)}
+  .daycard h3{font-family:"Zilla Slab",serif;font-size:1.15rem;font-weight:600;margin:12px 0 6px}
+  .daycard p{font-size:.94rem;color:var(--ink-soft)}
+  .bar{margin-top:14px;background:var(--oat-deep);border:1px solid var(--ink);height:12px}
+  .bar-fill{background:var(--green);height:100%;width:0}
+  .bar-label{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin-top:7px}
+
+  /* concepts */
+  .concepts{padding-bottom:60px}
+  .concept{background:var(--card);border:2px solid var(--ink);padding:24px 26px;margin-bottom:16px}
+  .concept.tip{background:var(--oat-deep)}
+  .c-domain{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil)}
+  .c-name{font-family:"Zilla Slab",serif;font-size:1.15rem;font-weight:700;margin:6px 0 14px}
+  .c-sub{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil);margin-bottom:5px}
+  .c-block{font-size:.99rem;line-height:1.6;white-space:pre-wrap;margin-bottom:14px;color:var(--ink-soft)}
+
+  .qbox{border-top:1px dashed var(--pencil);padding-top:16px;margin-top:4px}
+  .q-text{font-size:1rem;line-height:1.55;margin:6px 0 14px}
+  .q-choices{display:flex;flex-direction:column;gap:9px;margin-bottom:8px}
+  .q-choice{padding:12px 15px;border:2px solid var(--ink);background:#fff;cursor:pointer;font-family:"Karla",sans-serif;font-size:.97rem;text-align:left;color:var(--ink)}
+  .q-choice:hover:not(:disabled){background:#fdfaf3}
+  .q-choice:disabled{cursor:default}
+  .q-choice.correct{border-color:var(--green);background:#E7F1EB}
+  .q-choice.wrong{border-color:var(--oxblood);background:#F7E6E9}
+  .q-feedback{display:none;font-size:.95rem;line-height:1.55;padding:13px 15px;margin-top:10px}
+  .q-feedback.good{display:block;background:#E7F1EB;border-left:4px solid var(--green);color:#1d4a35}
+  .q-feedback.bad{display:block;background:#F7E6E9;border-left:4px solid var(--oxblood);color:#7a2130}
+
+  .gotit{font-family:"Zilla Slab",serif;font-size:1rem;font-weight:700;padding:12px 24px;border:2px solid var(--ink);background:var(--ink);color:var(--oat);cursor:pointer;box-shadow:4px 4px 0 rgba(36,28,34,.3)}
+  .gotit.done{background:var(--green);border-color:var(--green);cursor:default;box-shadow:none}
+
+  .ptoggle{background:none;border:none;font-family:"Karla",sans-serif;font-size:.9rem;color:var(--oxblood);text-decoration:underline;cursor:pointer;padding:0;margin-top:14px}
+  .pbody{display:none;margin-top:12px}
+  .pitem{background:#fff;border:1px solid var(--pencil);padding:14px 16px;margin-bottom:9px;font-size:.93rem;line-height:1.55;white-space:pre-wrap}
+  .pdiff{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--pencil);padding:3px 8px;display:inline-block;margin-bottom:7px}
+  .pshow{background:none;border:none;font-family:"Karla",sans-serif;font-size:.86rem;color:var(--oxblood);text-decoration:underline;cursor:pointer;padding:0;margin-top:8px;display:block}
+  .pans{display:none;margin-top:8px;font-weight:700;color:var(--green)}
+
+  .navrow{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:24px;border-top:2px solid var(--ink);margin-top:10px}
+  .btn{font-family:"Zilla Slab",serif;font-size:1.02rem;font-weight:700;padding:14px 28px;border:2px solid var(--ink);cursor:pointer;background:var(--ink);color:var(--oat);box-shadow:5px 5px 0 rgba(36,28,34,.32);transition:transform .12s ease,box-shadow .12s ease;text-decoration:none;display:inline-block}
+  .btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 rgba(36,28,34,.32)}
+  .btn-alt{background:var(--card);color:var(--ink)}
+  .btn:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px}
+  @media(prefers-reduced-motion:reduce){.btn,.daycard{transition:none}.btn:hover,.daycard:hover{transform:none}}
+
+  .note{background:var(--oat-deep);border:2px solid var(--ink);padding:24px 26px;max-width:64ch}
+  .note h3{font-family:"Zilla Slab",serif;font-size:1.05rem;margin-bottom:8px}
+  .note p{font-size:.97rem;color:var(--ink-soft);margin-bottom:12px}
+  .note p:last-child{margin-bottom:0}
+
+  .savebar{position:fixed;right:16px;bottom:16px;background:var(--ink);color:var(--oat);font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;opacity:0;transition:opacity .25s ease;pointer-events:none;z-index:60}
+  .savebar.show{opacity:1}
+  .savebar.err{background:var(--oxblood)}
+
+  footer{background:var(--ink);color:#C9BFAE;padding:36px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:baseline}
+  footer p{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  footer a{color:var(--oat)}
+
+  .hidden{display:none}
+  .loading{padding:80px 0;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil)}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <a class="mast-name" href="/dashboard/">30dayPSATplan.com</a>
+  <div class="mast-right">
+    <span class="mast-who hidden" id="mastWho"></span>
+    <button class="mast-btn hidden" id="signOutBtn">Sign out</button>
+  </div>
+</div></div>
+
+<div id="loading"><div class="wrap"><p class="loading">Loading your Foundations course</p></div></div>
+
+<!-- not signed in -->
+<div id="gateAuth" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker">Sign in required</div>
+    <h1>This is part of the plan.<span>Sign in to open it.</span></h1>
+    <p class="lede">The Foundations course is included with the 30 Day PSAT Plan. Sign in with the email you enrolled with and it opens straight away.</p>
+    <p style="margin-top:26px"><a class="btn" href="/dashboard/">Go to sign in</a></p>
+  </div></header>
+</div>
+
+<!-- signed in, no enrollment -->
+<div id="gateEnrol" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker">Enrollment not found</div>
+    <h1>You are signed in,<span>but this is not open to you yet.</span></h1>
+    <p class="lede">Signed in as <b id="whoNoEnrol"></b>. There is no enrollment recorded on that address.</p>
+    <p style="margin-top:26px"><a class="btn" href="/dashboard/">Back to my dashboard</a></p>
+  </div></header>
+</div>
+
+<!-- data.js missing -->
+<div id="gateData" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker">Something is missing</div>
+    <h1>The course content did not load.</h1>
+    <p class="lede">This is my fault, not yours. Write to <a href="mailto:dasbrink@gmail.com">dasbrink@gmail.com</a> and I will fix it today. Nothing you have done is lost.</p>
+  </div></header>
+</div>
+
+<!-- overview -->
+<div id="viewOverview" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker">Days 1 to 4</div>
+    <h1>Foundations.<span>The floor under everything else.</span></h1>
+    <p class="lede">Most PSAT points are not lost on hard questions. They are lost on ordinary questions sitting on a shaky basic. These four days rebuild the basics before anything gets measured. <b>Work them in order.</b></p>
+    <p class="lede" style="margin-top:14px">These days run longer than thirty minutes. That is deliberate, and it is the part most prep skips.</p>
+  </div></header>
+
+  <section class="days"><div class="wrap">
+    <div class="day-grid" id="dayGrid"></div>
+    <div class="note" style="margin-top:34px">
+      <h3>How to work through a day</h3>
+      <p>Read each concept, then answer the check question underneath it. If a check question stumps you, read the concept again and try the practice problems before moving on.</p>
+      <p>Your progress saves automatically to your account, so you can stop halfway and pick it up on any device.</p>
+    </div>
+  </div></section>
+</div>
+
+<!-- a single day -->
+<div id="viewDay" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker" id="dayKicker"></div>
+    <h1 id="dayTitle"></h1>
+    <p class="lede" id="dayLede"></p>
+  </div></header>
+
+  <section class="concepts"><div class="wrap">
+    <div id="dayContent"></div>
+    <div class="navrow" id="dayNav"></div>
+  </div></section>
+</div>
+
+<div class="savebar" id="saveBar">Saved</div>
+
+<footer><div class="wrap">
+  <p>&copy; 2026 Dr. Brink SAT Math</p>
+  <p><a href="mailto:dasbrink@gmail.com">dasbrink@gmail.com</a></p>
+</div></footer>
+
+<script src="data.js"></script>
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+  const SUPABASE_URL = 'https://jotbwtkvwkunihvwmqqj.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_finn6Vwaqa2nBqG_DD5ZLg_Wpe-qZxW';
+
+  const sb = createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: { detectSessionInUrl: true, persistSession: true, autoRefreshToken: true }
+  });
+
+  const FOUNDATION_DAYS = [1, 2, 3, 4];
+
+  const el   = (id) => document.getElementById(id);
+  const show = (id) => el(id).classList.remove('hidden');
+  const hide = (id) => el(id).classList.add('hidden');
+
+  let currentUser = null;
+  let progress = {};   // { dayNumber: { itemIndex: 'right' | 'wrong' | true } }
+  let currentDay = null;
+
+  function esc(s){
+    return String(s == null ? '' : s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function typeset(node){
+    if (window.MathJax && MathJax.typesetPromise) {
+      try { MathJax.typesetPromise(node ? [node] : undefined).catch(()=>{}); } catch(e){}
+    }
+  }
+
+  // ---------- save status ----------
+  let saveTimer = null;
+  function flashSave(text, isError){
+    const bar = el('saveBar');
+    bar.textContent = text;
+    bar.className = 'savebar show' + (isError ? ' err' : '');
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => { bar.className = 'savebar'; }, isError ? 6000 : 1800);
+  }
+
+  // ---------- progress, database backed ----------
+  async function loadProgress(){
+    progress = {};
+    try {
+      const { data, error } = await sb
+        .from('day_progress')
+        .select('day_number, detail, completed')
+        .in('day_number', FOUNDATION_DAYS);
+      if (error) { console.error(error); return; }
+      (data || []).forEach(row => {
+        progress[row.day_number] = (row.detail && typeof row.detail === 'object') ? row.detail : {};
+      });
+    } catch (e) { console.error(e); }
+  }
+
+  // Writes are debounced. A student clicking through ten questions
+  // should produce one write, not ten.
+  const pendingDays = new Set();
+  let writeTimer = null;
+
+  function queueSave(day){
+    pendingDays.add(day);
+    clearTimeout(writeTimer);
+    writeTimer = setTimeout(flushSaves, 900);
+  }
+
+  async function flushSaves(){
+    const days = Array.from(pendingDays);
+    pendingDays.clear();
+    if (!days.length || !currentUser) return;
+
+    for (const day of days){
+      const detail = progress[day] || {};
+      const total = itemCount(day);
+      const done = Object.keys(detail).length;
+      try {
+        const { error } = await sb.from('day_progress').upsert({
+          user_id: currentUser.id,
+          day_number: day,
+          detail,
+          completed: total > 0 && done >= total,
+          completed_at: new Date().toISOString()
+        }, { onConflict: 'user_id,day_number' });
+        if (error) {
+          console.error('save failed', error);
+          flashSave('Not saved. Check your connection.', true);
+          return;
+        }
+      } catch (e) {
+        console.error(e);
+        flashSave('Not saved. Check your connection.', true);
+        return;
+      }
+    }
+    flashSave('Saved');
+  }
+
+  function markItem(day, idx, value){
+    if (!progress[day]) progress[day] = {};
+    progress[day][String(idx)] = value;
+    queueSave(day);
+  }
+
+  // Save anything outstanding before the page closes.
+  window.addEventListener('beforeunload', () => { if (pendingDays.size) flushSaves(); });
+
+  // ---------- data ----------
+  function dayData(d){
+    if (typeof FOUNDATIONS_DATA === 'undefined') return null;
+    return FOUNDATIONS_DATA.days && FOUNDATIONS_DATA.days[String(d)] || null;
+  }
+  function itemCount(d){
+    const day = dayData(d);
+    return day && Array.isArray(day.items) ? day.items.length : 0;
+  }
+  function doneCount(d){
+    return Object.keys(progress[d] || {}).length;
+  }
+
+  // ---------- overview ----------
+  function renderOverview(){
+    const grid = el('dayGrid');
+    grid.innerHTML = '';
+    FOUNDATION_DAYS.forEach(d => {
+      const day = dayData(d);
+      if (!day) return;
+      const total = itemCount(d);
+      const done  = doneCount(d);
+      const pct   = total ? Math.round((done / total) * 100) : 0;
+      const finished = total > 0 && done >= total;
+
+      const card = document.createElement('button');
+      card.className = 'daycard' + (finished ? ' done' : '');
+      card.type = 'button';
+      card.innerHTML =
+        '<span class="daycard-tag">Day ' + d + (finished ? ' complete' : '') + '</span>' +
+        '<h3>' + esc(day.title) + '</h3>' +
+        '<p>' + total + ' concepts, each with a check question.</p>' +
+        '<div class="bar"><div class="bar-fill" style="width:' + pct + '%"></div></div>' +
+        '<div class="bar-label">' + done + ' of ' + total + ' done</div>';
+      card.addEventListener('click', () => openDay(d));
+      grid.appendChild(card);
+    });
+  }
+
+  function showOverview(){
+    currentDay = null;
+    history.replaceState(null, '', location.pathname);
+    hide('viewDay');
+    renderOverview();
+    show('viewOverview');
+    window.scrollTo(0, 0);
+  }
+
+  // ---------- one day ----------
+  function openDay(d){
+    const day = dayData(d);
+    if (!day) { showOverview(); return; }
+    currentDay = d;
+    history.replaceState(null, '', location.pathname + '?day=' + d);
+
+    hide('viewOverview');
+    el('dayKicker').textContent = 'Day ' + d + ' of 30';
+    el('dayTitle').textContent = day.title;
+    el('dayLede').textContent =
+      day.items.length + ' concepts. Read each one, then answer the check question underneath it.';
+
+    const box = el('dayContent');
+    box.innerHTML = '';
+    const prog = progress[d] || {};
+
+    day.items.forEach((item, idx) => {
+      const card = document.createElement('div');
+      card.className = 'concept' + (item.tip ? ' tip' : '');
+
+      let html = '<div class="c-domain">' + (item.tip ? 'Strategy' : esc(item.domain)) + '</div>' +
+                 '<div class="c-name">' + esc(item.name) + '</div>';
+      if (item.concept) html += '<div class="c-block">' + esc(item.concept) + '</div>';
+      if (item.worked)  html += '<div class="c-sub">Worked example</div><div class="c-block">' + esc(item.worked) + '</div>';
+      card.innerHTML = html;
+
+      if (item.question) {
+        card.appendChild(buildQuestion(d, item, idx, prog));
+      } else if (item.tip) {
+        const btn = document.createElement('button');
+        const already = prog[String(idx)] !== undefined;
+        btn.className = 'gotit' + (already ? ' done' : '');
+        btn.textContent = already ? 'Got it' : 'Got it, I will use this';
+        btn.addEventListener('click', () => {
+          if (btn.classList.contains('done')) return;
+          markItem(d, idx, true);
+          btn.className = 'gotit done';
+          btn.textContent = 'Got it';
+          refreshDayLede();
+        });
+        card.appendChild(btn);
+      }
+
+      if (item.practice && item.practice.some(p => p && p.trim())) {
+        card.appendChild(buildPractice(item.practice));
+      }
+
+      box.appendChild(card);
+    });
+
+    // nav
+    const nav = el('dayNav');
+    nav.innerHTML = '';
+    const back = document.createElement('button');
+    back.className = 'btn btn-alt';
+    back.textContent = 'All four days';
+    back.addEventListener('click', showOverview);
+    nav.appendChild(back);
+
+    if (d < 4) {
+      const next = document.createElement('button');
+      next.className = 'btn';
+      next.textContent = 'Continue to Day ' + (d + 1);
+      next.addEventListener('click', () => openDay(d + 1));
+      nav.appendChild(next);
+    } else {
+      const done = document.createElement('a');
+      done.className = 'btn';
+      done.href = '/dashboard/';
+      done.textContent = 'Foundations finished';
+      nav.appendChild(done);
+    }
+
+    show('viewDay');
+    window.scrollTo(0, 0);
+    typeset(box);
+  }
+
+  function refreshDayLede(){
+    if (currentDay == null) return;
+    const total = itemCount(currentDay);
+    const done  = doneCount(currentDay);
+    el('dayLede').textContent =
+      total + ' concepts. ' + done + ' done. Read each one, then answer the check question underneath it.';
+  }
+
+  function buildQuestion(day, item, idx, prog){
+    const q = item.question;
+    const box = document.createElement('div');
+    box.className = 'qbox';
+
+    const label = document.createElement('div');
+    label.className = 'c-sub';
+    label.textContent = 'Check yourself';
+    box.appendChild(label);
+
+    const qt = document.createElement('div');
+    qt.className = 'q-text';
+    qt.innerHTML = esc(q.question);
+    box.appendChild(qt);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'q-choices';
+    const feedback = document.createElement('div');
+    feedback.className = 'q-feedback';
+
+    const options = shuffle([q.correct].concat((q.distractors || []).filter(x => x && x.trim())));
+    const already = prog[String(idx)];
+
+    options.forEach(opt => {
+      const b = document.createElement('button');
+      b.className = 'q-choice';
+      b.type = 'button';
+      b.innerHTML = esc(opt);
+      b.addEventListener('click', () => {
+        wrap.querySelectorAll('.q-choice').forEach(x => { x.disabled = true; });
+        const right = (opt === q.correct);
+        if (right) {
+          b.classList.add('correct');
+          feedback.className = 'q-feedback good';
+          feedback.innerHTML = '<strong>Correct.</strong> ' + esc(q.explanation);
+        } else {
+          b.classList.add('wrong');
+          wrap.querySelectorAll('.q-choice').forEach(x => {
+            if (x.innerHTML === esc(q.correct)) x.classList.add('correct');
+          });
+          feedback.className = 'q-feedback bad';
+          feedback.innerHTML = '<strong>Not quite.</strong> ' + esc(q.explanation);
+        }
+        markItem(day, idx, right ? 'right' : 'wrong');
+        refreshDayLede();
+        typeset(box);
+      });
+      wrap.appendChild(b);
+    });
+
+    box.appendChild(wrap);
+    box.appendChild(feedback);
+
+    // Already answered on a previous visit. Show the answer rather than
+    // pretending it is fresh, but let them read it again.
+    if (already !== undefined) {
+      const seen = document.createElement('div');
+      seen.className = 'q-feedback ' + (already === 'right' ? 'good' : 'bad');
+      seen.innerHTML = already === 'right'
+        ? '<strong>You answered this correctly last time.</strong> ' + esc(q.explanation)
+        : '<strong>You missed this last time.</strong> The answer is ' + esc(q.correct) + '. ' + esc(q.explanation);
+      box.appendChild(seen);
+    }
+
+    return box;
+  }
+
+  function buildPractice(practice){
+    const wrap = document.createElement('div');
+    const toggle = document.createElement('button');
+    toggle.className = 'ptoggle';
+    toggle.type = 'button';
+    toggle.textContent = 'Want more practice? Show three problems';
+
+    const body = document.createElement('div');
+    body.className = 'pbody';
+    const labels = ['Easy', 'Medium', 'Hard'];
+
+    practice.forEach((p, i) => {
+      if (!p || !p.trim()) return;
+      const item = document.createElement('div');
+      item.className = 'pitem';
+
+      const marker = '\nAnswer:';
+      const cut = p.indexOf(marker);
+      let visible = p, answer = '';
+      if (cut !== -1) { visible = p.slice(0, cut); answer = p.slice(cut + 1); }
+
+      item.innerHTML = '<span class="pdiff">' + labels[i] + '</span>\n' + esc(visible);
+
+      if (answer) {
+        const btn = document.createElement('button');
+        btn.className = 'pshow';
+        btn.type = 'button';
+        btn.textContent = 'Show answer';
+        const ans = document.createElement('div');
+        ans.className = 'pans';
+        ans.innerHTML = esc(answer);
+        btn.addEventListener('click', () => {
+          ans.style.display = 'block';
+          btn.style.display = 'none';
+          typeset(item);
+        });
+        item.appendChild(btn);
+        item.appendChild(ans);
+      }
+      body.appendChild(item);
+    });
+
+    toggle.addEventListener('click', () => {
+      const open = body.style.display === 'block';
+      body.style.display = open ? 'none' : 'block';
+      toggle.textContent = open
+        ? 'Want more practice? Show three problems'
+        : 'Hide the practice problems';
+      if (!open) typeset(body);
+    });
+
+    wrap.appendChild(toggle);
+    wrap.appendChild(body);
+    return wrap;
+  }
+
+  function shuffle(arr){
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // ---------- start ----------
+  async function start(){
+    let session = null;
+    try {
+      const { data } = await sb.auth.getSession();
+      session = data?.session ?? null;
+    } catch (e) { console.error(e); }
+
+    hide('loading');
+
+    if (!session) { show('gateAuth'); return; }
+
+    currentUser = session.user;
+    const email = currentUser.email || '';
+    el('mastWho').textContent = email;
+    el('whoNoEnrol').textContent = email;
+    show('mastWho');
+    show('signOutBtn');
+
+    // Enrollment check. Row security only returns their own row.
+    let enrolled = false;
+    try {
+      const { data, error } = await sb.from('enrollments').select('id').limit(1);
+      if (error) console.error(error);
+      enrolled = !!(data && data.length);
+    } catch (e) { console.error(e); }
+
+    if (!enrolled) { show('gateEnrol'); return; }
+
+    if (typeof FOUNDATIONS_DATA === 'undefined' || !FOUNDATIONS_DATA.days) {
+      console.error('data.js did not load or has no days');
+      show('gateData');
+      return;
+    }
+
+    await loadProgress();
+
+    const asked = parseInt(new URLSearchParams(location.search).get('day'), 10);
+    if (FOUNDATION_DAYS.includes(asked)) openDay(asked);
+    else showOverview();
+  }
+
+  el('signOutBtn').addEventListener('click', async () => {
+    if (pendingDays.size) await flushSaves();
+    await sb.auth.signOut();
+    window.location.href = '/dashboard/';
+  });
+
+  start();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Timed test | 30 Day PSAT Plan</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']], processEscapes: true },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=2f23c0c34b08448e8e167dba1a6c32c4"></script>
+<script src="/psat_score.js"></script>
+
+<style>
+  :root{
+    --oat:#EDE6D6; --oat-deep:#E2D9C5; --ink:#241C22; --ink-soft:#4A3F46;
+    --oxblood:#A32B3F; --pencil:#8C8577; --graph:#B9C6D2; --card:#F7F2E7; --green:#2F6B4F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--oat);color:var(--ink);
+    font-family:"Karla",system-ui,-apple-system,sans-serif;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;
+  }
+  body.papered{
+    background-image:
+      linear-gradient(var(--graph) 1px,transparent 1px),
+      linear-gradient(90deg,var(--graph) 1px,transparent 1px);
+    background-size:28px 28px;background-position:-1px -1px;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 34px}
+  @media(max-width:640px){.wrap{padding:0 20px}}
+  a{color:var(--oxblood)}
+  button{font-family:"Karla",sans-serif;cursor:pointer}
+
+  .screen{display:none}
+  .screen.active{display:block}
+
+  /* ---------- shared chrome ---------- */
+  .mast{background:var(--ink);color:var(--oat)}
+  .mast .wrap{display:flex;justify-content:space-between;align-items:center;padding:15px 34px;gap:14px;flex-wrap:wrap}
+  @media(max-width:640px){.mast .wrap{padding:13px 20px}}
+  .mast-name{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.05rem;color:var(--oat);text-decoration:none}
+  .mast-who{font-family:"Space Mono",monospace;font-size:11.5px;color:#C9BFAE}
+  @media(max-width:700px){.mast-who{display:none}}
+
+  .head{padding:52px 0 30px}
+  .kicker{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--oxblood);margin-bottom:18px}
+  h1{font-family:"Zilla Slab",serif;font-weight:700;font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.09;letter-spacing:-.02em;max-width:22ch}
+  h1 span{display:block;color:var(--oxblood)}
+  .lede{margin-top:20px;max-width:56ch;color:var(--ink-soft);font-size:1.05rem}
+  .lede b{color:var(--ink);font-weight:700}
+  h2{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.4rem;line-height:1.2;letter-spacing:-.015em;margin-bottom:14px}
+
+  .btn{font-family:"Zilla Slab",serif;font-size:1.05rem;font-weight:700;padding:15px 32px;border:2px solid var(--ink);background:var(--ink);color:var(--oat);box-shadow:5px 5px 0 rgba(36,28,34,.32);transition:transform .12s ease,box-shadow .12s ease;text-decoration:none;display:inline-block}
+  .btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 rgba(36,28,34,.32)}
+  .btn:disabled{opacity:.5;transform:none;cursor:default}
+  .btn-alt{background:var(--card);color:var(--ink)}
+  .btn-go{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
+  .btn:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px}
+  @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+
+  .panel{background:var(--card);border:2px solid var(--ink);box-shadow:9px 9px 0 var(--ink)}
+  .panel-top{padding:14px 24px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--ink);color:var(--oat)}
+  .panel-title{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.2rem}
+  .panel-tag{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#C9BFAE}
+  .panel-body{padding:20px 24px 22px}
+  .facts div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px dashed var(--pencil);font-size:.96rem;color:var(--ink-soft)}
+  .facts div:last-child{border-bottom:none}
+  .facts b{color:var(--ink)}
+  .panel-foot{background:var(--oat-deep);border-top:2px solid var(--ink);padding:14px 24px;font-size:.88rem;color:var(--ink-soft);line-height:1.5}
+
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+  .note{background:var(--oat-deep);border:2px solid var(--ink);padding:22px 24px;max-width:64ch}
+  .note h3{font-family:"Zilla Slab",serif;font-size:1.05rem;margin-bottom:7px}
+  .note p{font-size:.96rem;color:var(--ink-soft);margin-bottom:11px}
+  .note p:last-child{margin-bottom:0}
+
+  .cols-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start;padding-bottom:60px}
+  @media(max-width:900px){.cols-grid{grid-template-columns:1fr;gap:32px}}
+
+  /* ---------- the test itself ---------- */
+  #screenTest{display:none}
+  #screenTest.active{display:flex;flex-direction:column;min-height:100vh}
+
+  .tbar{background:var(--ink);color:var(--oat);padding:11px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;flex-shrink:0}
+  .tbar-label{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.02rem;flex:1}
+  .tbar-clock{font-family:"Space Mono",monospace;font-size:1.05rem;font-weight:700;background:rgba(237,230,214,.16);padding:5px 13px;font-variant-numeric:tabular-nums}
+  .tbar-clock.hidden{display:none}
+  .tbar-clock.low{background:var(--oxblood);color:#fff}
+  .tools{display:flex;gap:8px;flex-wrap:wrap}
+  .tool{background:rgba(237,230,214,.14);color:var(--oat);border:1px solid rgba(237,230,214,.35);padding:6px 13px;font-size:.83rem;font-weight:700}
+  .tool:hover{background:rgba(237,230,214,.26)}
+  .tool.on{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
+
+  .tlayout{display:flex;flex:1;--calc-w:520px;min-height:0}
+  .tlayout.calc #tmain{margin-right:var(--calc-w)}
+  #tmain{flex:1;display:flex;min-width:0;transition:margin-right .25s ease}
+
+  .tside{width:196px;background:var(--card);border-right:2px solid var(--ink);padding:16px 12px;overflow-y:auto;flex-shrink:0}
+  .tside-h{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil);margin-bottom:10px}
+  #qgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+  .qw{position:relative}
+  .qn{width:100%;aspect-ratio:1;border:2px solid var(--ink);background:#fff;color:var(--ink);font-family:"Space Mono",monospace;font-size:.78rem;font-weight:700}
+  .qn.answered{background:var(--oat-deep)}
+  .qn.current{background:var(--ink);color:var(--oat)}
+  .qflag{position:absolute;top:-5px;right:-4px;font-size:.7rem;color:var(--oxblood);pointer-events:none;font-weight:700}
+  .markbtn{margin-top:14px;width:100%;padding:9px 6px;background:#fff;border:2px solid var(--ink);font-size:.8rem;font-weight:700;color:var(--ink-soft)}
+  .markbtn.on{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
+
+  .tcontent{flex:1;display:flex;flex-direction:column;padding:26px 30px;overflow-y:auto;min-width:0}
+  @media(max-width:640px){.tside{display:none}.tcontent{padding:18px}}
+  .qcount{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil);margin-bottom:14px}
+  #qtext{font-size:1.05rem;line-height:1.6;margin-bottom:22px}
+  #qtext .visual-container{margin-bottom:14px}
+  #qtext .visual-container svg{max-width:340px;width:100%;height:auto;display:block;margin:0 auto 4px}
+  #qtext .inline-graph{width:100%;max-width:470px;height:320px;margin:0 auto 12px;display:block;border:2px solid var(--ink)}
+
+  #qchoices{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+  .cbtn{padding:13px 17px;border:2px solid var(--ink);background:#fff;color:var(--ink);font-size:.99rem;text-align:left;line-height:1.45}
+  .cbtn:hover{background:#fdfaf3}
+  .cbtn.sel{background:var(--ink);color:var(--oat)}
+  .oe-badge{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--oxblood);padding:4px 10px;display:inline-block;margin-bottom:14px}
+  .oe-input{font-family:"Space Mono",monospace;font-size:1.2rem;padding:12px 15px;border:2px solid var(--ink);width:190px;text-align:center;background:#fff}
+  .oe-input:focus{outline:none;border-color:var(--oxblood)}
+  .oe-hint{font-size:.86rem;color:var(--pencil);margin-top:9px}
+
+  .tnav{display:flex;gap:11px;align-items:center;flex-wrap:wrap;padding-top:18px;border-top:2px solid var(--ink);margin-top:auto}
+  .nbtn{padding:11px 22px;border:2px solid var(--ink);background:#fff;color:var(--ink);font-size:.92rem;font-weight:700}
+  .nbtn.primary{background:var(--ink);color:var(--oat)}
+  .nbtn.submit{background:var(--green);border-color:var(--green);color:#fff}
+  .nbtn.quit{margin-left:auto;border-color:var(--pencil);color:var(--pencil);background:none;font-size:.84rem}
+
+  /* calculator */
+  #calc{position:fixed;right:-640px;top:0;bottom:0;width:var(--calc-w,520px);background:#fff;border-left:2px solid var(--ink);z-index:100;transition:right .25s ease;display:flex;flex-direction:column}
+  #calc.open{right:0}
+  #calcGrip{position:absolute;left:0;top:0;bottom:0;width:9px;cursor:ew-resize}
+  #calcGrip:hover{background:rgba(163,43,63,.35)}
+  #calcHead{background:var(--ink);color:var(--oat);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-family:"Zilla Slab",serif;font-weight:700;font-size:.95rem;flex-shrink:0}
+  #calcHead button{background:none;border:none;color:var(--oat);font-size:1.5rem;line-height:1;padding:0 4px}
+  #calcMount{flex:1}
+
+  /* formula sheet */
+  #fsheet{display:none;position:fixed;z-index:200;background:#fff;border:2px solid var(--ink);box-shadow:10px 10px 0 rgba(36,28,34,.4);min-width:320px;min-height:240px;overflow:hidden;flex-direction:column}
+  #fsheet.open{display:flex}
+  #fsHead{background:var(--ink);color:var(--oat);padding:11px 15px;display:flex;justify-content:space-between;align-items:center;cursor:grab;user-select:none;font-family:"Zilla Slab",serif;font-weight:700;font-size:.92rem}
+  #fsHead.drag{cursor:grabbing}
+  #fsHead button{background:none;border:none;color:var(--oat);font-size:1.5rem;line-height:1;padding:0 3px}
+  #fsBody{flex:1;overflow:auto;display:flex;align-items:center;justify-content:center;padding:8px;background:#fff}
+  #fsBody img{max-width:100%;height:auto;display:block}
+  #fsGrip{position:absolute;right:0;bottom:0;width:18px;height:18px;cursor:se-resize;background:linear-gradient(135deg,transparent 50%,var(--ink) 50%)}
+
+  /* modals */
+  .modal{display:none;position:fixed;inset:0;background:rgba(36,28,34,.75);z-index:300;overflow-y:auto}
+  .modal.open{display:block}
+  .modal-card{background:var(--card);border:2px solid var(--ink);box-shadow:10px 10px 0 rgba(36,28,34,.5);max-width:480px;margin:70px auto;padding:30px 32px 32px}
+  @media(max-width:560px){.modal-card{margin:24px 16px;padding:24px 22px}}
+  .modal-card h3{font-family:"Zilla Slab",serif;font-size:1.5rem;font-weight:700;margin-bottom:16px}
+  .stat{background:var(--oat-deep);border:2px solid var(--ink);padding:11px 15px;font-size:.94rem;color:var(--ink-soft);margin-bottom:9px}
+  .stat b{color:var(--ink)}
+  .stat.warn{border-color:var(--oxblood)}
+  .stat.warn b{color:var(--oxblood)}
+  .modal-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+
+  /* results */
+  .score-panel{background:var(--ink);color:var(--oat);padding:34px 32px}
+  .score-n{font-family:"Zilla Slab",serif;font-size:4.2rem;font-weight:700;line-height:1;letter-spacing:-.03em}
+  .score-l{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C9BFAE;margin-top:10px}
+  .score-caveat{margin-top:20px;padding-top:18px;border-top:1px solid #3D3239;font-size:.93rem;line-height:1.55;color:#D8CEBD}
+  .breakdown div{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px dashed var(--pencil);font-size:.97rem;color:var(--ink-soft)}
+  .breakdown div:last-child{border-bottom:none}
+  .breakdown b{color:var(--ink)}
+
+  .savebar{position:fixed;right:16px;bottom:16px;background:var(--ink);color:var(--oat);font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:400}
+  .savebar.show{opacity:1}
+  .savebar.err{background:var(--oxblood)}
+
+  .loading{padding:70px 0;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil)}
+  .loading b{display:block;font-family:"Zilla Slab",serif;font-size:1.3rem;letter-spacing:0;text-transform:none;color:var(--ink);margin-bottom:10px}
+
+  footer{background:var(--ink);color:#C9BFAE;padding:34px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:baseline}
+  footer p{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  footer a{color:var(--oat)}
+  .hidden{display:none}
+</style>
+</head>
+<body class="papered">
+
+<!-- ========== LOADING ========== -->
+<div id="screenBoot" class="screen active">
+  <div class="mast"><div class="wrap"><a class="mast-name" href="/dashboard/">30dayPSATplan.com</a></div></div>
+  <div class="wrap"><p class="loading">Checking your account</p></div>
+</div>
+
+<!-- ========== GATES ========== -->
+<div id="screenGate" class="screen">
+  <div class="mast"><div class="wrap"><a class="mast-name" href="/dashboard/">30dayPSATplan.com</a></div></div>
+  <header class="head"><div class="wrap">
+    <div class="kicker" id="gateKicker"></div>
+    <h1 id="gateTitle"></h1>
+    <p class="lede" id="gateText"></p>
+    <div class="cta-row"><a class="btn" href="/dashboard/">Back to my dashboard</a></div>
+  </div></header>
+</div>
+
+<!-- ========== WELCOME ========== -->
+<div id="screenWelcome" class="screen">
+  <div class="mast"><div class="wrap">
+    <a class="mast-name" href="/dashboard/">30dayPSATplan.com</a>
+    <span class="mast-who" id="whoWelcome"></span>
+  </div></div>
+  <header class="head"><div class="wrap">
+    <div class="kicker" id="wKicker">Day 5 of 30</div>
+    <h1 id="wTitle">Your first full test.<span>This is the baseline.</span></h1>
+    <p class="lede">Forty-four questions in two timed modules. It is not meant to feel comfortable, and the score is not the point. The point is finding out exactly which things are costing you marks, so the next twenty-five days can go after those and leave the rest alone.</p>
+  </div></header>
+
+  <section><div class="wrap"><div class="cols-grid">
+    <div>
+      <h2>Before you start</h2>
+      <p style="color:var(--ink-soft);margin-bottom:14px">Sit somewhere you will not be interrupted for about ninety minutes. Have paper and a pencil. The graphing calculator and the formula sheet are both on screen, so you do not need your own.</p>
+      <p style="color:var(--ink-soft);margin-bottom:14px"><b>If you close this tab mid-test, that module is lost.</b> There is no way to resume partway through, the same as the real thing.</p>
+      <p style="color:var(--ink-soft)">You can take it without the clock if you would rather. The score means less, but a test you actually finish beats one you abandon at question nine.</p>
+      <div class="cta-row">
+        <button class="btn btn-go" id="startTimed">Start the timed test</button>
+        <button class="btn btn-alt" id="startUntimed">Start without the clock</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-top">
+        <span class="panel-title">What you are sitting</span>
+        <span class="panel-tag" id="wTestTag">Test 1 of 7</span>
+      </div>
+      <div class="panel-body facts">
+        <div><span>Questions</span><b>44, in two modules of 22</b></div>
+        <div><span>Time per module</span><b>35 minutes</b></div>
+        <div><span>Break</span><b>As long as you want</b></div>
+        <div><span>Calculator</span><b>On screen throughout</b></div>
+        <div><span>Reported as</span><b>Estimated PSAT score, 160 to 760</b></div>
+      </div>
+      <div class="panel-foot">The questions come from my SAT bank, which runs harder at the top end than the PSAT does. Your estimate will read low rather than high.</div>
+    </div>
+  </div></div></section>
+
+  <footer><div class="wrap"><p>&copy; 2026 Dr. Brink SAT Math</p><p><a href="mailto:dasbrink@gmail.com">dasbrink@gmail.com</a></p></div></footer>
+</div>
+
+<!-- ========== ALREADY TAKEN ========== -->
+<div id="screenTaken" class="screen">
+  <div class="mast"><div class="wrap">
+    <a class="mast-name" href="/dashboard/">30dayPSATplan.com</a>
+    <span class="mast-who" id="whoTaken"></span>
+  </div></div>
+  <header class="head"><div class="wrap">
+    <div class="kicker">Already sat</div>
+    <h1>You have taken this one.<span>Here is what it said.</span></h1>
+    <p class="lede" id="takenLine"></p>
+    <p class="lede">Tests are not retaken. They are fixed checkpoints, and retaking one would tell you how well you remember it rather than how much you have improved.</p>
+    <div class="cta-row">
+      <button class="btn" id="viewSaved">See my results again</button>
+      <a class="btn btn-alt" href="/dashboard/">Back to my dashboard</a>
+    </div>
+  </div></header>
+</div>
+
+<!-- ========== THE TEST ========== -->
+<div id="screenTest" class="screen">
+  <div class="tbar">
+    <span class="tbar-label" id="modLabel">Module 1</span>
+    <span class="tbar-clock" id="clock">35:00</span>
+    <span class="tools">
+      <button class="tool" id="btnCalc">Calculator</button>
+      <button class="tool" id="btnFs">Formulas</button>
+      <button class="tool" id="btnQuit">Leave</button>
+    </span>
+  </div>
+  <div class="tlayout" id="tlayout">
+    <div id="tmain">
+      <div class="tside">
+        <div class="tside-h">Questions</div>
+        <div id="qgrid"></div>
+        <button class="markbtn" id="markBtn">Mark for review</button>
+      </div>
+      <div class="tcontent">
+        <div class="qcount" id="qcount"></div>
+        <div id="qtext"></div>
+        <div id="qchoices"></div>
+        <div class="tnav">
+          <button class="nbtn" id="btnBack">Back</button>
+          <button class="nbtn primary" id="btnNext">Next</button>
+          <button class="nbtn submit hidden" id="btnReview">Review and submit</button>
+          <button class="nbtn quit" id="btnQuit2">Leave the test</button>
+        </div>
+      </div>
+    </div>
+    <div id="calc">
+      <div id="calcGrip"></div>
+      <div id="calcHead"><span>Graphing calculator</span><button id="calcClose" aria-label="Close">&times;</button></div>
+      <div id="calcMount"></div>
+    </div>
+  </div>
+</div>
+
+<div id="fsheet">
+  <div id="fsHead"><span>Formula sheet</span><button id="fsClose" aria-label="Close">&times;</button></div>
+  <div id="fsBody"><img id="fsImg" src="https://30daysatplan.com/formula_sheet.png" alt="Math formula sheet"></div>
+  <div id="fsGrip"></div>
+</div>
+
+<!-- ========== BREAK ========== -->
+<div id="screenBreak" class="screen">
+  <div class="mast"><div class="wrap"><a class="mast-name" href="/dashboard/">30dayPSATplan.com</a></div></div>
+  <header class="head"><div class="wrap">
+    <div class="kicker">Halfway</div>
+    <h1>Module 1 is done.<span>Take a breath.</span></h1>
+    <p class="lede">On the real PSAT there is a scheduled break here. Take as long as you need. Nothing is running, and Module 2 waits for you.</p>
+    <p class="lede"><b>Do not close this tab.</b> Module 1 is saved, but the test has to finish in one sitting.</p>
+    <div class="cta-row"><button class="btn btn-go" id="startMod2">Start Module 2</button></div>
+  </div></header>
+</div>
+
+<!-- ========== RESULTS ========== -->
+<div id="screenResults" class="screen">
+  <div class="mast"><div class="wrap">
+    <a class="mast-name" href="/dashboard/">30dayPSATplan.com</a>
+    <span class="mast-who" id="whoResults"></span>
+  </div></div>
+  <header class="head"><div class="wrap">
+    <div class="kicker" id="rKicker">Test complete</div>
+    <h1 id="rTitle">Here is where you are.</h1>
+  </div></header>
+
+  <section><div class="wrap"><div class="cols-grid">
+    <div>
+      <div class="panel" style="box-shadow:9px 9px 0 var(--ink)">
+        <div class="score-panel">
+          <div class="score-n" id="scoreN">000</div>
+          <div class="score-l" id="scoreL">Estimated PSAT score, 160 to 760</div>
+          <div class="score-caveat" id="scoreCaveat"></div>
+        </div>
+      </div>
+
+      <h2 style="margin-top:36px">What to do next</h2>
+      <p style="color:var(--ink-soft);margin-bottom:14px">Your answers are saved. Tomorrow works through every question you missed, names the error behind each one, and points at the skill underneath it.</p>
+      <p style="color:var(--ink-soft)">Do not read too much into the number today. It is a starting point, and it is meant to be lower than where you finish.</p>
+      <div class="cta-row">
+        <button class="btn" id="btnSolutions">Worked solutions</button>
+        <a class="btn btn-alt" href="/dashboard/">Back to my dashboard</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-top">
+        <span class="panel-title">The breakdown</span>
+        <span class="panel-tag" id="rTag">Test 1</span>
+      </div>
+      <div class="panel-body breakdown" id="breakdown"></div>
+      <div class="panel-foot" id="rFoot"></div>
+    </div>
+  </div></div></section>
+
+  <footer><div class="wrap"><p>&copy; 2026 Dr. Brink SAT Math</p><p><a href="mailto:dasbrink@gmail.com">dasbrink@gmail.com</a></p></div></footer>
+</div>
+
+<!-- ========== MODALS ========== -->
+<div class="modal" id="mSubmit">
+  <div class="modal-card">
+    <h3 id="mSubmitTitle">Submit Module 1?</h3>
+    <div id="mSubmitBody"></div>
+    <div class="modal-actions">
+      <button class="btn btn-alt" id="mSubmitBack">Keep working</button>
+      <button class="btn btn-go" id="mSubmitGo">Submit</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="mQuit">
+  <div class="modal-card">
+    <h3>Leave the test?</h3>
+    <div class="stat warn"><b>Everything in this module is lost.</b> There is no way to resume partway through.</div>
+    <div class="modal-actions">
+      <button class="btn btn-go" id="mQuitBack">Keep going</button>
+      <button class="btn btn-alt" id="mQuitGo">Leave anyway</button>
+    </div>
+  </div>
+</div>
+
+<div class="savebar" id="saveBar">Saved</div>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const SUPABASE_URL = 'https://jotbwtkvwkunihvwmqqj.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_finn6Vwaqa2nBqG_DD5ZLg_Wpe-qZxW';
+const GET_TEST_URL = 'https://jotbwtkvwkunihvwmqqj.supabase.co/functions/v1/get-test';
+
+const MODULE_SECONDS = 35 * 60;
+const OE_PROBABILITY = 0.25;
+const OE_MAX_PER_MODULE = 6;
+
+// Which test this is. Read once, from the address, and never guessed.
+// The engine refuses to save a result without it, because a result filed
+// under the wrong number is the bug that blocked three paying customers
+// on the SAT site and was not noticed for weeks.
+const TEST_NUMBER = (() => {
+  const raw = new URLSearchParams(location.search).get('test');
+  const n = parseInt(raw, 10);
+  return (Number.isInteger(n) && n >= 1 && n <= 7) ? n : null;
+})();
+
+const sb = createClient(SUPABASE_URL, SUPABASE_KEY, {
+  auth: { detectSessionInUrl: true, persistSession: true, autoRefreshToken: true }
+});
+
+const el = id => document.getElementById(id);
+const screens = ['screenBoot','screenGate','screenWelcome','screenTaken','screenTest','screenBreak','screenResults'];
+function showScreen(id){
+  screens.forEach(s => el(s).classList.remove('active'));
+  el(id).classList.add('active');
+  document.body.classList.toggle('papered', id !== 'screenTest');
+  window.scrollTo(0,0);
+}
+function gate(kicker, title, text){
+  el('gateKicker').textContent = kicker;
+  el('gateTitle').innerHTML = title;
+  el('gateText').textContent = text;
+  showScreen('screenGate');
+}
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function hasHTML(t){ return /<(svg|table|div|span|img|p|br|ul|ol|li|h[1-6]|figure)\b/i.test(t||''); }
+function typeset(node){
+  if (window.MathJax && MathJax.typesetPromise){
+    try { MathJax.typesetPromise(node?[node]:undefined).catch(()=>{}); } catch(e){}
+  }
+}
+function shuffle(a){
+  const b = a.slice();
+  for (let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; }
+  return b;
+}
+function flash(text, isErr){
+  const bar = el('saveBar');
+  bar.textContent = text;
+  bar.className = 'savebar show' + (isErr?' err':'');
+  setTimeout(()=>{ bar.className='savebar'; }, isErr?7000:2000);
+}
+
+// ---------------- state ----------------
+let user = null;
+let payload = null;            // what get-test returned
+let distractorsByQ = new Map();
+let mod = 1;
+let modQuestions = [];
+let idx = 0;
+let choices = {};              // idx -> shuffled choices for the current module
+let answers = {};              // idx -> chosen choice index
+let oeMap = {};                // idx -> true if student produced response
+let oeAnswers = {};            // idx -> typed string
+let marked = {};
+let untimed = false;
+let sessionId = null;
+let m1 = { correct:0, missed:[], answered:[], questions:[], choices:{}, answers:{}, oeMap:{}, oeAnswers:{} };
+let missedAll = [];
+let savedSnapshot = null;
+
+// ---------------- timer ----------------
+let tick = null, endAt = null, onDone = null;
+function startTimer(seconds, cb){
+  stopTimer();
+  endAt = Date.now() + seconds*1000;
+  onDone = cb;
+  paint();
+  tick = setInterval(paint, 500);
+}
+function paint(){
+  const left = Math.max(0, Math.ceil((endAt - Date.now())/1000));
+  const m = String(Math.floor(left/60)).padStart(2,'0');
+  const s = String(left%60).padStart(2,'0');
+  const c = el('clock');
+  c.textContent = m + ':' + s;
+  c.classList.toggle('low', left <= 300);
+  if (left <= 0){ stopTimer(); if (onDone) onDone(); }
+}
+function stopTimer(){ if (tick){ clearInterval(tick); tick=null; } }
+
+// ---------------- leaving warning ----------------
+let inTest = false;
+window.addEventListener('beforeunload', e => {
+  if (!inTest) return;
+  e.preventDefault();
+  e.returnValue = 'Your test is in progress. Leaving loses this module.';
+  return e.returnValue;
+});
+
+// ---------------- Desmos ----------------
+let calc = null, calcOpen = false, calcW = 520;
+const inlineGraphs = [];
+function killGraphs(){
+  while (inlineGraphs.length){
+    const g = inlineGraphs.pop();
+    try { if (g && g.destroy) g.destroy(); } catch(e){}
+  }
+}
+function parseJSONsafe(raw){
+  if (!raw) return null;
+  if (typeof raw !== 'string') return raw;
+  try { return JSON.parse(raw.trim()); } catch(e){ return null; }
+}
+function setCalcWidth(px){
+  const min = 320, max = Math.min(window.innerWidth-280, window.innerWidth*0.9);
+  calcW = Math.max(min, Math.min(max, px));
+  el('calc').style.width = calcW+'px';
+  el('tlayout').style.setProperty('--calc-w', calcW+'px');
+  if (calc && calc.resize) calc.resize();
+}
+function toggleCalc(){
+  if (typeof Desmos === 'undefined') return;
+  if (!calcOpen){
+    if (!calc) calc = Desmos.GraphingCalculator(el('calcMount'), {
+      keypad:true, expressions:true, settingsMenu:true, zoomButtons:true,
+      expressionsTopbar:true, border:false, images:false, folders:false,
+      notes:false, sliders:true, links:false, qwertyKeyboard:true, distributions:false
+    });
+    setCalcWidth(calcW);
+    el('calc').classList.add('open');
+    el('tlayout').classList.add('calc');
+    el('btnCalc').classList.add('on');
+    calcOpen = true;
+    setTimeout(()=>{ if (calc && calc.resize) calc.resize(); }, 280);
+  } else {
+    el('calc').classList.remove('open');
+    el('tlayout').classList.remove('calc');
+    el('btnCalc').classList.remove('on');
+    calcOpen = false;
+  }
+}
+function renderGraph(mount, q){
+  if (typeof Desmos === 'undefined'){ mount.textContent = '[Graph could not load.]'; return; }
+  const exprs = parseJSONsafe(q.graphExpressions) || [];
+  const win = parseJSONsafe(q.graphWindow);
+  const pts = parseJSONsafe(q.graphPoints) || [];
+  const g = Desmos.GraphingCalculator(mount, {
+    expressions:false, settingsMenu:false, zoomButtons:false, expressionsTopbar:false,
+    border:false, keypad:false, lockViewport:true, showResetButtonOnGraphpaper:false,
+    images:false, folders:false, notes:false, sliders:false, links:false, distributions:false,
+    xAxisNumbers:q.graphShowAxisNumbers===true, yAxisNumbers:q.graphShowAxisNumbers===true,
+    showGrid:q.graphShowGrid===true,
+    xAxisLabel:q.graphXAxisLabel||'x', yAxisLabel:q.graphYAxisLabel||'y'
+  });
+  g.updateSettings({ xAxisArrowMode:Desmos.AxisArrowModes.POSITIVE, yAxisArrowMode:Desmos.AxisArrowModes.POSITIVE });
+  exprs.forEach((e,i)=>g.setExpression(Object.assign({id:'e'+i}, e)));
+  pts.forEach((p,i)=>g.setExpression(Object.assign({id:'p'+i, showLabel:true, dragMode:'NONE'}, p)));
+  if (win && typeof win.left === 'number') g.setMathBounds(win);
+  inlineGraphs.push(g);
+}
+
+// ---------------- formula sheet ----------------
+let fsOpen = false;
+function toggleFs(){
+  const p = el('fsheet');
+  if (!fsOpen){
+    if (!p.style.left){
+      const w=760,h=520;
+      p.style.left = Math.max(20,(window.innerWidth-w)/2)+'px';
+      p.style.top  = Math.max(20,(window.innerHeight-h)/2)+'px';
+      p.style.width = w+'px'; p.style.height = h+'px';
+    }
+    p.classList.add('open'); el('btnFs').classList.add('on'); fsOpen = true;
+  } else {
+    p.classList.remove('open'); el('btnFs').classList.remove('on'); fsOpen = false;
+  }
+}
+(function fsDragResize(){
+  const p = el('fsheet'), head = el('fsHead'), grip = el('fsGrip');
+  let drag = null, size = null;
+  const pt = e => e.touches ? e.touches[0] : e;
+  const move = e => {
+    if (drag){
+      const c = pt(e);
+      p.style.left = Math.max(-p.offsetWidth+80, Math.min(window.innerWidth-60, c.clientX-drag.x))+'px';
+      p.style.top  = Math.max(0, Math.min(window.innerHeight-40, c.clientY-drag.y))+'px';
+    } else if (size){
+      const c = pt(e);
+      p.style.width  = Math.max(320, size.w + (c.clientX-size.x))+'px';
+      p.style.height = Math.max(240, size.h + (c.clientY-size.y))+'px';
+    }
+  };
+  const end = () => {
+    drag = null; size = null;
+    head.classList.remove('drag');
+    document.body.style.userSelect = '';
+    document.removeEventListener('mousemove', move);
+    document.removeEventListener('touchmove', move);
+    document.removeEventListener('mouseup', end);
+    document.removeEventListener('touchend', end);
+  };
+  const arm = () => {
+    document.body.style.userSelect = 'none';
+    document.addEventListener('mousemove', move);
+    document.addEventListener('touchmove', move, {passive:false});
+    document.addEventListener('mouseup', end);
+    document.addEventListener('touchend', end);
+  };
+  head.addEventListener('mousedown', e => {
+    if (e.target.closest('button')) return;
+    e.preventDefault();
+    const c = pt(e), r = p.getBoundingClientRect();
+    drag = { x:c.clientX-r.left, y:c.clientY-r.top };
+    head.classList.add('drag'); arm();
+  });
+  grip.addEventListener('mousedown', e => {
+    e.preventDefault(); e.stopPropagation();
+    const c = pt(e);
+    size = { x:c.clientX, y:c.clientY, w:p.offsetWidth, h:p.offsetHeight };
+    arm();
+  });
+})();
+(function calcResize(){
+  const g = el('calcGrip');
+  let on = false;
+  const move = e => { if (!on) return; const c = e.touches?e.touches[0]:e; setCalcWidth(window.innerWidth - c.clientX); };
+  const end = () => {
+    on = false; document.body.style.userSelect=''; document.body.style.cursor='';
+    document.removeEventListener('mousemove',move); document.removeEventListener('mouseup',end);
+  };
+  g.addEventListener('mousedown', e => {
+    e.preventDefault(); on = true;
+    document.body.style.userSelect='none'; document.body.style.cursor='ew-resize';
+    document.addEventListener('mousemove',move); document.addEventListener('mouseup',end);
+  });
+})();
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (fsOpen) toggleFs();
+  else if (calcOpen) toggleCalc();
+});
+
+// ---------------- open ended ----------------
+function isCleanInteger(a){
+  if (!a) return false;
+  const s = String(a).replace(/\$/g,'').replace(/\\,/g,'').trim().replace(/\.$/,'');
+  const n = Number(s);
+  return !isNaN(n) && isFinite(n) && n === Math.floor(n);
+}
+function normAnswer(s){
+  return String(s||'').replace(/\$/g,'').replace(/\\,/g,'').trim().replace(/\.$/,'');
+}
+function checkOE(typed, correct){
+  const t = normAnswer(typed), c = normAnswer(correct);
+  if (t === '') return null;
+  const tn = Number(t), cn = Number(c);
+  if (!isNaN(tn) && !isNaN(cn)) return tn === cn;
+  return t.toLowerCase() === c.toLowerCase();
+}
+function assignOE(qs){
+  oeMap = {}; oeAnswers = {};
+  let n = 0;
+  qs.forEach((q,i) => {
+    if (isCleanInteger(q.correctAnswer) && n < OE_MAX_PER_MODULE && Math.random() < OE_PROBABILITY){
+      oeMap[i] = true; n++;
+    }
+  });
+}
+
+// ---------------- rendering ----------------
+function buildChoices(qs){
+  choices = {};
+  qs.forEach((q,i) => {
+    const ds = distractorsByQ.get(q.id) || [];
+    choices[i] = shuffle([
+      { text:q.correctAnswer, isCorrect:true, misconceptionId:null },
+      ...ds.map(d => ({ text:d.text, isCorrect:false, misconceptionId:(d.misconceptionIds||[])[0]||null }))
+    ]);
+  });
+}
+function buildGrid(){
+  const g = el('qgrid');
+  g.innerHTML = '';
+  modQuestions.forEach((q,i) => {
+    const w = document.createElement('div');
+    w.className = 'qw'; w.id = 'qw'+i;
+    const b = document.createElement('button');
+    b.className = 'qn'; b.id = 'qn'+i; b.textContent = i+1;
+    b.addEventListener('click', () => { idx = i; showQuestion(); });
+    w.appendChild(b); g.appendChild(w);
+  });
+  updateGrid();
+}
+function isAnswered(i){
+  return oeMap[i] ? String(oeAnswers[i]||'').trim() !== '' : answers[i] !== undefined;
+}
+function updateGrid(){
+  modQuestions.forEach((q,i) => {
+    const b = el('qn'+i), w = el('qw'+i);
+    if (!b || !w) return;
+    b.className = 'qn' + (isAnswered(i)?' answered':'') + (i===idx?' current':'');
+    let f = w.querySelector('.qflag');
+    if (marked[i]){ if (!f){ f = document.createElement('span'); f.className='qflag'; f.textContent='!'; w.appendChild(f); } }
+    else if (f) f.remove();
+  });
+  const mb = el('markBtn');
+  mb.classList.toggle('on', !!marked[idx]);
+  mb.textContent = marked[idx] ? 'Marked for review' : 'Mark for review';
+}
+function renderQuestionBody(container, q){
+  container.innerHTML = '';
+  if (String(q.graphType||'').toLowerCase() === 'desmos'){
+    const wrapEl = document.createElement('div'); wrapEl.className = 'visual-container';
+    const mount = document.createElement('div'); mount.className = 'inline-graph';
+    wrapEl.appendChild(mount); container.appendChild(wrapEl);
+    const t = document.createElement('div');
+    if (hasHTML(q.text)) t.innerHTML = q.text || ''; else t.textContent = q.text || '';
+    container.appendChild(t); typeset(t);
+    renderGraph(mount, q);
+    return;
+  }
+  if (q.visualSvg && q.visualSvg.trim()){
+    const v = document.createElement('div'); v.className = 'visual-container';
+    v.innerHTML = q.visualSvg; container.appendChild(v);
+    const t = document.createElement('div');
+    if (hasHTML(q.text)) t.innerHTML = q.text || ''; else t.textContent = q.text || '';
+    container.appendChild(t); typeset(t);
+    return;
+  }
+  if (hasHTML(q.text)) container.innerHTML = q.text || '';
+  else container.textContent = q.text || '';
+  typeset(container);
+}
+function showQuestion(){
+  killGraphs();
+  const q = modQuestions[idx];
+  if (!q) return;
+
+  el('qcount').textContent = 'Question ' + (idx+1) + ' of ' + modQuestions.length;
+  renderQuestionBody(el('qtext'), q);
+
+  const box = el('qchoices');
+  box.innerHTML = '';
+
+  if (oeMap[idx]){
+    const badge = document.createElement('div');
+    badge.className = 'oe-badge';
+    badge.textContent = 'Type your own answer';
+    box.appendChild(badge);
+
+    const input = document.createElement('input');
+    input.type = 'text'; input.className = 'oe-input'; input.id = 'oeInput';
+    input.autocomplete = 'off'; input.value = oeAnswers[idx] || '';
+    input.addEventListener('input', () => { oeAnswers[idx] = input.value; updateGrid(); });
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') next(); });
+    box.appendChild(input);
+
+    const hint = document.createElement('div');
+    hint.className = 'oe-hint';
+    hint.textContent = 'There are no choices for this one. Numbers only.';
+    box.appendChild(hint);
+    setTimeout(() => { const i = el('oeInput'); if (i) i.focus(); }, 40);
+  } else {
+    (choices[idx] || []).forEach((c,i) => {
+      const b = document.createElement('button');
+      b.className = 'cbtn' + (answers[idx]===i ? ' sel' : '');
+      b.textContent = c.text;
+      b.addEventListener('click', () => { answers[idx] = i; showQuestion(); });
+      box.appendChild(b);
+      typeset(b);
+    });
+  }
+
+  el('btnBack').style.visibility = idx === 0 ? 'hidden' : 'visible';
+  const last = idx === modQuestions.length - 1;
+  el('btnNext').classList.toggle('hidden', last);
+  el('btnReview').classList.toggle('hidden', !last);
+  updateGrid();
+}
+function next(){ if (idx < modQuestions.length-1){ idx++; showQuestion(); } }
+function back(){ if (idx > 0){ idx--; showQuestion(); } }
+
+// ---------------- running the test ----------------
+async function fetchTest(){
+  const { data } = await sb.auth.getSession();
+  const token = data?.session?.access_token;
+  if (!token) throw new Error('no session');
+  const r = await fetch(GET_TEST_URL, {
+    method:'POST',
+    headers:{ 'Content-Type':'application/json', 'Authorization':'Bearer '+token },
+    body: JSON.stringify({ test_number: TEST_NUMBER })
+  });
+  const d = await r.json();
+  if (!r.ok || d.error) throw new Error(d.error || ('status '+r.status));
+  return d;
+}
+
+async function beginTest(noClock){
+  untimed = !!noClock;
+  el('clock').classList.toggle('hidden', untimed);
+
+  showScreen('screenTest');
+  el('qtext').innerHTML = '<div class="loading"><b>Building your test</b>Assembling 44 questions. This takes a few seconds.</div>';
+  el('qchoices').innerHTML = '';
+
+  try {
+    payload = await fetchTest();
+  } catch (err) {
+    console.error(err);
+    el('qtext').innerHTML =
+      '<div class="loading"><b>The test could not be loaded</b>' +
+      esc(err.message) + '. Nothing has been recorded. Try again, and if it keeps happening write to dasbrink@gmail.com.</div>';
+    return;
+  }
+
+  distractorsByQ = new Map();
+  (payload.distractors || []).forEach(d => {
+    (d.questionIds || []).forEach(qid => {
+      if (!distractorsByQ.has(qid)) distractorsByQ.set(qid, []);
+      distractorsByQ.get(qid).push(d);
+    });
+  });
+
+  inTest = true;
+  mod = 1;
+  modQuestions = shuffle(payload.module1);
+  idx = 0; answers = {}; marked = {};
+  buildChoices(modQuestions);
+  assignOE(modQuestions);
+
+  try {
+    const { data } = await sb.from('test_sessions').insert({
+      user_id: user.id, test_number: TEST_NUMBER, mode: untimed ? 'untimed' : 'timed'
+    }).select().single();
+    sessionId = data ? data.id : null;
+  } catch (e) { console.error(e); sessionId = null; }
+
+  el('modLabel').textContent = 'Module 1' + (untimed ? ', no clock' : '');
+  buildGrid();
+  showQuestion();
+  if (!untimed) startTimer(MODULE_SECONDS, () => doSubmit());
+}
+
+function openSubmit(){
+  if (!untimed) stopTimer();
+  let answered = 0;
+  for (let i=0;i<modQuestions.length;i++) if (isAnswered(i)) answered++;
+  const left = modQuestions.length - answered;
+  const flags = Object.keys(marked).length;
+
+  let h = '<div class="stat"><b>' + answered + '</b> of ' + modQuestions.length + ' answered</div>';
+  if (left > 0) h += '<div class="stat warn"><b>' + left + '</b> still blank. A blank answer scores zero, so a guess is worth more.</div>';
+  if (flags > 0) h += '<div class="stat"><b>' + flags + '</b> marked for review</div>';
+
+  el('mSubmitTitle').textContent = 'Submit Module ' + mod + '?';
+  el('mSubmitBody').innerHTML = h;
+  el('mSubmit').classList.add('open');
+}
+function closeSubmit(resume){
+  el('mSubmit').classList.remove('open');
+  if (resume && !untimed && endAt){
+    const left = Math.max(0, Math.ceil((endAt-Date.now())/1000));
+    if (left > 0) startTimer(left, () => doSubmit());
+  }
+}
+
+function scoreModule(qs, ans, ch, om, oa){
+  let correct = 0;
+  const missed = [], answered = [], detail = [];
+  qs.forEach((q,i) => {
+    if (om[i]){
+      const typed = oa[i] || '';
+      const res = checkOE(typed, q.correctAnswer);
+      if (res === null){ detail.push({ q, isOE:true, typedAnswer:typed, choices:[], chosenIndex:null }); return; }
+      answered.push(q.id);
+      if (res) correct++;
+      else { missed.push(q.id); detail.push({ q, isOE:true, typedAnswer:typed, choices:[], chosenIndex:null }); }
+      return;
+    }
+    const a = ans[i];
+    const cs = ch[i] || [];
+    if (a === undefined || !cs[a]){ detail.push({ q, choices:cs, chosenIndex:null, isOE:false }); return; }
+    answered.push(q.id);
+    if (cs[a].isCorrect) correct++;
+    else { missed.push(q.id); detail.push({ q, choices:cs, chosenIndex:a, isOE:false }); }
+  });
+  return { correct, missed, answered, detail };
+}
+
+async function saveAnswers(qs, ans, ch, om, oa){
+  if (!user) return;
+  const now = new Date().toISOString();
+  const rows = qs.map((q,i) => {
+    let given = null, ok = false;
+    if (om[i]){
+      const typed = oa[i] || '';
+      given = typed || null;
+      ok = checkOE(typed, q.correctAnswer) === true;
+    } else {
+      const a = ans[i], cs = ch[i] || [];
+      if (a !== undefined && cs[a]){ given = cs[a].text; ok = cs[a].isCorrect === true; }
+    }
+    return { user_id:user.id, question_id:q.id, answer_given:given, is_correct:ok,
+             test_number:TEST_NUMBER, seen_at:now };
+  });
+  try {
+    const { error } = await sb.from('questions_seen').insert(rows);
+    if (error){ console.error(error); flash('Answers may not have saved', true); }
+  } catch (e){ console.error(e); flash('Answers may not have saved', true); }
+}
+
+async function doSubmit(){
+  stopTimer();
+  closeSubmit(false);
+
+  if (mod === 1){
+    m1 = Object.assign(
+      { questions: modQuestions, choices: {...choices}, answers: {...answers},
+        oeMap: {...oeMap}, oeAnswers: {...oeAnswers} },
+      scoreModule(modQuestions, answers, choices, oeMap, oeAnswers)
+    );
+    await saveAnswers(modQuestions, answers, choices, oeMap, oeAnswers);
+    killGraphs();
+    showScreen('screenBreak');
+    return;
+  }
+
+  inTest = false;
+  const m2 = scoreModule(modQuestions, answers, choices, oeMap, oeAnswers);
+  await saveAnswers(modQuestions, answers, choices, oeMap, oeAnswers);
+  await finish(m2);
+}
+
+function startModule2(){
+  mod = 2;
+  modQuestions = shuffle(payload.module2);
+  idx = 0; answers = {}; marked = {};
+  buildChoices(modQuestions);
+  assignOE(modQuestions);
+  el('modLabel').textContent = 'Module 2' + (untimed ? ', no clock' : '');
+  el('clock').classList.toggle('hidden', untimed);
+  buildGrid();
+  showScreen('screenTest');
+  showQuestion();
+  if (!untimed) startTimer(MODULE_SECONDS, () => doSubmit());
+}
+
+async function finish(m2){
+  killGraphs();
+  const totalCorrect = m1.correct + m2.correct;
+  const total = m1.questions.length + modQuestions.length;
+  const score = (typeof convertToPSATScore === 'function')
+    ? convertToPSATScore(totalCorrect) : null;
+
+  missedAll = m1.detail.concat(m2.detail);
+
+  const snapshot = {
+    testNumber: TEST_NUMBER, score, totalCorrect, total,
+    m1Correct: m1.correct, m2Correct: m2.correct,
+    missedIds: m1.missed.concat(m2.missed),
+    answeredIds: m1.answered.concat(m2.answered),
+    missed: missedAll.map(x => ({
+      chosenIndex: x.chosenIndex, isOE: !!x.isOE, typedAnswer: x.typedAnswer || null,
+      choices: (x.choices||[]).map(c => ({ text:c.text, isCorrect:c.isCorrect, misconceptionId:c.misconceptionId||null })),
+      q: {
+        id:x.q.id, text:x.q.text, correctAnswer:x.q.correctAnswer, solution:x.q.solution,
+        difficulty:x.q.difficulty, domain:x.q.domain, visualSvg:x.q.visualSvg,
+        graphType:x.q.graphType, graphExpressions:x.q.graphExpressions,
+        graphWindow:x.q.graphWindow, graphPoints:x.q.graphPoints,
+        graphShowAxisNumbers:x.q.graphShowAxisNumbers, graphShowGrid:x.q.graphShowGrid,
+        graphXAxisLabel:x.q.graphXAxisLabel, graphYAxisLabel:x.q.graphYAxisLabel
+      }
+    }))
+  };
+
+  // The engine will not file a result it cannot label. Better a loud
+  // failure the student can report than a row under the wrong test.
+  if (TEST_NUMBER === null){
+    console.error('No test number. Refusing to save.');
+    flash('Result not saved, please tell Dr. Brink', true);
+  } else {
+    try {
+      const { error } = await sb.from('test_results').insert({
+        user_id: user.id, score, test_number: TEST_NUMBER, snapshot
+      });
+      if (error){ console.error(error); flash('Result may not have saved', true); }
+      else flash('Result saved');
+    } catch (e){ console.error(e); flash('Result may not have saved', true); }
+  }
+
+  if (sessionId){
+    try {
+      await sb.from('test_sessions')
+        .update({ completed_at:new Date().toISOString(), score, total_questions:total })
+        .eq('id', sessionId);
+    } catch (e){ console.error(e); }
+  }
+
+  savedSnapshot = snapshot;
+  renderResults(snapshot);
+}
+
+function renderResults(s){
+  el('rKicker').textContent = 'Test ' + s.testNumber + ' complete';
+  el('rTag').textContent = 'Test ' + s.testNumber + ' of 7';
+  el('scoreN').textContent = s.score == null ? 'n/a' : s.score;
+  el('scoreCaveat').textContent =
+    (typeof psatScoreCaveat === 'function')
+      ? psatScoreCaveat()
+      : 'This is an estimate, not a score.';
+
+  const missedCount = (s.missed || []).length;
+  el('breakdown').innerHTML =
+    '<div><span>Correct</span><b>' + s.totalCorrect + ' of ' + s.total + '</b></div>' +
+    '<div><span>Module 1</span><b>' + s.m1Correct + ' of 22</b></div>' +
+    '<div><span>Module 2</span><b>' + s.m2Correct + ' of 22</b></div>' +
+    '<div><span>To review</span><b>' + missedCount + (missedCount===1?' question':' questions') + '</b></div>';
+
+  el('rFoot').textContent = missedCount === 0
+    ? 'Nothing missed. That is rare, and it means the next tests should push you harder.'
+    : 'Every one of those has a worked solution waiting.';
+
+  el('btnSolutions').disabled = missedCount === 0;
+  showScreen('screenResults');
+}
+
+// ---------------- worked solutions ----------------
+function solutionsDoc(items){
+  const letters = ['A','B','C','D','E','F','G','H'];
+  const body = items.map((it,n) => {
+    const q = it.q;
+    const qText = hasHTML(q.text) ? q.text : esc(q.text);
+    const fig = q.visualSvg && q.visualSvg.trim() ? '<div class="fig">'+q.visualSvg+'</div>' : '';
+    const sol = q.solution && q.solution.trim()
+      ? '<div class="sol"><div class="sol-h">Worked solution</div><div>'+String(q.solution).replace(/\n/g,'<br>')+'</div></div>' : '';
+    if (it.isOE){
+      return '<div class="blk"><div class="hd">Question '+(n+1)+'</div>'+fig+'<div class="qt">'+qText+'</div>'+
+        '<div class="ch ok">Correct answer: '+esc(q.correctAnswer)+'</div>'+
+        '<div class="ch bad">You typed: '+esc(it.typedAnswer || 'nothing')+'</div>'+sol+'</div>';
+    }
+    const ch = (it.choices||[]).map((c,i) => {
+      const chosen = i === it.chosenIndex;
+      let cls = 'ch';
+      if (c.isCorrect) cls += ' ok';
+      if (chosen && !c.isCorrect) cls += ' bad';
+      let tag = '';
+      if (c.isCorrect) tag = '<em>correct answer</em>';
+      else if (chosen) tag = '<em>your answer</em>';
+      return '<div class="'+cls+'"><b>'+(letters[i]||'')+'</b> '+esc(c.text)+tag+'</div>';
+    }).join('');
+    const blank = it.chosenIndex === null ? '<div class="blank">You left this blank.</div>' : '';
+    return '<div class="blk"><div class="hd">Question '+(n+1)+'</div>'+fig+'<div class="qt">'+qText+'</div>'+ch+blank+sol+'</div>';
+  }).join('');
+
+  return '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Worked solutions</title>' +
+    '<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;700&family=Karla:wght@400;700&display=swap" rel="stylesheet">' +
+    '<scr'+'ipt>window.MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]]},svg:{fontCache:"global"}};</scr'+'ipt>' +
+    '<scr'+'ipt src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></scr'+'ipt>' +
+    '<style>body{font-family:Karla,sans-serif;background:#EDE6D6;color:#241C22;margin:0}' +
+    '.top{background:#241C22;color:#EDE6D6;padding:14px 20px;position:sticky;top:0}' +
+    '.top button{background:#A32B3F;color:#fff;border:none;padding:10px 20px;font-family:Zilla Slab,serif;font-weight:700;font-size:1rem;cursor:pointer}' +
+    '.sheet{max-width:760px;margin:0 auto;padding:30px 26px 60px}' +
+    'h1{font-family:Zilla Slab,serif;font-size:1.7rem;margin:0 0 6px}' +
+    '.sub{color:#4A3F46;font-size:.93rem;margin:0 0 26px}' +
+    '.blk{background:#F7F2E7;border:2px solid #241C22;padding:20px 22px;margin-bottom:18px;break-inside:avoid}' +
+    '.hd{font-family:Zilla Slab,serif;font-weight:700;margin-bottom:12px;font-size:1.1rem}' +
+    '.fig{margin:6px 0 12px}.fig svg{max-width:300px;height:auto}' +
+    '.qt{font-size:1.02rem;line-height:1.55;margin-bottom:14px}' +
+    '.ch{padding:9px 12px;border:1px solid #C9C2B4;margin-bottom:6px;background:#fff}' +
+    '.ch b{color:#241C22;margin-right:6px}' +
+    '.ch.ok{border-color:#2F6B4F;background:#E7F1EB}.ch.bad{border-color:#A32B3F;background:#F7E6E9}' +
+    '.ch em{float:right;font-style:normal;font-weight:700;font-size:.82rem;color:#4A3F46}' +
+    '.blank{font-size:.88rem;color:#A32B3F;margin:8px 0}' +
+    '.sol{margin-top:14px;border-top:1px dashed #8C8577;padding-top:12px;line-height:1.55}' +
+    '.sol-h{font-family:Zilla Slab,serif;font-weight:700;color:#2F6B4F;margin-bottom:6px}' +
+    '@media print{.top{display:none}}</style></head><body>' +
+    '<div class="top"><button onclick="window.print()">Print or save as PDF</button></div>' +
+    '<div class="sheet"><h1>Worked solutions</h1>' +
+    '<p class="sub">Every question you missed, with the working set out step by step.</p>' +
+    body + '</div></body></html>';
+}
+
+function openSolutions(){
+  if (!missedAll.length) return;
+  const w = window.open('', '_blank');
+  if (!w){ flash('Allow pop-ups to open the solutions', true); return; }
+  w.document.open();
+  w.document.write(solutionsDoc(missedAll));
+  w.document.close();
+}
+
+// ---------------- wiring ----------------
+el('startTimed').addEventListener('click', () => beginTest(false));
+el('startUntimed').addEventListener('click', () => beginTest(true));
+el('btnNext').addEventListener('click', next);
+el('btnBack').addEventListener('click', back);
+el('btnReview').addEventListener('click', openSubmit);
+el('markBtn').addEventListener('click', () => {
+  if (marked[idx]) delete marked[idx]; else marked[idx] = true;
+  updateGrid();
+});
+el('btnCalc').addEventListener('click', toggleCalc);
+el('calcClose').addEventListener('click', toggleCalc);
+el('btnFs').addEventListener('click', toggleFs);
+el('fsClose').addEventListener('click', toggleFs);
+el('mSubmitBack').addEventListener('click', () => closeSubmit(true));
+el('mSubmitGo').addEventListener('click', doSubmit);
+el('startMod2').addEventListener('click', startModule2);
+el('btnSolutions').addEventListener('click', openSolutions);
+[el('btnQuit'), el('btnQuit2')].forEach(b => b.addEventListener('click', () => {
+  if (!untimed) stopTimer();
+  el('mQuit').classList.add('open');
+}));
+el('mQuitBack').addEventListener('click', () => {
+  el('mQuit').classList.remove('open');
+  if (!untimed && endAt){
+    const left = Math.max(0, Math.ceil((endAt-Date.now())/1000));
+    if (left > 0) startTimer(left, () => doSubmit());
+  }
+});
+el('mQuitGo').addEventListener('click', () => {
+  inTest = false; stopTimer(); killGraphs();
+  window.location.href = '/dashboard/';
+});
+el('viewSaved').addEventListener('click', () => {
+  if (!savedSnapshot) return;
+  missedAll = (savedSnapshot.missed || []).map(m => ({
+    q: m.q || {}, choices: m.choices || [], chosenIndex: m.chosenIndex,
+    isOE: !!m.isOE, typedAnswer: m.typedAnswer || null
+  }));
+  renderResults(savedSnapshot);
+});
+
+// ---------------- start ----------------
+(async function start(){
+  if (TEST_NUMBER === null){
+    gate('Wrong address',
+      'That link is not pointing at a test.',
+      'Open the test from your dashboard rather than typing the address, and it will bring you to the right place.');
+    return;
+  }
+
+  let session = null;
+  try { const { data } = await sb.auth.getSession(); session = data?.session ?? null; }
+  catch (e){ console.error(e); }
+
+  if (!session){
+    gate('Sign in required',
+      'This is part of the plan.<span>Sign in to open it.</span>',
+      'Sign in with the email you enrolled with and this test opens straight away.');
+    return;
+  }
+
+  user = session.user;
+  const email = user.email || '';
+  ['whoWelcome','whoTaken','whoResults'].forEach(i => { el(i).textContent = email; });
+
+  let enrolled = false;
+  try {
+    const { data } = await sb.from('enrollments').select('id').limit(1);
+    enrolled = !!(data && data.length);
+  } catch (e){ console.error(e); }
+
+  if (!enrolled){
+    gate('Enrollment not found',
+      'You are signed in,<span>but this is not open to you.</span>',
+      'There is no enrollment recorded on ' + email + '. If a parent paid using their own address, sign in with that one instead.');
+    return;
+  }
+
+  // Already sat this one?
+  try {
+    const { data } = await sb.from('test_results')
+      .select('score, snapshot, created_at')
+      .eq('test_number', TEST_NUMBER)
+      .order('created_at', { ascending:false })
+      .limit(1);
+    if (data && data.length && data[0].snapshot){
+      savedSnapshot = data[0].snapshot;
+      const when = new Date(data[0].created_at)
+        .toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+      el('takenLine').textContent =
+        'You sat Test ' + TEST_NUMBER + ' on ' + when +
+        ' and scored an estimated ' + (savedSnapshot.score ?? data[0].score) + '.';
+      showScreen('screenTaken');
+      return;
+    }
+  } catch (e){ console.error(e); }
+
+  el('wKicker').textContent = TEST_NUMBER === 1 ? 'Day 5 of 30' : 'Test ' + TEST_NUMBER;
+  el('wTestTag').textContent = 'Test ' + TEST_NUMBER + ' of 7';
+  showScreen('screenWelcome');
+})();
+</script>
+
+</body>
+</html>

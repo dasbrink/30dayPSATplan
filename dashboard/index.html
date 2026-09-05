@@ -67,10 +67,13 @@
 
   /* On a wide screen the panels rise beside the headline rather than
      starting level with the first subheading, which left a large empty
-     block in the top right. On narrow screens they stack normally. */
+     block in the top right. The headline is held to the left column so
+     it cannot run underneath them. On narrow screens they stack. */
   @media(min-width:901px){
     .cols{padding-top:0}
-    .side{margin-top:-172px}
+    .side{margin-top:-150px}
+    .head h1{max-width:540px}
+    .head .lede{max-width:540px}
   }
 
   /* ---------- panel ---------- */

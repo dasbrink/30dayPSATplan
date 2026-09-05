@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Day 6, the review | 30 Day PSAT Plan</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']], processEscapes: true },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style>
+  :root{
+    --oat:#EDE6D6; --oat-deep:#E2D9C5; --ink:#241C22; --ink-soft:#4A3F46;
+    --oxblood:#A32B3F; --pencil:#8C8577; --graph:#B9C6D2; --card:#F7F2E7; --green:#2F6B4F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--oat);color:var(--ink);
+    font-family:"Karla",system-ui,-apple-system,sans-serif;
+    font-size:17.5px;line-height:1.62;-webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(var(--graph) 1px,transparent 1px),
+      linear-gradient(90deg,var(--graph) 1px,transparent 1px);
+    background-size:28px 28px;background-position:-1px -1px;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 34px}
+  @media(max-width:640px){.wrap{padding:0 20px}}
+  a{color:var(--oxblood)}
+  button{font-family:"Karla",sans-serif;cursor:pointer}
+
+  .mast{background:var(--ink);color:var(--oat)}
+  .mast .wrap{display:flex;justify-content:space-between;align-items:center;padding:15px 34px;gap:14px;flex-wrap:wrap}
+  @media(max-width:640px){.mast .wrap{padding:13px 20px}}
+  .mast-name{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.05rem;color:var(--oat);text-decoration:none}
+  .mast-who{font-family:"Space Mono",monospace;font-size:11.5px;color:#C9BFAE}
+  @media(max-width:700px){.mast-who{display:none}}
+
+  .head{padding:56px 0 34px}
+  .kicker{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--oxblood);margin-bottom:18px}
+  h1{font-family:"Zilla Slab",serif;font-weight:700;font-size:clamp(2rem,4.4vw,3.1rem);line-height:1.08;letter-spacing:-.02em;max-width:20ch}
+  h1 span{display:block;color:var(--oxblood)}
+  .lede{margin-top:22px;max-width:56ch;color:var(--ink-soft);font-size:1.06rem}
+  .lede b{color:var(--ink);font-weight:700}
+
+  h2{font-family:"Zilla Slab",serif;font-weight:700;font-size:clamp(1.5rem,3vw,2.05rem);line-height:1.15;letter-spacing:-.02em;max-width:24ch}
+  .sec-note{margin-top:14px;max-width:58ch;color:var(--ink-soft);font-size:1rem}
+  section{padding:20px 0 56px}
+
+  /* score band */
+  .band{background:var(--ink);color:var(--oat)}
+  .band-in{display:grid;grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.band-in{grid-template-columns:repeat(2,1fr)}}
+  .bstat{padding:24px}
+  .bstat + .bstat{border-left:1px solid #3D3239}
+  @media(max-width:760px){.bstat:nth-child(3){border-left:none}}
+  .bstat-n{font-family:"Zilla Slab",serif;font-size:1.8rem;font-weight:700;line-height:1;letter-spacing:-.02em}
+  .bstat-l{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#C9BFAE;margin-top:9px}
+
+  /* numbered item cards */
+  .items{margin-top:34px;display:grid;gap:16px}
+  .item{background:var(--card);border:2px solid var(--ink);padding:24px 26px;display:grid;grid-template-columns:46px 1fr;gap:20px;align-items:start}
+  @media(max-width:640px){.item{grid-template-columns:1fr;gap:12px}}
+  .item-n{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.5rem;color:#fff;background:var(--oxblood);width:46px;height:46px;display:flex;align-items:center;justify-content:center;line-height:1}
+  .item.gap .item-n{background:var(--ink)}
+  .item-title{font-family:"Zilla Slab",serif;font-size:1.14rem;font-weight:700;line-height:1.35;margin-bottom:8px}
+  .item-meta{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);margin-bottom:10px}
+  .item-body{font-size:.99rem;color:var(--ink-soft);line-height:1.6}
+  .item-body p{margin-bottom:12px}
+  .item-body p:last-child{margin-bottom:0}
+
+  .sub{margin-top:16px;border-top:1px dashed var(--pencil);padding-top:14px}
+  .sub-h{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:7px;font-weight:700}
+  .sub-body{font-size:.97rem;color:var(--ink);line-height:1.6}
+
+  .prac{margin-top:14px;display:grid;gap:9px}
+  .prac-row{background:#fff;border:1px solid var(--pencil);padding:12px 15px;font-size:.96rem;line-height:1.55}
+  .prac-tag{font-family:"Space Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--ink);padding:3px 8px;display:inline-block;margin-bottom:7px}
+  .prac-row.med .prac-tag{background:#6B5B3F}
+  .prac-row.hard .prac-tag{background:var(--oxblood)}
+
+  /* the rest, plainly */
+  .rest{margin-top:30px;background:var(--oat-deep);border:2px solid var(--ink);padding:24px 26px}
+  .rest h3{font-family:"Zilla Slab",serif;font-size:1.08rem;margin-bottom:6px}
+  .rest p{font-size:.96rem;color:var(--ink-soft)}
+  .rest ul{margin-top:14px;padding-left:20px}
+  .rest li{font-size:.95rem;color:var(--ink-soft);line-height:1.55;margin-bottom:8px}
+  .rest summary{cursor:pointer;font-family:"Zilla Slab",serif;font-weight:700;font-size:1rem;margin-top:14px;color:var(--oxblood)}
+  .rest summary::-webkit-details-marker{display:none}
+  .rest summary::before{content:"+ ";font-family:"Space Mono",monospace}
+  .rest details[open] summary::before{content:"\2013 "}
+
+  .btn{
+    display:inline-block;text-decoration:none;
+    font-family:"Zilla Slab",serif;font-size:1.05rem;font-weight:700;
+    padding:15px 32px;border:2px solid var(--ink);
+    background:var(--ink);color:var(--oat);box-shadow:5px 5px 0 rgba(36,28,34,.32);
+    transition:transform .12s ease,box-shadow .12s ease;
+  }
+  .btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 rgba(36,28,34,.32)}
+  .btn:disabled{opacity:.55;cursor:default;transform:none}
+  .btn-alt{background:var(--card);color:var(--ink)}
+  .btn-go{background:var(--green);border-color:var(--green);color:#fff}
+  .btn:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px}
+  @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;align-items:center}
+
+  .done-note{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--green)}
+
+  .note{background:var(--oat-deep);border:2px solid var(--ink);padding:24px 26px;max-width:64ch}
+  .note h3{font-family:"Zilla Slab",serif;font-size:1.05rem;margin-bottom:7px}
+  .note p{font-size:.97rem;color:var(--ink-soft);margin-bottom:11px}
+  .note p:last-child{margin-bottom:0}
+
+  footer{background:var(--ink);color:#C9BFAE;padding:38px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:baseline}
+  footer p{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  footer a{color:var(--oat)}
+
+  .hidden{display:none}
+  .loading{padding:80px 0;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil)}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <a class="mast-name" href="/dashboard/">30dayPSATplan.com</a>
+  <span class="mast-who" id="who"></span>
+</div></div>
+
+<!-- ---------- loading ---------- -->
+<div id="loading"><div class="wrap"><p class="loading">Reading your test</p></div></div>
+
+<!-- ---------- gates ---------- -->
+<div id="gate" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker" id="gateKicker"></div>
+    <h1 id="gateTitle"></h1>
+    <p class="lede" id="gateText"></p>
+    <div class="cta-row" id="gateCta"></div>
+  </div></header>
+</div>
+
+<!-- ---------- the review ---------- -->
+<div id="review" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker">Day 6 of 30</div>
+    <h1>Now the useful part.<span>Why you missed them.</span></h1>
+    <p class="lede">Yesterday gave you a number. Today gives you the reason behind it. Below are the specific errors you made, taken from the answers you actually chose, and the earlier skills sitting underneath them. <b>Read the five gaps carefully and work their practice on paper.</b> That is today's whole job.</p>
+  </div></header>
+
+  <div class="band"><div class="wrap"><div class="band-in">
+    <div class="bstat"><div class="bstat-n" id="sScore">000</div><div class="bstat-l">Estimated score</div></div>
+    <div class="bstat"><div class="bstat-n" id="sCorrect">0 of 44</div><div class="bstat-l">Correct</div></div>
+    <div class="bstat"><div class="bstat-n" id="sMistakes">0</div><div class="bstat-l">Errors named</div></div>
+    <div class="bstat"><div class="bstat-n" id="sGaps">0</div><div class="bstat-l">Skills underneath</div></div>
+  </div></div></div>
+
+  <section><div class="wrap">
+    <h2>The mistakes you actually made</h2>
+    <p class="sec-note">Each of these comes from the answer you chose, not from every wrong answer on the question. They are the errors, in your own test, in plain words.</p>
+    <div class="items" id="mistakeList"></div>
+    <div id="mistakeRest"></div>
+  </div></section>
+
+  <section><div class="wrap">
+    <h2>The five skills underneath them</h2>
+    <p class="sec-note">Mistakes are the symptom. These are what they sit on. Fixing one of these usually stops a whole group of questions going wrong at once, which is why five of them are worth more than a list of thirty.</p>
+    <div class="items" id="gapList"></div>
+    <div id="gapRest"></div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div class="note">
+      <h3>When you have worked through these</h3>
+      <p>Mark the day done and tomorrow starts the content days. Nothing here disappears, so you can come back to this page whenever you want.</p>
+      <div class="cta-row">
+        <button class="btn btn-go" id="markDone">Mark Day 6 done</button>
+        <a class="btn btn-alt" href="/dashboard/">Back to my dashboard</a>
+        <span class="done-note hidden" id="doneNote">Saved</span>
+      </div>
+    </div>
+  </div></section>
+
+  <footer><div class="wrap">
+    <p>&copy; 2026 Dr. Brink SAT Math</p>
+    <p><a href="mailto:dasbrink@gmail.com">dasbrink@gmail.com</a></p>
+  </div></footer>
+</div>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const SUPABASE_URL  = 'https://jotbwtkvwkunihvwmqqj.supabase.co';
+const SUPABASE_KEY  = 'sb_publishable_finn6Vwaqa2nBqG_DD5ZLg_Wpe-qZxW';
+const DIAGNOSIS_URL = 'https://jotbwtkvwkunihvwmqqj.supabase.co/functions/v1/get-diagnosis';
+
+// Day 6 reviews Test 1. Named here rather than read from the address,
+// so this page cannot be pointed at the wrong test.
+const THIS_TEST = 1;
+const THIS_DAY  = 6;
+
+// How many of each to put in front of the student. A review day is
+// about thirty minutes, and a list of thirty is the same as a list of
+// none. The rest stay in the data and are listed plainly below.
+const SHOW_MISTAKES = 5;
+const SHOW_GAPS     = 5;
+
+const sb = createClient(SUPABASE_URL, SUPABASE_KEY, {
+  auth: { detectSessionInUrl: true, persistSession: true, autoRefreshToken: true }
+});
+
+const el = id => document.getElementById(id);
+const show = id => el(id).classList.remove('hidden');
+const hide = id => el(id).classList.add('hidden');
+
+function esc(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function typeset(node){
+  if (window.MathJax && MathJax.typesetPromise){
+    try { MathJax.typesetPromise(node ? [node] : undefined).catch(()=>{}); } catch(e){}
+  }
+}
+function gate(kicker, title, text, ctaHtml){
+  hide('loading');
+  el('gateKicker').textContent = kicker;
+  el('gateTitle').innerHTML = title;
+  el('gateText').textContent = text;
+  el('gateCta').innerHTML = ctaHtml || '<a class="btn" href="/dashboard/">Back to my dashboard</a>';
+  show('gate');
+}
+
+// Content fields hold LaTeX between dollar signs and sometimes line
+// breaks. Escape the HTML, keep the breaks, let MathJax do the rest.
+function content(s){
+  return esc(s).replace(/\n/g, '<br>');
+}
+
+function mistakeCard(m, n){
+  const times = m.count > 1
+    ? '<div class="item-meta">Made ' + m.count + ' times</div>' : '';
+  return '<div class="item">' +
+    '<div class="item-n">' + n + '</div>' +
+    '<div>' + times +
+      '<div class="item-title">' + content(m.description) + '</div>' +
+    '</div>' +
+  '</div>';
+}
+
+function gapCard(g, n){
+  const meta = [];
+  if (g.domain) meta.push(g.domain);
+  if (g.gradeFloor) meta.push(g.gradeFloor);
+  meta.push('under ' + g.count + (g.count === 1 ? ' missed question' : ' missed questions'));
+
+  let html = '<div class="item gap">' +
+    '<div class="item-n">' + n + '</div>' +
+    '<div>' +
+      '<div class="item-meta">' + esc(meta.join(' &middot; ')).replace(/&amp;middot;/g,'&middot;') + '</div>' +
+      '<div class="item-title">' + content(g.name) + '</div>';
+
+  if (g.concept){
+    html += '<div class="item-body"><p>' + content(g.concept) + '</p></div>';
+  } else if (g.summary){
+    html += '<div class="item-body"><p>' + content(g.summary) + '</p></div>';
+  }
+
+  if (g.workedExample){
+    html += '<div class="sub"><div class="sub-h">Worked example</div>' +
+            '<div class="sub-body">' + content(g.workedExample) + '</div></div>';
+  }
+
+  const prac = [];
+  if (g.practiceEasy)   prac.push(['', 'Easy', g.practiceEasy]);
+  if (g.practiceMedium) prac.push(['med', 'Medium', g.practiceMedium]);
+  if (g.practiceHard)   prac.push(['hard', 'Hard', g.practiceHard]);
+
+  if (prac.length){
+    html += '<div class="sub"><div class="sub-h">Work these on paper</div><div class="prac">';
+    for (const [cls, tag, text] of prac){
+      html += '<div class="prac-row ' + cls + '">' +
+              '<span class="prac-tag">' + tag + '</span><br>' +
+              content(text) + '</div>';
+    }
+    html += '</div></div>';
+  }
+
+  html += '</div></div>';
+  return html;
+}
+
+function restBlock(items, shown, heading, blurb, label){
+  const left = items.length - shown;
+  if (left <= 0) return '';
+  const list = items.slice(shown)
+    .map(x => '<li>' + content(x) + '</li>').join('');
+  return '<div class="rest">' +
+    '<h3>' + esc(heading) + '</h3>' +
+    '<p>' + esc(blurb) + '</p>' +
+    '<details><summary>Show the other ' + left + ' ' + esc(label) + '</summary>' +
+    '<ul>' + list + '</ul></details></div>';
+}
+
+function render(j){
+  el('sScore').textContent    = j.score == null ? 'n/a' : j.score;
+  el('sCorrect').textContent  = (j.total_correct ?? 0) + ' of ' + (j.total ?? 44);
+  el('sMistakes').textContent = (j.mistakes || []).length;
+  el('sGaps').textContent     = (j.gaps || []).length;
+
+  const mistakes = j.mistakes || [];
+  const gaps = j.gaps || [];
+
+  el('mistakeList').innerHTML =
+    mistakes.slice(0, SHOW_MISTAKES).map((m,i) => mistakeCard(m, i+1)).join('') ||
+    '<div class="item"><div class="item-n">&#10003;</div><div><div class="item-title">' +
+    'No named errors to show.</div><div class="item-body">Either you missed nothing, or the ' +
+    'questions you missed were left blank or typed in, and a blank answer does not tell me ' +
+    'what went wrong.</div></div></div>';
+
+  el('mistakeRest').innerHTML = restBlock(
+    mistakes.map(m => m.description),
+    SHOW_MISTAKES,
+    'The rest of what you missed',
+    'These are real, but the five above are where today should go. Nothing here is lost, and later review days come back to them.',
+    'errors'
+  );
+
+  el('gapList').innerHTML =
+    gaps.slice(0, SHOW_GAPS).map((g,i) => gapCard(g, i+1)).join('') ||
+    '<div class="item gap"><div class="item-n">&#10003;</div><div><div class="item-title">' +
+    'Nothing to shore up today.</div></div></div>';
+
+  el('gapRest').innerHTML = restBlock(
+    gaps.map(g => g.name),
+    SHOW_GAPS,
+    'Everything else the test touched',
+    'A missed question leans on several earlier skills, so this list is long by nature. It is here for completeness, not as work to do today.',
+    'skills'
+  );
+
+  hide('loading');
+  show('review');
+  typeset(el('review'));
+}
+
+async function markDone(){
+  const btn = el('markDone');
+  btn.disabled = true;
+  btn.textContent = 'Saving';
+  try {
+    const { data } = await sb.auth.getSession();
+    const uid = data?.session?.user?.id;
+    const { error } = await sb.from('day_progress').upsert({
+      user_id: uid,
+      day_number: THIS_DAY,
+      detail: { reviewed_test: THIS_TEST, at: new Date().toISOString() }
+    }, { onConflict: 'user_id,day_number' });
+    if (error) throw error;
+    btn.textContent = 'Day 6 done';
+    show('doneNote');
+  } catch (e){
+    console.error(e);
+    btn.disabled = false;
+    btn.textContent = 'Mark Day 6 done';
+    el('doneNote').textContent = 'That did not save. Try again in a moment.';
+    el('doneNote').style.color = 'var(--oxblood)';
+    show('doneNote');
+  }
+}
+
+(async function start(){
+  let session = null;
+  try { const { data } = await sb.auth.getSession(); session = data?.session ?? null; }
+  catch (e){ console.error(e); }
+
+  if (!session){
+    gate('Sign in required',
+      'This is part of the plan.<span>Sign in to open it.</span>',
+      'Sign in with the email you enrolled with and this day opens straight away.');
+    return;
+  }
+
+  el('who').textContent = session.user?.email ?? '';
+
+  let j = null;
+  try {
+    const r = await fetch(DIAGNOSIS_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + session.access_token
+      },
+      body: JSON.stringify({ test_number: THIS_TEST })
+    });
+    j = await r.json();
+
+    if (!r.ok || j.error){
+      if (j.code === 'no_result'){
+        gate('Test first',
+          'Day 6 reviews Day 5.<span>Sit the test first.</span>',
+          'There is no Test 1 result on your account yet. Today only works once the test has been sat, because everything on this page comes from your own answers.',
+          '<a class="btn" href="/test/?test=1">Open the Day 5 test</a>' +
+          '<a class="btn btn-alt" href="/dashboard/">Back to my dashboard</a>');
+        return;
+      }
+      gate('Something went wrong',
+        'Your review could not be built.',
+        j.error || 'Please try again in a moment, and write to dasbrink@gmail.com if it keeps happening.');
+      return;
+    }
+  } catch (err){
+    console.error(err);
+    gate('Something went wrong',
+      'Your review could not be built.',
+      'Please reload the page. If it keeps happening, write to dasbrink@gmail.com.');
+    return;
+  }
+
+  render(j);
+  el('markDone').addEventListener('click', markDone);
+})();
+</script>
+
+</body>
+</html>

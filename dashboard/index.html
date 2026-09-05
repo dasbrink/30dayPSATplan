@@ -67,23 +67,28 @@
 
   /* ---------- panel ---------- */
   .panel{background:var(--card);border:2px solid var(--ink);box-shadow:9px 9px 0 var(--ink)}
+  .panel + .panel{margin-top:34px}
   .panel-top{padding:14px 24px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
   .panel-top.green{background:var(--green);color:#F1F7F3}
   .panel-top.ink{background:var(--ink);color:var(--oat)}
+  .panel-top.blood{background:var(--oxblood);color:#FBF3E9}
   .panel-title{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.2rem;letter-spacing:-.01em}
   .panel-tag{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase}
   .panel-top.green .panel-tag{color:#CBE0D4}
   .panel-top.ink .panel-tag{color:#C9BFAE}
+  .panel-top.blood .panel-tag{color:#F0D5D9}
   .panel-body{padding:22px 24px 24px}
   .panel-foot{background:var(--oat-deep);border-top:2px solid var(--ink);padding:14px 24px;font-size:.88rem;color:var(--ink-soft);line-height:1.5}
 
-  /* ---------- task rows in the preview panel ---------- */
-  .task{display:grid;grid-template-columns:22px 1fr;gap:13px;align-items:start;padding:11px 0;border-bottom:1px dashed var(--pencil)}
-  .task:last-of-type{border-bottom:none}
-  .tick{width:20px;height:20px;border:2px solid var(--pencil);margin-top:2px}
-  .task-kind{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil);display:block;margin-bottom:2px}
-  .task-what{font-size:.97rem;line-height:1.45;color:var(--ink-soft)}
-  .task-what b{font-weight:700;color:var(--ink)}
+  /* ---------- day 5 panel ---------- */
+  .t-line{font-size:.96rem;color:var(--ink-soft);line-height:1.55;margin-bottom:14px}
+  .t-line:last-child{margin-bottom:0}
+  .t-line b{color:var(--ink);font-weight:700}
+  .t-facts div{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed var(--pencil);font-size:.94rem;color:var(--ink-soft)}
+  .t-facts div:last-child{border-bottom:none}
+  .t-facts b{color:var(--ink)}
+  .t-score{font-family:"Zilla Slab",serif;font-size:2.6rem;font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--ink)}
+  .t-score-l{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);margin-top:8px;margin-bottom:16px}
 
   /* ---------- stat strip ---------- */
   .strip{background:var(--ink);color:var(--oat)}
@@ -129,6 +134,7 @@
   .btn:disabled{opacity:.55;cursor:default;transform:none;box-shadow:5px 5px 0 rgba(36,28,34,.16)}
   .btn:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px}
   .btn-alt{background:var(--card);color:var(--ink)}
+  .btn-go{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
   @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover,.btn:active{transform:none}}
 
   /* ---------- foundations progress rows ---------- */
@@ -213,23 +219,40 @@
         <h2>Start with Foundations</h2>
         <p>Days 1 to 4 are open now. They rebuild the basics that most lost points actually sit on, before anything gets measured. Work them in order.</p>
         <p>Your progress saves to your account as you go, so you can stop halfway and pick it up on any device.</p>
+        <h2 style="margin-top:34px">Then Day 5, the first test</h2>
+        <p>Day 5 is your first full timed test, and it is open. Sit it once Foundations is behind you, because it sets the baseline everything after it is measured against. <b>Give it about ninety minutes and do not stop halfway.</b> The test cannot be paused or resumed, the same as the real thing.</p>
         <h2 style="margin-top:34px">The rest is coming</h2>
-        <p>Day 5 onward is being built and released in order, starting with your first full timed test. <b>You will be emailed the moment each one opens.</b> If the first email landed in spam, mark it as not spam so the rest reach you.</p>
+        <p>Day 6 onward is being built and released in order. <b>You will be emailed the moment each one opens.</b> If the first email landed in spam, mark it as not spam so the rest reach you.</p>
         <h2 style="margin-top:34px">While you wait</h2>
         <p>Ask your counselor which day your school is running the PSAT. Schools choose their own date inside the October window, so yours may differ from a friend's. Once you know it, count back thirty days and that is your start date.</p>
         <p>You can also practice free at <a href="https://freepracticesat.com">freepracticesat.com</a>, which uses the same question bank.</p>
       </div>
 
-      <div class="panel">
-        <div class="panel-top ink">
-          <span class="panel-title">Foundations</span>
-          <span class="panel-tag" id="foundTag">Days 1 to 4</span>
+      <div>
+        <div class="panel">
+          <div class="panel-top ink">
+            <span class="panel-title">Foundations</span>
+            <span class="panel-tag" id="foundTag">Days 1 to 4</span>
+          </div>
+          <div class="panel-body" id="foundBody">
+            <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading your progress</p>
+          </div>
+          <div class="panel-foot">
+            <a class="btn btn-found" href="/foundations/" id="foundBtn">Open Foundations</a>
+          </div>
         </div>
-        <div class="panel-body" id="foundBody">
-          <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading your progress</p>
-        </div>
-        <div class="panel-foot">
-          <a class="btn btn-found" href="/foundations/" id="foundBtn">Open Foundations</a>
+
+        <div class="panel">
+          <div class="panel-top blood">
+            <span class="panel-title">Day 5, your first test</span>
+            <span class="panel-tag" id="testTag">Not sat yet</span>
+          </div>
+          <div class="panel-body" id="testBody">
+            <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading</p>
+          </div>
+          <div class="panel-foot">
+            <a class="btn btn-found btn-go" href="/test/?test=1" id="testBtn">Open the test</a>
+          </div>
         </div>
       </div>
     </div>
@@ -369,6 +392,7 @@
       }
       show('enrolled');
       loadFoundations();
+      loadDayFive();
     } else {
       show('noEnrol');
     }
@@ -434,6 +458,64 @@
     el('foundBtn').textContent =
       daysFinished === 4 ? 'Review Foundations' :
       anyStarted ? 'Continue Foundations' : 'Start Foundations';
+  }
+
+  // ---------- Day 5, the first timed test ----------
+  async function loadDayFive(){
+    const body = el('testBody');
+    let row = null;
+    try {
+      const { data, error } = await sb
+        .from('test_results')
+        .select('score, snapshot, created_at')
+        .eq('test_number', 1)
+        .order('created_at', { ascending: false })
+        .limit(1);
+      if (error) console.error(error);
+      row = data && data.length ? data[0] : null;
+    } catch (e) {
+      console.error(e);
+      body.innerHTML = '<p class="t-line">Your test record could not be read just now. ' +
+        'Nothing is lost. Reload the page to try again.</p>';
+      return;
+    }
+
+    if (!row){
+      el('testTag').textContent = 'Not sat yet';
+      body.innerHTML =
+        '<div class="t-facts">' +
+          '<div><span>Questions</span><b>44, in two modules of 22</b></div>' +
+          '<div><span>Time per module</span><b>35 minutes</b></div>' +
+          '<div><span>Break</span><b>As long as you want</b></div>' +
+          '<div><span>Calculator</span><b>On screen throughout</b></div>' +
+        '</div>' +
+        '<p class="t-line" style="margin-top:16px">Set aside about ninety minutes. ' +
+        'The test cannot be paused, so closing the tab partway loses that module.</p>';
+      el('testBtn').textContent = 'Open the test';
+      return;
+    }
+
+    const snap = row.snapshot || {};
+    const score = snap.score != null ? snap.score : row.score;
+    const when = new Date(row.created_at)
+      .toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+
+    el('testTag').textContent = 'Complete';
+    body.innerHTML =
+      '<div class="t-score">' + (score == null ? 'n/a' : score) + '</div>' +
+      '<div class="t-score-l">Estimated PSAT score, 160 to 760</div>' +
+      '<div class="t-facts">' +
+        '<div><span>Sat on</span><b>' + when + '</b></div>' +
+        (snap.totalCorrect != null && snap.total != null
+          ? '<div><span>Correct</span><b>' + snap.totalCorrect + ' of ' + snap.total + '</b></div>'
+          : '') +
+        (Array.isArray(snap.missed)
+          ? '<div><span>To review</span><b>' + snap.missed.length + '</b></div>'
+          : '') +
+      '</div>' +
+      '<p class="t-line" style="margin-top:16px">Tests are not retaken. This one is a fixed ' +
+      'checkpoint, so sitting it again would measure your memory of it rather than your progress.</p>';
+    el('testBtn').textContent = 'See my results again';
   }
 
   el('sendLinkBtn').addEventListener('click', async () => {

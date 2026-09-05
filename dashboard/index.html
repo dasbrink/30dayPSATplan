@@ -65,6 +65,14 @@
   .prose p:last-child{margin-bottom:0}
   .prose b{color:var(--ink);font-weight:700}
 
+  /* On a wide screen the panels rise beside the headline rather than
+     starting level with the first subheading, which left a large empty
+     block in the top right. On narrow screens they stack normally. */
+  @media(min-width:901px){
+    .cols{padding-top:0}
+    .side{margin-top:-172px}
+  }
+
   /* ---------- panel ---------- */
   .panel{background:var(--card);border:2px solid var(--ink);box-shadow:9px 9px 0 var(--ink)}
   .panel + .panel{margin-top:34px}
@@ -225,10 +233,9 @@
         <p>Day 6 onward is being built and released in order. <b>You will be emailed the moment each one opens.</b> If the first email landed in spam, mark it as not spam so the rest reach you.</p>
         <h2 style="margin-top:34px">While you wait</h2>
         <p>Ask your counselor which day your school is running the PSAT. Schools choose their own date inside the October window, so yours may differ from a friend's. Once you know it, count back thirty days and that is your start date.</p>
-        <p>You can also practice free at <a href="https://freepracticesat.com">freepracticesat.com</a>, which uses the same question bank.</p>
       </div>
 
-      <div>
+      <div class="side">
         <div class="panel">
           <div class="panel-top ink">
             <span class="panel-title">Foundations</span>

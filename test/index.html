@@ -136,7 +136,8 @@
   .cbtn.sel{background:var(--ink);color:var(--oat)}
 
   /* ---------- answer eliminator ---------- */
-  .crow{display:flex;align-items:stretch;gap:8px}
+  .crow{display:flex;align-items:stretch;gap:9px;max-width:490px}
+  @media(max-width:640px){.crow{max-width:none}}
   .crow .cbtn{flex:1;min-width:0}
   .elimbtn{
     display:none;flex:0 0 44px;width:44px;
@@ -159,7 +160,22 @@
   }
   .cbtn.sel.struck::after{background:#E8909D}
 
-  .oe-badge{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--oxblood);padding:4px 10px;display:inline-block;margin-bottom:14px}
+  /* question tables, forced onto the PSAT palette even when the
+     stored HTML carries the navy and gold of the SAT site */
+  #qtext table{border-collapse:collapse;margin:0 0 16px;font-size:.97rem}
+  #qtext table th,
+  #qtext table tr:first-child td{
+    background:var(--ink)!important;color:var(--oat)!important;
+    border:1px solid var(--ink)!important;padding:9px 15px!important;
+    font-family:"Zilla Slab",serif!important;font-weight:700!important;
+  }
+  #qtext table td{
+    background:var(--card)!important;color:var(--ink)!important;
+    border:1px solid var(--pencil)!important;padding:8px 15px!important;
+  }
+  #qtext table tr{background:transparent!important}
+
+  .oe-badge{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--oxblood);padding:4px 10px;display:inline-block;align-self:flex-start;margin-bottom:14px}
   .oe-input{font-family:"Space Mono",monospace;font-size:1.2rem;padding:12px 15px;border:2px solid var(--ink);width:190px;text-align:center;background:#fff}
   .oe-input:focus{outline:none;border-color:var(--oxblood)}
   .oe-hint{font-size:.86rem;color:var(--pencil);margin-top:9px}
@@ -384,7 +400,7 @@
       </div>
 
       <h2 style="margin-top:36px">What to do next</h2>
-      <p style="color:var(--ink-soft);margin-bottom:14px">Your answers are saved. Tomorrow works through every question you missed, names the error behind each one, and points at the skill underneath it.</p>
+      <p style="color:var(--ink-soft);margin-bottom:14px">Your answers are saved. The session tomorrow works through every question you missed, names the error behind each one, and points at the skill underneath it.</p>
       <p style="color:var(--ink-soft)">Do not read too much into the number today. It is a starting point, and it is meant to be lower than where you finish.</p>
       <div class="cta-row">
         <button class="btn" id="btnSolutions">Worked solutions</button>
@@ -438,8 +454,12 @@ const SUPABASE_KEY = 'sb_publishable_finn6Vwaqa2nBqG_DD5ZLg_Wpe-qZxW';
 const GET_TEST_URL = 'https://jotbwtkvwkunihvwmqqj.supabase.co/functions/v1/get-test';
 
 const MODULE_SECONDS = 35 * 60;
-const OE_PROBABILITY = 0.25;
-const OE_MAX_PER_MODULE = 6;
+
+// The real PSAT math section is roughly a quarter student-produced
+// response: 11 of the 44 questions. Split 6 in Module 1 and 5 in
+// Module 2. These are exact counts, not probabilities, so every test
+// carries the same proportion rather than whatever chance produced.
+const OE_TARGET = { 1: 6, 2: 5 };
 
 // Which test this is. Read once, from the address, and never guessed.
 // The engine refuses to save a result without it, because a result filed
@@ -471,9 +491,31 @@ function gate(kicker, title, text){
 }
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function hasHTML(t){ return /<(svg|table|div|span|img|p|br|ul|ol|li|h[1-6]|figure)\b/i.test(t||''); }
+// A rendered math expression is one solid block, so a question mark or
+// comma sitting after it can wrap to a line of its own. This glues the
+// punctuation to the expression before it.
+function tightenPunct(root){
+  if (!root || !root.querySelectorAll) return;
+  root.querySelectorAll('mjx-container').forEach(m => {
+    const after = m.nextSibling;
+    if (!after || after.nodeType !== 3) return;
+    const hit = after.nodeValue.match(/^\s*([?.,!;:)\]]+)/);
+    if (!hit) return;
+    const glue = document.createElement('span');
+    glue.style.whiteSpace = 'nowrap';
+    m.parentNode.insertBefore(glue, m);
+    glue.appendChild(m);
+    glue.appendChild(document.createTextNode(hit[1]));
+    after.nodeValue = after.nodeValue.slice(hit[0].length);
+  });
+}
 function typeset(node){
   if (window.MathJax && MathJax.typesetPromise){
-    try { MathJax.typesetPromise(node?[node]:undefined).catch(()=>{}); } catch(e){}
+    try {
+      MathJax.typesetPromise(node?[node]:undefined)
+        .then(() => { if (node) tightenPunct(node); })
+        .catch(()=>{});
+    } catch(e){}
   }
 }
 function shuffle(a){
@@ -716,14 +758,17 @@ function checkOE(typed, correct){
   if (!isNaN(tn) && !isNaN(cn)) return tn === cn;
   return t.toLowerCase() === c.toLowerCase();
 }
-function assignOE(qs){
+function assignOE(qs, target){
   oeMap = {}; oeAnswers = {};
-  let n = 0;
-  qs.forEach((q,i) => {
-    if (isCleanInteger(q.correctAnswer) && n < OE_MAX_PER_MODULE && Math.random() < OE_PROBABILITY){
-      oeMap[i] = true; n++;
-    }
-  });
+  // Only a question whose answer is a clean integer can be typed in.
+  const eligible = [];
+  qs.forEach((q,i) => { if (isCleanInteger(q.correctAnswer)) eligible.push(i); });
+  const want = Math.min(target, eligible.length);
+  shuffle(eligible).slice(0, want).forEach(i => { oeMap[i] = true; });
+  if (want < target){
+    console.warn('[psat] wanted ' + target + ' fill-in questions, only ' +
+      eligible.length + ' had a clean integer answer.');
+  }
 }
 
 // ---------------- eliminator ----------------
@@ -920,7 +965,7 @@ async function beginTest(noClock){
   modQuestions = shuffle(payload.module1);
   idx = 0; answers = {}; marked = {}; struck = {};
   buildChoices(modQuestions);
-  assignOE(modQuestions);
+  assignOE(modQuestions, OE_TARGET[1]);
 
   try {
     const { data } = await sb.from('test_sessions').insert({
@@ -1030,7 +1075,7 @@ function startModule2(){
   modQuestions = shuffle(payload.module2);
   idx = 0; answers = {}; marked = {}; struck = {};
   buildChoices(modQuestions);
-  assignOE(modQuestions);
+  assignOE(modQuestions, OE_TARGET[2]);
   el('modLabel').textContent = 'Module 2' + (untimed ? ', no clock' : '');
   el('clock').classList.toggle('hidden', untimed);
   buildGrid();

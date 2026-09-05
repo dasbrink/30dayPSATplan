@@ -298,7 +298,7 @@
         <div><span>Calculator</span><b>On screen throughout</b></div>
         <div><span>Reported as</span><b>Estimated PSAT score, 160 to 760</b></div>
       </div>
-      <div class="panel-foot">The questions come from my SAT bank, which runs harder at the top end than the PSAT does. Your estimate will read low rather than high.</div>
+      <div class="panel-foot">Your estimate is built to read low rather than high, so treat it as a floor rather than a prediction.</div>
     </div>
   </div></div></section>
 
@@ -1164,9 +1164,9 @@ function renderResults(s){
   el('rTag').textContent = 'Test ' + s.testNumber + ' of 7';
   el('scoreN').textContent = s.score == null ? 'n/a' : s.score;
   el('scoreCaveat').textContent =
-    (typeof psatScoreCaveat === 'function')
-      ? psatScoreCaveat()
-      : 'This is an estimate, not a score.';
+    'This is an estimate rather than a score, and it is built to read low ' +
+    'rather than high. Treat it as a floor: a starting point to measure the ' +
+    'next four weeks against, not a prediction of your October result.';
 
   const missedCount = (s.missed || []).length;
   el('breakdown').innerHTML =

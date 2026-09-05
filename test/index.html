@@ -136,7 +136,7 @@
   .cbtn.sel{background:var(--ink);color:var(--oat)}
 
   /* ---------- answer eliminator ---------- */
-  .crow{display:flex;align-items:stretch;gap:9px;max-width:490px}
+  .crow{display:flex;align-items:stretch;gap:9px;max-width:640px}
   @media(max-width:640px){.crow{max-width:none}}
   .crow .cbtn{flex:1;min-width:0}
   .elimbtn{
@@ -162,18 +162,20 @@
 
   /* question tables, forced onto the PSAT palette even when the
      stored HTML carries the navy and gold of the SAT site */
-  #qtext table{border-collapse:collapse;margin:0 0 16px;font-size:.97rem}
-  #qtext table th,
-  #qtext table tr:first-child td{
-    background:var(--ink)!important;color:var(--oat)!important;
-    border:1px solid var(--ink)!important;padding:9px 15px!important;
-    font-family:"Zilla Slab",serif!important;font-weight:700!important;
-  }
-  #qtext table td{
+  #qtext table.psat-tbl{border-collapse:collapse;margin:0 0 16px;font-size:.97rem}
+  #qtext table.psat-tbl tr{background:transparent!important}
+  #qtext table.psat-tbl td,
+  #qtext table.psat-tbl th{
     background:var(--card)!important;color:var(--ink)!important;
     border:1px solid var(--pencil)!important;padding:8px 15px!important;
   }
-  #qtext table tr{background:transparent!important}
+  #qtext table.psat-tbl .psat-hdr{
+    background:var(--ink)!important;color:var(--oat)!important;
+    border:1px solid var(--ink)!important;
+    border-bottom:3px solid #fff!important;
+    font-family:"Zilla Slab",serif!important;font-weight:700!important;
+    padding:9px 15px!important;
+  }
 
   .oe-badge{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--oxblood);padding:4px 10px;display:inline-block;align-self:flex-start;margin-bottom:14px}
   .oe-input{font-family:"Space Mono",monospace;font-size:1.2rem;padding:12px 15px;border:2px solid var(--ink);width:190px;text-align:center;background:#fff}
@@ -494,6 +496,23 @@ function hasHTML(t){ return /<(svg|table|div|span|img|p|br|ul|ol|li|h[1-6]|figur
 // A rendered math expression is one solid block, so a question mark or
 // comma sitting after it can wrap to a line of its own. This glues the
 // punctuation to the expression before it.
+// Tables arrive as stored HTML, sometimes with a proper header row and
+// sometimes without. Mark the real header cells rather than assuming the
+// first row is one, which wrongly darkened a data row.
+function styleTables(root){
+  if (!root || !root.querySelectorAll) return;
+  root.querySelectorAll('table').forEach(t => {
+    t.classList.add('psat-tbl');
+    const ths = t.querySelectorAll('th');
+    if (ths.length){
+      ths.forEach(c => c.classList.add('psat-hdr'));
+      return;
+    }
+    const firstRow = t.querySelector('tr');
+    if (firstRow) firstRow.querySelectorAll('td').forEach(c => c.classList.add('psat-hdr'));
+  });
+}
+
 function tightenPunct(root){
   if (!root || !root.querySelectorAll) return;
   root.querySelectorAll('mjx-container').forEach(m => {
@@ -855,6 +874,7 @@ function showQuestion(){
 
   el('qcount').textContent = 'Question ' + (idx+1) + ' of ' + modQuestions.length;
   renderQuestionBody(el('qtext'), q);
+  styleTables(el('qtext'));
 
   const box = el('qchoices');
   box.innerHTML = '';

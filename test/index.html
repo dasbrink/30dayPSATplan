@@ -131,9 +131,34 @@
   #qtext .inline-graph{width:100%;max-width:470px;height:320px;margin:0 auto 12px;display:block;border:2px solid var(--ink)}
 
   #qchoices{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
-  .cbtn{padding:13px 17px;border:2px solid var(--ink);background:#fff;color:var(--ink);font-size:.99rem;text-align:left;line-height:1.45}
+  .cbtn{padding:13px 17px;border:2px solid var(--ink);background:#fff;color:var(--ink);font-size:.99rem;text-align:left;line-height:1.45;position:relative}
   .cbtn:hover{background:#fdfaf3}
   .cbtn.sel{background:var(--ink);color:var(--oat)}
+
+  /* ---------- answer eliminator ---------- */
+  .crow{display:flex;align-items:stretch;gap:8px}
+  .crow .cbtn{flex:1;min-width:0}
+  .elimbtn{
+    display:none;flex:0 0 44px;width:44px;
+    border:2px solid var(--pencil);background:#fff;color:var(--pencil);
+    font-family:"Space Mono",monospace;font-size:.9rem;font-weight:700;
+    align-items:center;justify-content:center;
+  }
+  #qchoices.elim-on .elimbtn{display:flex}
+  .elimbtn:hover{border-color:var(--oxblood);color:var(--oxblood)}
+  .elimbtn span{position:relative;display:inline-block;padding:0 2px}
+  .elimbtn span::after{
+    content:"";position:absolute;left:-2px;right:-2px;top:50%;
+    height:2px;background:currentColor;
+  }
+  .elimbtn.on{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
+  .cbtn.struck{opacity:.42}
+  .cbtn.struck::after{
+    content:"";position:absolute;left:12px;right:12px;top:50%;
+    height:2px;background:var(--oxblood);pointer-events:none;
+  }
+  .cbtn.sel.struck::after{background:#E8909D}
+
   .oe-badge{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--oxblood);padding:4px 10px;display:inline-block;margin-bottom:14px}
   .oe-input{font-family:"Space Mono",monospace;font-size:1.2rem;padding:12px 15px;border:2px solid var(--ink);width:190px;text-align:center;background:#fff}
   .oe-input:focus{outline:none;border-color:var(--oxblood)}
@@ -148,12 +173,12 @@
   /* calculator */
   #calc{position:fixed;right:-640px;top:0;bottom:0;width:var(--calc-w,520px);background:#fff;border-left:2px solid var(--ink);z-index:100;transition:right .25s ease;display:flex;flex-direction:column}
   #calc.open{right:0}
-  #calcGrip{position:absolute;left:0;top:0;bottom:0;width:10px;cursor:ew-resize;z-index:20;background:transparent}
+  #calcGrip{position:absolute;left:0;top:0;bottom:0;width:12px;cursor:ew-resize;z-index:120;background:transparent}
   #calcGrip:hover{background:var(--oxblood)}
   #calcGrip.dragging{background:var(--oxblood)}
   #calcHead{background:var(--ink);color:var(--oat);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-family:"Zilla Slab",serif;font-weight:700;font-size:.95rem;flex-shrink:0}
   #calcHead button{background:none;border:none;color:var(--oat);font-size:1.5rem;line-height:1;padding:0 4px}
-  #calcMount{flex:1}
+  #calcMount{flex:1;position:relative;z-index:1}
 
   /* formula sheet */
   #fsheet{display:none;position:fixed;z-index:200;background:#fff;border:2px solid var(--ink);box-shadow:10px 10px 0 rgba(36,28,34,.4);min-width:320px;min-height:240px;overflow:hidden;flex-direction:column}
@@ -286,6 +311,7 @@
     <span class="tbar-label" id="modLabel">Module 1</span>
     <span class="tbar-clock" id="clock">35:00</span>
     <span class="tools">
+      <button class="tool" id="btnElim">Eliminate</button>
       <button class="tool" id="btnCalc">Calculator</button>
       <button class="tool" id="btnFs">Formulas</button>
       <button class="tool" id="btnQuit">Leave</button>
@@ -474,6 +500,8 @@ let answers = {};              // idx -> chosen choice index
 let oeMap = {};                // idx -> true if student produced response
 let oeAnswers = {};            // idx -> typed string
 let marked = {};
+let struck = {};               // idx -> { choiceIndex: true } eliminated choices
+let elimOn = false;            // is the eliminator turned on
 let untimed = false;
 let sessionId = null;
 let m1 = { correct:0, missed:[], answered:[], questions:[], choices:{}, answers:{}, oeMap:{}, oeAnswers:{} };
@@ -698,6 +726,21 @@ function assignOE(qs){
   });
 }
 
+// ---------------- eliminator ----------------
+function toggleElim(){
+  elimOn = !elimOn;
+  el('btnElim').classList.toggle('on', elimOn);
+  el('qchoices').classList.toggle('elim-on', elimOn);
+}
+function isStruck(qi, ci){
+  return !!(struck[qi] && struck[qi][ci]);
+}
+function toggleStruck(qi, ci){
+  if (!struck[qi]) struck[qi] = {};
+  if (struck[qi][ci]) delete struck[qi][ci];
+  else struck[qi][ci] = true;
+}
+
 // ---------------- rendering ----------------
 function buildChoices(qs){
   choices = {};
@@ -770,6 +813,7 @@ function showQuestion(){
 
   const box = el('qchoices');
   box.innerHTML = '';
+  box.classList.toggle('elim-on', elimOn);
 
   if (oeMap[idx]){
     const badge = document.createElement('div');
@@ -790,12 +834,33 @@ function showQuestion(){
     box.appendChild(hint);
     setTimeout(() => { const i = el('oeInput'); if (i) i.focus(); }, 40);
   } else {
+    const letters = ['A','B','C','D','E','F','G','H'];
     (choices[idx] || []).forEach((c,i) => {
+      const row = document.createElement('div');
+      row.className = 'crow';
+
       const b = document.createElement('button');
-      b.className = 'cbtn' + (answers[idx]===i ? ' sel' : '');
+      b.className = 'cbtn' + (answers[idx]===i ? ' sel' : '') + (isStruck(idx,i) ? ' struck' : '');
       b.textContent = c.text;
       b.addEventListener('click', () => { answers[idx] = i; showQuestion(); });
-      box.appendChild(b);
+      row.appendChild(b);
+
+      const e = document.createElement('button');
+      e.className = 'elimbtn' + (isStruck(idx,i) ? ' on' : '');
+      e.type = 'button';
+      e.title = isStruck(idx,i) ? 'Put this choice back' : 'Cross this choice out';
+      e.setAttribute('aria-label', (isStruck(idx,i) ? 'Undo cross out ' : 'Cross out ') + (letters[i]||''));
+      const sp = document.createElement('span');
+      sp.textContent = letters[i] || '';
+      e.appendChild(sp);
+      e.addEventListener('click', ev => {
+        ev.stopPropagation();
+        toggleStruck(idx, i);
+        showQuestion();
+      });
+      row.appendChild(e);
+
+      box.appendChild(row);
       typeset(b);
     });
   }
@@ -853,7 +918,7 @@ async function beginTest(noClock){
   inTest = true;
   mod = 1;
   modQuestions = shuffle(payload.module1);
-  idx = 0; answers = {}; marked = {};
+  idx = 0; answers = {}; marked = {}; struck = {};
   buildChoices(modQuestions);
   assignOE(modQuestions);
 
@@ -963,7 +1028,7 @@ async function doSubmit(){
 function startModule2(){
   mod = 2;
   modQuestions = shuffle(payload.module2);
-  idx = 0; answers = {}; marked = {};
+  idx = 0; answers = {}; marked = {}; struck = {};
   buildChoices(modQuestions);
   assignOE(modQuestions);
   el('modLabel').textContent = 'Module 2' + (untimed ? ', no clock' : '');
@@ -1128,6 +1193,7 @@ el('markBtn').addEventListener('click', () => {
   if (marked[idx]) delete marked[idx]; else marked[idx] = true;
   updateGrid();
 });
+el('btnElim').addEventListener('click', toggleElim);
 el('btnCalc').addEventListener('click', toggleCalc);
 el('calcClose').addEventListener('click', toggleCalc);
 el('btnFs').addEventListener('click', toggleFs);

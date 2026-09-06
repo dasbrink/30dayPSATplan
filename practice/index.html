@@ -347,7 +347,6 @@
   <div class="wrap">
     <div class="res-actions">
       <button class="btn btn-go btn-sm" id="btnAgain">Another set</button>
-      <button class="btn btn-alt btn-sm" id="btnDone">Mark this day complete</button>
       <a class="btn btn-alt btn-sm" href="/dashboard/">Back to the dashboard</a>
     </div>
     <div class="status" id="resStatus"></div>
@@ -466,7 +465,6 @@
   el('setupTag').textContent = label;
   el('setupKicker').textContent = dayNumber ? 'Day ' + dayNumber : 'Practice';
   el('mastDay').textContent = dayNumber ? 'Day ' + dayNumber + ' of 30' : label;
-  if (!dayNumber) el('btnDone').classList.add('hidden');
 
   async function start(){
     let session = null;
@@ -698,6 +696,7 @@
   // ── Results ──────────────────────────────────────────────────────────────
   function showResults(){
     killGraphs();
+    markDayComplete();
     const right = answers.filter(a => a.correct).length;
     const wrong = answers.length - right;
     const pct = Math.round((right / answers.length) * 100);
@@ -772,15 +771,19 @@
     screen('scrSetup');
   });
 
-  el('btnDone').addEventListener('click', async () => {
+  // ── Marking the day complete ─────────────────────────────────────────────
+  // Fires automatically once the student reaches the results screen, which
+  // means they answered every question in the set. There is no button: asking
+  // a student to confirm work they have visibly just done is a step they will
+  // skip, and then the dashboard tells them they have not done the day.
+  // Answering two questions and closing the tab does NOT count, because the
+  // results screen is never reached.
+  async function markDayComplete(){
     if (!dayNumber) return;
-    const btn = el('btnDone');
-    btn.disabled = true;
-    btn.textContent = 'Saving';
     try {
       const { data } = await sb.auth.getSession();
       const uid = data?.session?.user?.id;
-      if (!uid) throw new Error('no session');
+      if (!uid) return;
       const { error } = await sb.from('day_progress').upsert({
         user_id: uid,
         day_number: parseInt(dayNumber, 10),
@@ -788,15 +791,15 @@
         completed_at: new Date().toISOString()
       }, { onConflict: 'user_id,day_number' });
       if (error) throw error;
-      btn.textContent = 'Day ' + dayNumber + ' complete';
-      setStatus('resStatus', 'Saved. Day ' + dayNumber + ' is marked complete on your dashboard.', 'ok');
+      setStatus('resStatus',
+        'Day ' + dayNumber + ' is marked complete on your dashboard.', 'ok');
     } catch(e){
-      console.error(e);
-      btn.disabled = false;
-      btn.textContent = 'Mark this day complete';
-      setStatus('resStatus', 'That could not be saved just now. Please try again.', 'err');
+      console.error('markDayComplete failed:', e);
+      setStatus('resStatus',
+        'Your answers are fine, but Day ' + dayNumber + ' could not be marked complete just now. ' +
+        'Reload the dashboard in a minute and it should be there.', 'err');
     }
-  });
+  }
 
   // ── Calculator ───────────────────────────────────────────────────────────
   function setCalcWidth(px){

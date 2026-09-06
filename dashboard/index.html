@@ -101,6 +101,19 @@
   .t-score{font-family:"Zilla Slab",serif;font-size:2.6rem;font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--ink)}
   .t-score-l{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);margin-top:8px;margin-bottom:16px}
 
+  /* ---------- content day rows ---------- */
+  .crow{display:grid;grid-template-columns:66px 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--pencil)}
+  .crow:last-child{border-bottom:none}
+  @media(max-width:480px){.crow{grid-template-columns:60px 1fr;gap:10px}.crow .crow-go{grid-column:2;justify-self:start;margin-top:6px}}
+  .crow-tag{font-family:"Space Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.05em;color:#fff;background:var(--ink);padding:4px 8px;text-align:center}
+  .crow.done .crow-tag{background:var(--green)}
+  .crow-name{font-size:.95rem;line-height:1.35;color:var(--ink);font-weight:700}
+  .crow-sub{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--pencil);margin-top:4px}
+  .crow-go{font-family:"Karla",sans-serif;font-size:.86rem;font-weight:700;text-decoration:none;color:var(--ink);border:2px solid var(--ink);background:var(--card);padding:7px 14px;white-space:nowrap}
+  .crow-go:hover{background:var(--ink);color:var(--oat)}
+  .crow.done .crow-go{border-color:var(--green);color:var(--green)}
+  .crow.done .crow-go:hover{background:var(--green);color:#fff}
+
   /* ---------- stat strip ---------- */
   .strip{background:var(--ink);color:var(--oat)}
   .strip-in{display:grid;grid-template-columns:repeat(4,1fr)}
@@ -143,9 +156,9 @@
   .btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 rgba(36,28,34,.32)}
   .btn:active{transform:translate(5px,5px);box-shadow:0 0 0 rgba(36,28,34,.32)}
   .btn:disabled{opacity:.55;cursor:default;transform:none;box-shadow:5px 5px 0 rgba(36,28,34,.16)}
-  .btn:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px}
   .btn-alt{background:var(--card);color:var(--ink)}
   .btn-go{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
+  .btn:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px}
   @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover,.btn:active{transform:none}}
 
   /* ---------- foundations progress rows ---------- */
@@ -232,8 +245,12 @@
         <p>Your progress saves to your account as you go, so you can stop halfway and pick it up on any device.</p>
         <h2 style="margin-top:34px">Then Day 5, the first test</h2>
         <p>Day 5 is your first full timed test, and it is open. Sit it once Foundations is behind you, because it sets the baseline everything after it is measured against. <b>Give it about ninety minutes and do not stop halfway.</b> The test cannot be paused or resumed, the same as the real thing.</p>
+        <h2 style="margin-top:34px">Day 6 reads your test back to you</h2>
+        <p>Day 6 names the specific mistakes behind the questions you missed, and the foundational gaps underneath them. It only works once Day 5 is done.</p>
+        <h2 style="margin-top:34px">Days 7 to 11 are the content days</h2>
+        <p>Five days working through the four areas the test covers, weighted the way the real test weights them. <b>Each one is untimed and you choose how many questions and at what level.</b> Questions you have already seen are left out, so nothing repeats.</p>
         <h2 style="margin-top:34px">The rest is coming</h2>
-        <p>Day 6 onward is being built and released in order. <b>You will be emailed the moment each one opens.</b> If the first email landed in spam, mark it as not spam so the rest reach you.</p>
+        <p>Day 12 onward is being built and released in order. <b>You will be emailed the moment each one opens.</b> If the first email landed in spam, mark it as not spam so the rest reach you.</p>
         <h2 style="margin-top:34px">While you wait</h2>
         <p>Ask your counselor which day your school is running the PSAT. Schools choose their own date inside the October window, so yours may differ from a friend's. Once you know it, count back thirty days and that is your start date.</p>
       </div>
@@ -262,6 +279,32 @@
           </div>
           <div class="panel-foot">
             <a class="btn btn-found btn-go" href="/test/?test=1" id="testBtn">Open the test</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-top ink">
+            <span class="panel-title">Day 6, your diagnosis</span>
+            <span class="panel-tag" id="day6Tag">Needs Day 5</span>
+          </div>
+          <div class="panel-body" id="day6Body">
+            <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading</p>
+          </div>
+          <div class="panel-foot">
+            <a class="btn btn-found" href="/day6/" id="day6Btn">Open Day 6</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-top ink">
+            <span class="panel-title">Days 7 to 11</span>
+            <span class="panel-tag" id="contentTag">The content days</span>
+          </div>
+          <div class="panel-body" id="contentBody">
+            <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading</p>
+          </div>
+          <div class="panel-foot">
+            Untimed. You choose how many questions and at what level. Nothing you have already seen comes round again.
           </div>
         </div>
       </div>
@@ -398,11 +441,12 @@
         el('enrolledLede').innerHTML =
           'Your place is secured and paid for, enrolled on <b>' +
           d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) +
-          '</b>. Days 1 to 4 are open now.';
+          '</b>. Days 1 to 11 are open now.';
       }
       show('enrolled');
       loadFoundations();
       loadDayFive();
+      loadContentDays();
     } else {
       show('noEnrol');
     }
@@ -502,6 +546,7 @@
         '<p class="t-line" style="margin-top:16px">Set aside about ninety minutes. ' +
         'The test cannot be paused, so closing the tab partway loses that module.</p>';
       el('testBtn').textContent = 'Open the test';
+      setDaySix(false);
       return;
     }
 
@@ -526,6 +571,81 @@
       '<p class="t-line" style="margin-top:16px">Tests are not retaken. This one is a fixed ' +
       'checkpoint, so sitting it again would measure your memory of it rather than your progress.</p>';
     el('testBtn').textContent = 'See my results again';
+    setDaySix(true);
+  }
+
+  // ---------- Day 6, the diagnosis ----------
+  function setDaySix(testDone){
+    const body = el('day6Body');
+    if (testDone){
+      el('day6Tag').textContent = 'Ready';
+      body.innerHTML =
+        '<p class="t-line">Day 6 reads your Day 5 test back to you: <b>the five mistakes you ' +
+        'keep making</b>, and <b>the five foundational gaps underneath them</b>, each with a ' +
+        'worked example and practice at three levels.</p>' +
+        '<p class="t-line">Give it about forty minutes and do not skim it. This is the day the ' +
+        'rest of the plan is built on.</p>';
+      el('day6Btn').textContent = 'Open Day 6';
+      el('day6Btn').style.pointerEvents = '';
+      el('day6Btn').style.opacity = '';
+    } else {
+      el('day6Tag').textContent = 'Needs Day 5';
+      body.innerHTML =
+        '<p class="t-line">Day 6 works from your Day 5 results, so there is nothing for it to ' +
+        'read yet. Sit the test first and this opens on its own.</p>';
+      el('day6Btn').textContent = 'Sit Day 5 first';
+      el('day6Btn').style.pointerEvents = 'none';
+      el('day6Btn').style.opacity = '0.5';
+    }
+  }
+
+  // ---------- Days 7 to 11, the content days ----------
+  // All five run off one page, /practice/, with the domain in the address.
+  // Adding a content day later means adding a row here, nothing else.
+  const CONTENT_DAYS = [
+    { day: 7,  domain: 'algebra',       name: 'Algebra',                    note: 'Linear equations and systems' },
+    { day: 8,  domain: 'algebra',       name: 'Algebra again',              note: 'The same ground, harder' },
+    { day: 9,  domain: 'advanced-math', name: 'Advanced Math',              note: 'Quadratics and functions' },
+    { day: 10, domain: 'advanced-math', name: 'Advanced Math again',        note: 'Nonlinear and exponents' },
+    { day: 11, domain: 'data-analysis', name: 'Data Analysis',              note: 'Rates, ratios, and graphs' }
+  ];
+
+  async function loadContentDays(){
+    const body = el('contentBody');
+    let rows = [];
+    try {
+      const { data, error } = await sb
+        .from('day_progress')
+        .select('day_number, completed')
+        .in('day_number', [7, 8, 9, 10, 11]);
+      if (error) console.error(error);
+      rows = data || [];
+    } catch (e) {
+      console.error(e);
+      body.innerHTML = '<p style="font-size:.95rem;color:var(--ink-soft);margin:0">' +
+        'These could not be loaded just now. Reload the page to try again.</p>';
+      return;
+    }
+
+    const doneDays = new Set(rows.filter(r => r.completed).map(r => r.day_number));
+
+    body.innerHTML = CONTENT_DAYS.map(c => {
+      const done = doneDays.has(c.day);
+      const href = '/practice/?domain=' + c.domain + '&day=' + c.day;
+      return '<div class="crow' + (done ? ' done' : '') + '">' +
+        '<span class="crow-tag">Day ' + c.day + '</span>' +
+        '<div>' +
+          '<div class="crow-name">' + c.name + '</div>' +
+          '<div class="crow-sub">' + (done ? 'Complete' : c.note) + '</div>' +
+        '</div>' +
+        '<a class="crow-go" href="' + href + '">' + (done ? 'Again' : 'Open') + '</a>' +
+      '</div>';
+    }).join('');
+
+    el('contentTag').textContent =
+      doneDays.size === 0 ? 'The content days' :
+      doneDays.size === 5 ? 'All five complete' :
+      doneDays.size + ' of 5 complete';
   }
 
   el('sendLinkBtn').addEventListener('click', async () => {

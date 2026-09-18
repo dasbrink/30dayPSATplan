@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Desmos Day | 30 Day PSAT Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] },
+    svg: { fontCache: 'global' },
+    startup: { typeset: false }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://www.desmos.com/api/v1.10/calculator.js?apiKey=2f23c0c34b08448e8e167dba1a6c32c4"></script>
+<style>
+  :root{
+    --oat:#EDE6D6;
+    --oat-deep:#E2D9C5;
+    --ink:#241C22;
+    --ink-soft:#4A3F46;
+    --oxblood:#A32B3F;
+    --pencil:#8C8577;
+    --graph:#B9C6D2;
+    --card:#F7F2E7;
+    --green:#2F6B4F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--oat);color:var(--ink);
+    font-family:"Karla",system-ui,-apple-system,sans-serif;
+    font-size:17.5px;line-height:1.62;-webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(var(--graph) 1px,transparent 1px),
+      linear-gradient(90deg,var(--graph) 1px,transparent 1px);
+    background-size:28px 28px;background-position:-1px -1px;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 34px}
+  @media(max-width:640px){.wrap{padding:0 20px}}
+  a{color:var(--oxblood)}
+
+  /* ---------- masthead ---------- */
+  .mast{background:var(--ink);color:var(--oat)}
+  .mast .wrap{display:flex;justify-content:space-between;align-items:center;padding:15px 34px;gap:14px;flex-wrap:wrap}
+  @media(max-width:640px){.mast .wrap{padding:13px 20px}}
+  .mast-name{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.05rem;letter-spacing:-.01em;color:var(--oat);text-decoration:none}
+  .mast-right{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .mast-day{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:#C9BFAE}
+  .mast-btn{font-family:"Karla",sans-serif;font-size:.86rem;font-weight:700;background:none;color:var(--oat);border:1px solid rgba(237,230,214,.45);padding:8px 15px;cursor:pointer;text-decoration:none;display:inline-block}
+  .mast-btn:hover{background:rgba(237,230,214,.12)}
+
+  .head{padding:52px 0 34px}
+  .kicker{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+  .kicker.blood{color:var(--oxblood)}
+  .kicker.good{color:var(--green)}
+  h1{font-family:"Zilla Slab",serif;font-weight:700;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.08;letter-spacing:-.02em;max-width:20ch}
+  h1 span{display:block;color:var(--oxblood)}
+  .lede{margin-top:20px;max-width:54ch;color:var(--ink-soft);font-size:1.06rem}
+  .lede b{color:var(--ink);font-weight:700}
+
+  h2{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.35rem;line-height:1.18;letter-spacing:-.015em;margin-bottom:14px}
+
+  /* ---------- panel ---------- */
+  .panel{background:var(--card);border:2px solid var(--ink);box-shadow:9px 9px 0 var(--ink);max-width:620px}
+  .panel-top{padding:14px 24px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .panel-top.ink{background:var(--ink);color:var(--oat)}
+  .panel-title{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.15rem;letter-spacing:-.01em}
+  .panel-tag{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+  .panel-top.ink .panel-tag{color:#C9BFAE}
+  .panel-body{padding:22px 24px 24px}
+
+  /* ---------- instructions list ---------- */
+  .instr{list-style:none;padding:0;margin:0 0 8px}
+  .instr li{padding:11px 0 11px 26px;border-bottom:1px dashed var(--pencil);font-size:.97rem;color:var(--ink-soft);line-height:1.55;position:relative}
+  .instr li:last-child{border-bottom:none}
+  .instr li::before{content:'';position:absolute;left:6px;top:20px;width:7px;height:7px;background:var(--oxblood)}
+  .instr b{color:var(--ink);font-weight:700}
+
+  .btn{
+    display:inline-block;text-decoration:none;
+    font-family:"Zilla Slab",serif;font-size:1.05rem;font-weight:700;
+    padding:15px 32px;border:2px solid var(--ink);cursor:pointer;
+    background:var(--ink);color:var(--oat);box-shadow:5px 5px 0 rgba(36,28,34,.32);
+    transition:transform .12s ease,box-shadow .12s ease;
+  }
+  .btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 rgba(36,28,34,.32)}
+  .btn:active{transform:translate(5px,5px);box-shadow:0 0 0 rgba(36,28,34,.32)}
+  .btn:disabled{opacity:.55;cursor:default;transform:none;box-shadow:5px 5px 0 rgba(36,28,34,.16)}
+  .btn:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px}
+  .btn-go{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
+  .btn-alt{background:var(--card);color:var(--ink)}
+  .btn-sm{padding:11px 22px;font-size:.98rem;box-shadow:4px 4px 0 rgba(36,28,34,.3)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+  @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover,.btn:active{transform:none}}
+
+  /* ---------- question screen ---------- */
+  .q-head{padding:34px 0 0}
+  .bar{background:var(--oat-deep);border:2px solid var(--ink);height:14px;margin-bottom:14px}
+  .bar-fill{background:var(--oxblood);height:100%;width:0;transition:width .25s ease}
+  .q-count{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .q-grid{display:grid;grid-template-columns:1fr 250px;gap:32px;align-items:start;padding:22px 0 70px}
+  @media(max-width:860px){.q-grid{grid-template-columns:1fr;gap:22px}}
+  .q-card{background:var(--card);border:2px solid var(--ink);box-shadow:9px 9px 0 var(--ink);padding:26px 26px 24px}
+  .q-text{font-size:1.05rem;line-height:1.65;margin-bottom:22px}
+  .q-figure{width:100%;max-width:420px;height:300px;margin:0 auto 16px;border:2px solid var(--ink);background:#fff;overflow:hidden}
+  .q-figure svg{max-width:100%;height:auto;display:block;margin:0 auto}
+  .q-body{line-height:1.65}
+  .choices{display:flex;flex-direction:column;gap:11px}
+  .choice{display:flex;align-items:flex-start;gap:13px;width:100%;text-align:left;background:#fff;border:2px solid var(--ink);padding:13px 15px;font-family:"Karla",sans-serif;font-size:1rem;color:var(--ink);cursor:pointer;line-height:1.5}
+  .choice:hover{background:var(--oat-deep)}
+  .choice.on{background:var(--ink);color:var(--oat)}
+  .choice.locked{cursor:default}
+  .choice.correct{background:#E7F1EB;border-color:var(--green);color:var(--ink)}
+  .choice.wrong{background:#F7E6E9;border-color:var(--oxblood);color:var(--ink)}
+  .choice-l{font-family:"Space Mono",monospace;font-weight:700;flex-shrink:0}
+  .choice-t{flex:1}
+
+  .gridin-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .gridin-row input{padding:13px 14px;border:2px solid var(--ink);background:#fff;font-family:"Karla",sans-serif;font-size:1rem;color:var(--ink);min-width:180px}
+  .gridin-row input:focus{outline:none;border-color:var(--oxblood)}
+
+  .verdict{display:none;margin-top:18px;padding:13px 15px;font-size:.97rem;font-weight:600;line-height:1.5}
+  .verdict.show{display:block}
+  .verdict.right{background:#E7F1EB;color:var(--green);border-left:4px solid var(--green)}
+  .verdict.wrong{background:#F7E6E9;color:var(--oxblood);border-left:4px solid var(--oxblood)}
+
+  .submit-row{display:flex;justify-content:flex-end;margin-top:20px}
+
+  /* ---------- walkthrough reveal ---------- */
+  .reveal-wrap{margin-top:24px;border-top:2px dashed var(--pencil);padding-top:22px}
+  .reveal-btn{width:100%;background:var(--oat-deep);border:2px solid var(--ink);padding:15px 18px;font-family:"Zilla Slab",serif;font-size:1.05rem;font-weight:700;color:var(--ink);cursor:pointer;text-align:center}
+  .reveal-btn:hover{background:var(--ink);color:var(--oat)}
+  .reveal-body{display:none;margin-top:20px}
+  .reveal-body.open{display:block}
+  .video-wrap{position:relative;width:100%;padding-bottom:56.25%;height:0;border:2px solid var(--ink);background:#000;margin-bottom:18px}
+  .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video-fallback{padding:20px;background:var(--oat-deep);border:2px solid var(--ink);margin-bottom:18px;font-size:.96rem}
+  .sol-label{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);margin:6px 0 7px}
+  .sol-body{font-size:.98rem;line-height:1.65;color:var(--ink-soft)}
+
+  /* ---------- navigation row ---------- */
+  .nav-row{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:26px}
+  .nav-left{display:flex;gap:12px;flex-wrap:wrap}
+
+  /* ---------- tools ---------- */
+  .tools{display:flex;flex-direction:column;gap:11px}
+  .tool-btn{width:100%;background:var(--card);border:2px solid var(--ink);padding:12px 15px;font-family:"Karla",sans-serif;font-size:.94rem;font-weight:700;color:var(--ink);cursor:pointer;text-align:left;text-decoration:none;display:block}
+  .tool-btn:hover{background:var(--ink);color:var(--oat)}
+  .tool-btn.exit{border-color:var(--oxblood);color:var(--oxblood)}
+  .tool-btn.exit:hover{background:var(--oxblood);color:#fff}
+  .tools-note{font-size:.88rem;color:var(--ink-soft);line-height:1.5;margin-top:6px;border-top:1px dashed var(--pencil);padding-top:14px}
+  .tools-note b{color:var(--ink)}
+
+  /* ---------- calculator ---------- */
+  #calcPanel{position:fixed;right:-640px;top:0;bottom:0;width:520px;background:#fff;border-left:2px solid var(--ink);z-index:2000;transition:right .25s ease;display:flex;flex-direction:column}
+  #calcPanel.open{right:0}
+  #calcGrip{position:absolute;left:0;top:0;bottom:0;width:10px;cursor:ew-resize;background:transparent;z-index:120}
+  #calcGrip:hover{background:rgba(163,43,63,.3)}
+  #calcHead{background:var(--ink);color:var(--oat);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;flex-shrink:0}
+  #calcClose{background:none;border:none;color:var(--oat);font-size:1.5rem;line-height:1;cursor:pointer;padding:0 4px}
+  #calcMount{flex:1}
+  #fsModal{display:none;position:fixed;inset:0;background:rgba(36,28,34,.72);z-index:2000;align-items:center;justify-content:center;padding:20px}
+  #fsModal.open{display:flex}
+  .fs-inner{background:#fff;border:2px solid var(--ink);padding:18px;max-width:520px;width:100%;position:relative}
+  .fs-inner img{width:100%;display:block}
+  .fs-close{position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:var(--ink)}
+
+  /* ---------- done ---------- */
+  .done-strip{background:var(--green);color:#F1F7F3}
+  .done-strip .wrap{padding:26px 34px}
+  .done-strip .n{font-family:"Zilla Slab",serif;font-size:1.5rem;font-weight:700}
+  .done-strip .l{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#CBE0D4;margin-top:6px}
+
+  .status{display:none;margin-top:20px;padding:14px 16px;font-size:.95rem;font-weight:600;line-height:1.5;max-width:620px}
+  .status.show{display:block}
+  .status.err{background:#F7E6E9;color:var(--oxblood);border-left:4px solid var(--oxblood)}
+  .status.ok{background:#E7F1EB;color:var(--green);border-left:4px solid var(--green)}
+
+  footer{background:var(--ink);color:#C9BFAE;padding:34px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:baseline}
+  footer p{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  footer a{color:var(--oat)}
+
+  .hidden{display:none}
+  .loading{padding:80px 0;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil)}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <a class="mast-name" href="/dashboard/">30dayPSATplan.com</a>
+  <div class="mast-right">
+    <span class="mast-day" id="mastDay"></span>
+    <a class="mast-btn" href="/dashboard/">Dashboard</a>
+  </div>
+</div></div>
+
+<!-- ============ loading ============ -->
+<div id="scrLoading"><div class="wrap"><p class="loading">Checking your account</p></div></div>
+
+<!-- ============ not signed in / not enrolled ============ -->
+<div id="scrBlocked" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker blood">Sign in needed</div>
+    <h1 id="blockTitle">You need to be signed in.</h1>
+    <p class="lede" id="blockLede">Head to the dashboard, enter your email address and I will send you a link that signs you straight in.</p>
+    <a class="btn btn-go" href="/dashboard/">Go to the dashboard</a>
+  </div></header>
+</div>
+
+<!-- ============ intro ============ -->
+<div id="scrIntro" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker blood" id="introKicker">Day 12</div>
+    <h1>Desmos.<span>The calculator most students never open.</span></h1>
+    <p class="lede">A short set of questions, each with a <b>video walkthrough</b> showing how the on-screen graphing calculator turns it from a slog into a few seconds. Try each one yourself first if you can, then watch. Stuck straight away? Watch first, that is fine too.</p>
+  </div></header>
+
+  <section style="padding:0 0 70px"><div class="wrap">
+    <div class="panel">
+      <div class="panel-top ink">
+        <span class="panel-title">How this day works</span>
+        <span class="panel-tag" id="introTag">Desmos</span>
+      </div>
+      <div class="panel-body">
+        <ul class="instr">
+          <li><b>No clock.</b> Work at your own pace, with pencil and paper next to you.</li>
+          <li>Try the question, then hit <b>Watch the Desmos walkthrough</b> to see it done.</li>
+          <li>Not sure where to start? Open the walkthrough first. That is what it is there for.</li>
+          <li>You can <b>leave any time</b> and come back. This day waits for you, and it only counts as done once you reach the end.</li>
+        </ul>
+        <div class="btn-row">
+          <button class="btn btn-go" id="btnBegin">Begin</button>
+          <button class="btn btn-alt hidden" id="btnResume">Resume where I left off</button>
+          <a class="btn btn-alt" href="/dashboard/">Back to dashboard</a>
+        </div>
+      </div>
+    </div>
+    <div class="status" id="introStatus"></div>
+  </div></section>
+</div>
+
+<!-- ============ fetching ============ -->
+<div id="scrFetching" class="hidden"><div class="wrap">
+  <p class="loading">Loading the walkthroughs</p>
+</div></div>
+
+<!-- ============ question ============ -->
+<div id="scrQuestion" class="hidden">
+  <div class="wrap q-head">
+    <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+    <div class="q-count">
+      <span id="qCount">Question 1 of 12</span>
+      <span id="qDiff"></span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="q-grid">
+      <div class="q-card">
+        <div class="q-text" id="qText"></div>
+
+        <div class="choices" id="qChoices"></div>
+        <div class="gridin-row hidden" id="qGridin">
+          <input type="text" id="qInput" placeholder="Type your answer" autocomplete="off" spellcheck="false">
+        </div>
+
+        <div class="submit-row">
+          <button class="btn btn-go btn-sm" id="btnCheck" disabled>Check my answer</button>
+        </div>
+
+        <div class="verdict" id="qVerdict"></div>
+
+        <div class="reveal-wrap">
+          <button class="reveal-btn" id="btnReveal">Watch the Desmos walkthrough</button>
+          <div class="reveal-body" id="revealBody">
+            <div id="videoMount"></div>
+            <div class="sol-label">Worked solution</div>
+            <div class="sol-body" id="solBody"></div>
+          </div>
+        </div>
+
+        <div class="nav-row">
+          <div class="nav-left">
+            <button class="btn btn-alt btn-sm hidden" id="btnPrev">Previous</button>
+          </div>
+          <button class="btn btn-go btn-sm" id="btnNext">Next</button>
+        </div>
+      </div>
+
+      <div class="tools">
+        <button class="tool-btn" id="btnCalc">Graphing calculator</button>
+        <button class="tool-btn" id="btnFormula">Formula sheet</button>
+        <a class="tool-btn exit" href="/dashboard/">Save and exit to dashboard</a>
+        <p class="tools-note"><b>Your place is saved.</b> Leave whenever you like and come back to this day another time.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ done ============ -->
+<div id="scrDone" class="hidden">
+  <header class="res-head" style="padding:52px 0 26px"><div class="wrap">
+    <div class="kicker good">Day complete</div>
+    <h1 id="doneTitle">That is Day 12 done.<span>The calculator is a weapon now.</span></h1>
+    <p class="lede" id="doneLede"></p>
+  </div></header>
+
+  <div class="done-strip"><div class="wrap">
+    <div class="n" id="doneN">12 walkthroughs</div>
+    <div class="l">Marked complete on your dashboard</div>
+  </div></div>
+
+  <div class="wrap">
+    <div class="btn-row">
+      <a class="btn btn-go btn-sm hidden" id="btnNextDay" href="/desmos/?day=13">On to Day 13</a>
+      <a class="btn btn-alt btn-sm" href="/dashboard/">Back to the dashboard</a>
+      <button class="btn btn-alt btn-sm" id="btnRedo">Run through it again</button>
+    </div>
+    <div class="status" id="doneStatus"></div>
+  </div>
+  <div style="padding-bottom:80px"></div>
+</div>
+
+<!-- ============ calculator ============ -->
+<div id="calcPanel">
+  <div id="calcGrip"></div>
+  <div id="calcHead">
+    <span>Graphing calculator</span>
+    <button id="calcClose" aria-label="Close calculator">&times;</button>
+  </div>
+  <div id="calcMount"></div>
+</div>
+
+<div id="fsModal">
+  <div class="fs-inner">
+    <button class="fs-close" id="fsClose" aria-label="Close">&times;</button>
+    <img src="/formula_sheet.png" alt="Formula sheet">
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <p>&copy; 2026 Dr. Brink SAT Math</p>
+  <p><a href="mailto:dasbrink@gmail.com">dasbrink@gmail.com</a></p>
+</div></footer>
+
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+  const SUPABASE_URL = 'https://jotbwtkvwkunihvwmqqj.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_finn6Vwaqa2nBqG_DD5ZLg_Wpe-qZxW';
+  const FN_GET_DESMOS = SUPABASE_URL + '/functions/v1/get-desmos';
+
+  const sb = createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: { detectSessionInUrl: true, persistSession: true, autoRefreshToken: true }
+  });
+
+  const el   = (id) => document.getElementById(id);
+  const show = (id) => el(id).classList.remove('hidden');
+  const hide = (id) => el(id).classList.add('hidden');
+
+  function screen(id){
+    ['scrLoading','scrBlocked','scrIntro','scrFetching','scrQuestion','scrDone']
+      .forEach(s => hide(s));
+    show(id);
+    window.scrollTo(0, 0);
+  }
+
+  function setStatus(id, msg, kind){
+    const s = el(id);
+    if (!msg){ s.className = 'status'; s.textContent = ''; return; }
+    s.textContent = msg;
+    s.className = 'status show ' + (kind || '');
+  }
+
+  let mathQueue = Promise.resolve();
+  function renderMath(node){
+    if (!node) return;
+    mathQueue = mathQueue.then(() => {
+      if (window.MathJax && MathJax.typesetPromise){
+        try { MathJax.typesetClear([node]); } catch(e) {}
+        return MathJax.typesetPromise([node]).catch(() => {});
+      }
+      return new Promise(r => setTimeout(r, 300));
+    });
+  }
+
+  function safeParseJSON(raw){
+    if (!raw) return null;
+    if (typeof raw !== 'string') return raw;
+    try { return JSON.parse(raw.trim()); } catch(e) { return null; }
+  }
+
+  // ── State ────────────────────────────────────────────────────────────────
+  let day = 12;
+  let questions = [];
+  let idx = 0;
+  let graphs = [];
+  let calc = null, calcOpen = false, calcW = 520;
+  const RESUME_KEY = () => 'psat_desmos_pos_' + day;
+
+  // ── Boot ─────────────────────────────────────────────────────────────────
+  const params = new URLSearchParams(window.location.search);
+  const dp = parseInt(params.get('day') || '12', 10);
+  day = (dp === 13) ? 13 : 12;
+
+  el('introKicker').textContent = 'Day ' + day;
+  el('mastDay').textContent = 'Day ' + day + ' of 30';
+  el('doneTitle').innerHTML = 'That is Day ' + day + ' done.<span>The calculator is a weapon now.</span>';
+  if (day === 13){ hide('btnNextDay'); }
+
+  function savedPos(){
+    try { return parseInt(localStorage.getItem(RESUME_KEY()) || '0', 10) || 0; } catch(e){ return 0; }
+  }
+  function savecurrentPos(){
+    try { localStorage.setItem(RESUME_KEY(), String(idx)); } catch(e){}
+  }
+  function clearPos(){
+    try { localStorage.removeItem(RESUME_KEY()); } catch(e){}
+  }
+
+  async function start(){
+    let session = null;
+    try {
+      const { data } = await sb.auth.getSession();
+      session = data?.session ?? null;
+    } catch(e) { console.error(e); }
+
+    if (!session){ screen('scrBlocked'); return; }
+
+    let enrolled = false;
+    try {
+      const { data } = await sb.from('enrollments').select('id').limit(1);
+      enrolled = !!(data && data.length);
+    } catch(e) { console.error(e); }
+
+    if (!enrolled){
+      el('blockTitle').innerHTML = 'I cannot find your enrollment.';
+      el('blockLede').textContent =
+        'You are signed in, but there is no enrollment on this address. If a parent paid using their own email, sign out and sign back in with that one.';
+      screen('scrBlocked');
+      return;
+    }
+
+    // Offer resume if a saved position exists for this day.
+    const pos = savedPos();
+    if (pos > 0){
+      el('btnResume').textContent = 'Resume at question ' + (pos + 1);
+      show('btnResume');
+    }
+    screen('scrIntro');
+  }
+
+  el('btnBegin').addEventListener('click', () => { clearPos(); loadQuestions(0); });
+  el('btnResume').addEventListener('click', () => { loadQuestions(savedPos()); });
+  el('btnRedo').addEventListener('click', () => { clearPos(); loadQuestions(0); });
+
+  // ── Load ─────────────────────────────────────────────────────────────────
+  async function loadQuestions(startAt){
+    screen('scrFetching');
+    try {
+      const { data } = await sb.auth.getSession();
+      const token = data?.session?.access_token;
+      if (!token){ screen('scrBlocked'); return; }
+
+      const res = await fetch(FN_GET_DESMOS, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+        body: JSON.stringify({ day })
+      });
+      const payload = await res.json().catch(() => ({}));
+
+      if (!res.ok){
+        screen('scrIntro');
+        setStatus('introStatus', payload.error || 'Could not load the walkthroughs. Please try again.', 'err');
+        return;
+      }
+
+      questions = payload.questions || [];
+      if (questions.length === 0){
+        screen('scrIntro');
+        setStatus('introStatus', 'No walkthroughs are available for this day yet.', 'err');
+        return;
+      }
+
+      idx = Math.min(Math.max(0, startAt || 0), questions.length - 1);
+      renderQuestion();
+      screen('scrQuestion');
+    } catch(err){
+      console.error(err);
+      screen('scrIntro');
+      setStatus('introStatus', 'Something went wrong loading the walkthroughs. Please try again.', 'err');
+    }
+  }
+
+  // ── Graphs (same handling as the practice engine) ──────────────────────────
+  function killGraphs(){
+    graphs.forEach(g => { try { if (g && g.destroy) g.destroy(); } catch(e) {} });
+    graphs = [];
+  }
+  function drawGraph(mount, q){
+    if (typeof Desmos === 'undefined'){ mount.textContent = 'The graph could not load.'; return; }
+    const expressions = safeParseJSON(q.graphExpressions) || [];
+    const bounds = safeParseJSON(q.graphWindow);
+    const points = safeParseJSON(q.graphPoints) || [];
+    const g = Desmos.GraphingCalculator(mount, {
+      expressions:false, settingsMenu:false, zoomButtons:false, expressionsTopbar:false,
+      border:false, keypad:false, lockViewport:true, images:false, folders:false,
+      notes:false, sliders:false, links:false, distributions:false,
+      xAxisNumbers: q.graphShowAxisNumbers === true,
+      yAxisNumbers: q.graphShowAxisNumbers === true,
+      showGrid: q.graphShowGrid === true,
+      xAxisLabel: q.graphXAxisLabel || 'x',
+      yAxisLabel: q.graphYAxisLabel || 'y'
+    });
+    g.updateSettings({
+      xAxisArrowMode: Desmos.AxisArrowModes.POSITIVE,
+      yAxisArrowMode: Desmos.AxisArrowModes.POSITIVE
+    });
+    expressions.forEach((e, i) => g.setExpression(Object.assign({ id:'e'+i }, e)));
+    points.forEach((p, i) => g.setExpression(Object.assign({ id:'p'+i, showLabel:true, dragMode:'NONE' }, p)));
+    if (bounds && typeof bounds.left === 'number') g.setMathBounds(bounds);
+    graphs.push(g);
+  }
+  function mountQuestion(container, q){
+    container.innerHTML = '';
+    const type = (q.graphType || '').toLowerCase();
+    if (type === 'desmos'){
+      const fig = document.createElement('div'); fig.className = 'q-figure';
+      container.appendChild(fig);
+      const body = document.createElement('div'); body.className = 'q-body';
+      body.innerHTML = q.text || ''; container.appendChild(body);
+      drawGraph(fig, q); renderMath(body); return;
+    }
+    if (q.visualSvg && q.visualSvg.trim()){
+      const fig = document.createElement('div'); fig.className = 'q-figure';
+      fig.innerHTML = q.visualSvg; container.appendChild(fig);
+      const body = document.createElement('div'); body.className = 'q-body';
+      body.innerHTML = q.text || ''; container.appendChild(body);
+      renderMath(body); return;
+    }
+    container.innerHTML = q.text || '';
+    renderMath(container);
+  }
+
+  // ── YouTube embed ──────────────────────────────────────────────────────────
+  function ytEmbed(url){
+    try {
+      const u = new URL(url);
+      let vid = '';
+      if (u.hostname.indexOf('youtu.be') >= 0) vid = u.pathname.slice(1);
+      else if (u.searchParams.get('v')) vid = u.searchParams.get('v');
+      else if (u.pathname.indexOf('/embed/') >= 0) vid = u.pathname.split('/embed/')[1];
+      else if (u.pathname.indexOf('/shorts/') >= 0) vid = u.pathname.split('/shorts/')[1];
+      vid = (vid || '').split(/[?&/]/)[0];
+      return vid ? 'https://www.youtube.com/embed/' + vid : null;
+    } catch(e){ return null; }
+  }
+
+  // ── Render one question ────────────────────────────────────────────────────
+  let picked = null;
+  let answered = false;
+
+  function renderQuestion(){
+    const q = questions[idx];
+    picked = null;
+    answered = false;
+    killGraphs();
+    savecurrentPos();
+
+    el('barFill').style.width = ((idx / questions.length) * 100) + '%';
+    el('qCount').textContent = 'Question ' + (idx + 1) + ' of ' + questions.length;
+    el('qDiff').textContent = q.difficulty ? ('Desmos \u00B7 ' + q.difficulty) : 'Desmos';
+
+    mountQuestion(el('qText'), q);
+
+    // Reset verdict + walkthrough
+    el('qVerdict').className = 'verdict';
+    el('qVerdict').textContent = '';
+    el('revealBody').classList.remove('open');
+    el('videoMount').innerHTML = '';
+    el('btnReveal').textContent = 'Watch the Desmos walkthrough';
+
+    const hasChoices = Array.isArray(q.choices) && q.choices.length >= 2;
+    const box = el('qChoices');
+    box.innerHTML = '';
+
+    if (hasChoices){
+      hide('qGridin');
+      show('qChoices');
+      const letters = ['A','B','C','D','E','F'];
+      q.choices.forEach((choice, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice';
+        btn.dataset.choice = choice;
+        btn.innerHTML =
+          '<span class="choice-l">' + letters[i] + '</span>' +
+          '<span class="choice-t">' + choice + '</span>';
+        btn.addEventListener('click', () => {
+          if (answered) return;
+          document.querySelectorAll('.choice').forEach(c => c.classList.remove('on'));
+          btn.classList.add('on');
+          picked = choice;
+          el('btnCheck').disabled = false;
+        });
+        box.appendChild(btn);
+      });
+      renderMath(box);
+    } else {
+      hide('qChoices');
+      show('qGridin');
+      const inp = el('qInput');
+      inp.value = '';
+      inp.disabled = false;
+      inp.oninput = () => { el('btnCheck').disabled = inp.value.trim() === ''; };
+    }
+
+    el('btnCheck').disabled = true;
+    el('btnCheck').textContent = 'Check my answer';
+
+    // Nav buttons
+    if (idx > 0) show('btnPrev'); else hide('btnPrev');
+    el('btnNext').textContent = (idx === questions.length - 1) ? 'Finish Day ' + day : 'Next';
+  }
+
+  function normalise(s){ return String(s || '').trim().toLowerCase().replace(/\s+/g,''); }
+
+  function markVerdict(isRight, correct){
+    answered = true;
+    const v = el('qVerdict');
+    if (isRight){
+      v.className = 'verdict show right';
+      v.textContent = 'Correct. Now watch how Desmos gets there fast.';
+    } else {
+      v.className = 'verdict show wrong';
+      v.textContent = 'Not quite. The answer is ' + correct + '. Watch the walkthrough below.';
+      renderMath(v);
+    }
+    // Auto-open the walkthrough after an attempt.
+    openReveal();
+  }
+
+  el('btnCheck').addEventListener('click', () => {
+    if (answered) return;
+    const q = questions[idx];
+    const hasChoices = Array.isArray(q.choices) && q.choices.length >= 2;
+
+    if (hasChoices){
+      if (picked === null) return;
+      const isRight = picked === q.correct;
+      // Lock the choices and colour them.
+      document.querySelectorAll('.choice').forEach(c => {
+        c.classList.add('locked');
+        if (c.dataset.choice === q.correct) c.classList.add('correct');
+        else if (c.dataset.choice === picked && !isRight) c.classList.add('wrong');
+      });
+      markVerdict(isRight, q.correct);
+    } else {
+      const inp = el('qInput');
+      const val = inp.value;
+      if (val.trim() === '') return;
+      inp.disabled = true;
+      const isRight = normalise(val) === normalise(q.correct);
+      markVerdict(isRight, q.correct);
+    }
+    el('btnCheck').disabled = true;
+    el('btnCheck').textContent = 'Answer checked';
+  });
+
+  // ── Walkthrough reveal ─────────────────────────────────────────────────────
+  function openReveal(){
+    const q = questions[idx];
+    const body = el('revealBody');
+    if (!body.classList.contains('open')){
+      // Build the video once.
+      const mount = el('videoMount');
+      if (!mount.innerHTML){
+        const embed = ytEmbed(q.video);
+        if (embed){
+          mount.innerHTML =
+            '<div class="video-wrap"><iframe src="' + embed +
+            '" title="Desmos walkthrough" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>';
+        } else if (q.video){
+          mount.innerHTML =
+            '<div class="video-fallback">Watch the walkthrough here: ' +
+            '<a href="' + q.video + '" target="_blank" rel="noopener">open the video</a>.</div>';
+        }
+      }
+      el('solBody').innerHTML = q.solution || 'No written solution is recorded for this one, the video covers it.';
+      renderMath(el('solBody'));
+      body.classList.add('open');
+    }
+    el('btnReveal').textContent = 'Hide the walkthrough';
+  }
+  function toggleReveal(){
+    const body = el('revealBody');
+    if (body.classList.contains('open')){
+      body.classList.remove('open');
+      el('btnReveal').textContent = 'Watch the Desmos walkthrough';
+    } else {
+      openReveal();
+    }
+  }
+  el('btnReveal').addEventListener('click', toggleReveal);
+
+  // ── Navigation ─────────────────────────────────────────────────────────────
+  el('btnPrev').addEventListener('click', () => {
+    if (idx > 0){ idx--; renderQuestion(); window.scrollTo(0,0); }
+  });
+  el('btnNext').addEventListener('click', () => {
+    if (idx < questions.length - 1){
+      idx++; renderQuestion(); window.scrollTo(0,0);
+    } else {
+      finishDay();
+    }
+  });
+
+  // ── Finish ─────────────────────────────────────────────────────────────────
+  async function finishDay(){
+    killGraphs();
+    clearPos();
+    el('doneN').textContent = questions.length + ' walkthroughs';
+    el('doneLede').textContent =
+      'You worked through every Desmos walkthrough for Day ' + day + '. ' +
+      (day === 12 ? 'Day 13 picks up with the rest.' : 'That is both Desmos days behind you.');
+    screen('scrDone');
+    await markDayComplete();
+  }
+
+  async function markDayComplete(){
+    try {
+      const { data } = await sb.auth.getSession();
+      const uid = data?.session?.user?.id;
+      if (!uid) return;
+      const { error } = await sb.from('day_progress').upsert({
+        user_id: uid,
+        day_number: day,
+        completed: true,
+        completed_at: new Date().toISOString()
+      }, { onConflict: 'user_id,day_number' });
+      if (error) throw error;
+      setStatus('doneStatus', 'Day ' + day + ' is marked complete on your dashboard.', 'ok');
+    } catch(e){
+      console.error('markDayComplete failed:', e);
+      setStatus('doneStatus',
+        'You are done, but Day ' + day + ' could not be marked complete just now. ' +
+        'Reload the dashboard in a minute and it should be there.', 'err');
+    }
+  }
+
+  // ── Calculator (same as the practice engine) ───────────────────────────────
+  function setCalcWidth(px){
+    const min = 320;
+    const max = Math.min(window.innerWidth - 60, window.innerWidth * 0.95);
+    calcW = Math.max(min, Math.min(max, px));
+    el('calcPanel').style.width = calcW + 'px';
+    if (calc && calc.resize) calc.resize();
+  }
+  function initCalc(){
+    if (calc) return;
+    if (typeof Desmos === 'undefined'){ alert('The calculator is still loading. Try again in a moment.'); return; }
+    calc = Desmos.GraphingCalculator(el('calcMount'), {
+      keypad:true, expressions:true, settingsMenu:true, zoomButtons:true,
+      expressionsTopbar:true, border:false, lockViewport:false, images:false,
+      folders:false, notes:false, sliders:true, links:false,
+      qwertyKeyboard:true, distributions:false
+    });
+    window.addEventListener('resize', () => { if (calcOpen) setCalcWidth(calcW); });
+  }
+  function toggleCalc(){
+    const panel = el('calcPanel');
+    if (!calcOpen){
+      initCalc(); setCalcWidth(calcW); panel.classList.add('open'); calcOpen = true;
+      setTimeout(() => { if (calc && calc.resize) calc.resize(); }, 280);
+    } else {
+      panel.classList.remove('open'); calcOpen = false;
+    }
+  }
+  (function initGrip(){
+    const grip = el('calcGrip');
+    let dragging = false;
+    const move = (e) => {
+      if (!dragging) return;
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      setCalcWidth(window.innerWidth - x);
+    };
+    const up = () => {
+      if (!dragging) return;
+      dragging = false;
+      document.body.style.userSelect = ''; document.body.style.cursor = '';
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('touchmove', move);
+      document.removeEventListener('mouseup', up);
+      document.removeEventListener('touchend', up);
+    };
+    const down = (e) => {
+      e.preventDefault(); dragging = true;
+      document.body.style.userSelect = 'none'; document.body.style.cursor = 'ew-resize';
+      document.addEventListener('mousemove', move);
+      document.addEventListener('touchmove', move, { passive:false });
+      document.addEventListener('mouseup', up);
+      document.addEventListener('touchend', up);
+    };
+    grip.addEventListener('mousedown', down);
+    grip.addEventListener('touchstart', down, { passive:false });
+  })();
+  el('btnCalc').addEventListener('click', toggleCalc);
+  el('calcClose').addEventListener('click', toggleCalc);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && calcOpen) toggleCalc(); });
+
+  el('btnFormula').addEventListener('click', () => el('fsModal').classList.add('open'));
+  el('fsClose').addEventListener('click', () => el('fsModal').classList.remove('open'));
+  el('fsModal').addEventListener('click', function(e){ if (e.target === this) this.classList.remove('open'); });
+
+  start();
+</script>
+<script src="../track.js"></script>
+</body>
+</html>

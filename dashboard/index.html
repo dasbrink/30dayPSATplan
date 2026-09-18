@@ -249,8 +249,10 @@
         <p>Day 6 names the specific mistakes behind the questions you missed, and the foundational gaps underneath them. It only works once Day 5 is done.</p>
         <h2 style="margin-top:34px">Days 7 to 11 are the content days</h2>
         <p>Five days working through the four areas the test covers, weighted the way the real test weights them. <b>Each one is untimed and you choose how many questions and at what level.</b> Questions you have already seen are left out, so nothing repeats.</p>
+        <h2 style="margin-top:34px">Days 12 and 13 are Desmos</h2>
+        <p>Two days on the graphing calculator that sits on screen for the whole math section and most students never open. Each question comes with a short video showing how Desmos turns it into a few seconds. <b>Try each one first, then watch, or open the walkthrough straight away if you are stuck.</b></p>
         <h2 style="margin-top:34px">The rest is coming</h2>
-        <p>Day 12 onward is being built and released in order. <b>You will be emailed the moment each one opens.</b> If the first email landed in spam, mark it as not spam so the rest reach you.</p>
+        <p>Day 14 onward is being built and released in order. <b>You will be emailed the moment each one opens.</b> If the first email landed in spam, mark it as not spam so the rest reach you.</p>
         <h2 style="margin-top:34px">While you wait</h2>
         <p>Ask your counselor which day your school is running the PSAT. Schools choose their own date inside the October window, so yours may differ from a friend's. Once you know it, count back thirty days and that is your start date.</p>
       </div>
@@ -305,6 +307,19 @@
           </div>
           <div class="panel-foot">
             Untimed. You choose how many questions and at what level. Nothing you have already seen comes round again.
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-top ink">
+            <span class="panel-title">Days 12 to 13</span>
+            <span class="panel-tag" id="desmosTag">Desmos days</span>
+          </div>
+          <div class="panel-body" id="desmosBody">
+            <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading</p>
+          </div>
+          <div class="panel-foot">
+            A video walkthrough for each question. Try it first, then watch how the on-screen calculator solves it.
           </div>
         </div>
       </div>
@@ -441,12 +456,13 @@
         el('enrolledLede').innerHTML =
           'Your place is secured and paid for, enrolled on <b>' +
           d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) +
-          '</b>. Days 1 to 11 are open now.';
+          '</b>. Days 1 to 13 are open now.';
       }
       show('enrolled');
       loadFoundations();
       loadDayFive();
       loadContentDays();
+      loadDesmosDays();
     } else {
       show('noEnrol');
     }
@@ -646,6 +662,51 @@
       doneDays.size === 0 ? 'The content days' :
       doneDays.size === 5 ? 'All five complete' :
       doneDays.size + ' of 5 complete';
+  }
+
+  // ---------- Days 12 to 13, the Desmos days ----------
+  // Both run off one page, /desmos/, with the day in the address.
+  const DESMOS_DAYS = [
+    { day: 12, name: 'Desmos walkthroughs', note: 'The first half' },
+    { day: 13, name: 'Desmos walkthroughs', note: 'The second half' }
+  ];
+
+  async function loadDesmosDays(){
+    const body = el('desmosBody');
+    let rows = [];
+    try {
+      const { data, error } = await sb
+        .from('day_progress')
+        .select('day_number, completed')
+        .in('day_number', [12, 13]);
+      if (error) console.error(error);
+      rows = data || [];
+    } catch (e) {
+      console.error(e);
+      body.innerHTML = '<p style="font-size:.95rem;color:var(--ink-soft);margin:0">' +
+        'These could not be loaded just now. Reload the page to try again.</p>';
+      return;
+    }
+
+    const doneDays = new Set(rows.filter(r => r.completed).map(r => r.day_number));
+
+    body.innerHTML = DESMOS_DAYS.map(c => {
+      const done = doneDays.has(c.day);
+      const href = '/desmos/?day=' + c.day;
+      return '<div class="crow' + (done ? ' done' : '') + '">' +
+        '<span class="crow-tag">Day ' + c.day + '</span>' +
+        '<div>' +
+          '<div class="crow-name">' + c.name + '</div>' +
+          '<div class="crow-sub">' + (done ? 'Complete' : c.note) + '</div>' +
+        '</div>' +
+        '<a class="crow-go" href="' + href + '">' + (done ? 'Again' : 'Open') + '</a>' +
+      '</div>';
+    }).join('');
+
+    el('desmosTag').textContent =
+      doneDays.size === 0 ? 'Desmos days' :
+      doneDays.size === 2 ? 'Both complete' :
+      doneDays.size + ' of 2 complete';
   }
 
   el('sendLinkBtn').addEventListener('click', async () => {

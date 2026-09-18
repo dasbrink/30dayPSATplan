@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/tabler-icons.min.css">
 <style>
   :root{
     --oat:#EDE6D6;
@@ -57,82 +58,43 @@
 
   h2{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.45rem;line-height:1.18;letter-spacing:-.015em;margin-bottom:16px}
 
-  /* ---------- two column ---------- */
-  .cols{padding-bottom:66px}
-  .cols-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
-  @media(max-width:900px){.cols-grid{grid-template-columns:1fr;gap:34px}}
-  .prose p{margin-bottom:15px;color:var(--ink-soft);font-size:1rem}
-  .prose p:last-child{margin-bottom:0}
-  .prose b{color:var(--ink);font-weight:700}
+  /* ---------- journey: next-step hero ---------- */
+  .jhero{padding:44px 0 8px}
+  .jhead{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap}
+  .jbig{font-family:"Zilla Slab",serif;font-weight:700;font-size:clamp(1.7rem,4vw,2.3rem);line-height:1;letter-spacing:-.02em}
+  .jsub{color:var(--ink-soft);margin-top:8px;font-size:.98rem}
+  .jbar{background:var(--oat-deep);border:2px solid var(--ink);height:14px;margin-top:20px}
+  .jbar-fill{background:var(--oxblood);height:100%;width:0;transition:width .3s ease}
+  .jcont{display:inline-block;font-family:"Zilla Slab",serif;font-weight:700;font-size:1.05rem;background:var(--oxblood);color:#fff;border:2px solid var(--ink);box-shadow:5px 5px 0 rgba(36,28,34,.3);padding:13px 26px;text-decoration:none;white-space:nowrap;transition:transform .12s ease,box-shadow .12s ease}
+  .jcont:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 rgba(36,28,34,.3)}
+  @media(prefers-reduced-motion:reduce){.jcont{transition:none}.jcont:hover{transform:none}}
 
-  /* On a wide screen the panels rise beside the headline rather than
-     starting level with the first subheading, which left a large empty
-     block in the top right. The headline is held to the left column so
-     it cannot run underneath them. On narrow screens they stack. */
-  @media(min-width:901px){
-    .cols{padding-top:0}
-    .side{margin-top:-150px}
-    .head h1{max-width:540px}
-    .head .lede{max-width:540px}
-  }
-
-  /* ---------- panel ---------- */
-  .panel{background:var(--card);border:2px solid var(--ink);box-shadow:9px 9px 0 var(--ink)}
-  .panel + .panel{margin-top:34px}
-  .panel-top{padding:14px 24px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-  .panel-top.green{background:var(--green);color:#F1F7F3}
-  .panel-top.ink{background:var(--ink);color:var(--oat)}
-  .panel-top.blood{background:var(--oxblood);color:#FBF3E9}
-  .panel-title{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.2rem;letter-spacing:-.01em}
-  .panel-tag{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase}
-  .panel-top.green .panel-tag{color:#CBE0D4}
-  .panel-top.ink .panel-tag{color:#C9BFAE}
-  .panel-top.blood .panel-tag{color:#F0D5D9}
-  .panel-body{padding:22px 24px 24px}
-  .panel-foot{background:var(--oat-deep);border-top:2px solid var(--ink);padding:14px 24px;font-size:.88rem;color:var(--ink-soft);line-height:1.5}
-
-  /* ---------- day 5 panel ---------- */
-  .t-line{font-size:.96rem;color:var(--ink-soft);line-height:1.55;margin-bottom:14px}
-  .t-line:last-child{margin-bottom:0}
-  .t-line b{color:var(--ink);font-weight:700}
-  .t-facts div{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed var(--pencil);font-size:.94rem;color:var(--ink-soft)}
-  .t-facts div:last-child{border-bottom:none}
-  .t-facts b{color:var(--ink)}
-  .t-score{font-family:"Zilla Slab",serif;font-size:2.6rem;font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--ink)}
-  .t-score-l{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);margin-top:8px;margin-bottom:16px}
-
-  /* ---------- content day rows ---------- */
-  .crow{display:grid;grid-template-columns:66px 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--pencil)}
-  .crow:last-child{border-bottom:none}
-  @media(max-width:480px){.crow{grid-template-columns:60px 1fr;gap:10px}.crow .crow-go{grid-column:2;justify-self:start;margin-top:6px}}
-  .crow-tag{font-family:"Space Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.05em;color:#fff;background:var(--ink);padding:4px 8px;text-align:center}
-  .crow.done .crow-tag{background:var(--green)}
-  .crow-name{font-size:.95rem;line-height:1.35;color:var(--ink);font-weight:700}
-  .crow-sub{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--pencil);margin-top:4px}
-  .crow-go{font-family:"Karla",sans-serif;font-size:.86rem;font-weight:700;text-decoration:none;color:var(--ink);border:2px solid var(--ink);background:var(--card);padding:7px 14px;white-space:nowrap}
-  .crow-go:hover{background:var(--ink);color:var(--oat)}
-  .crow.done .crow-go{border-color:var(--green);color:var(--green)}
-  .crow.done .crow-go:hover{background:var(--green);color:#fff}
-
-  /* ---------- stat strip ---------- */
-  .strip{background:var(--ink);color:var(--oat)}
-  .strip-in{display:grid;grid-template-columns:repeat(4,1fr)}
-  @media(max-width:760px){.strip-in{grid-template-columns:repeat(2,1fr)}}
-  .stat{padding:26px 24px;border-right:1px solid #3D3239}
-  .stat:last-child{border-right:none}
-  .stat-n{font-family:"Zilla Slab",serif;font-size:1.85rem;font-weight:700;line-height:1;letter-spacing:-.02em}
-  .stat-l{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#C9BFAE;margin-top:9px}
-
-  /* ---------- what the days hold ---------- */
-  .days{padding:70px 0 40px}
-  .day-grid{margin-top:34px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  @media(max-width:820px){.day-grid{grid-template-columns:1fr}}
-  .day{background:var(--card);border:2px solid var(--ink);padding:22px 24px;display:grid;grid-template-columns:104px 1fr;gap:20px;align-items:start}
-  @media(max-width:640px){.day{grid-template-columns:1fr;gap:9px}}
-  .day-tag{font-family:"Space Mono",monospace;font-size:11.5px;font-weight:700;letter-spacing:.06em;color:#fff;background:var(--ink);padding:5px 10px;display:inline-block;white-space:nowrap}
-  .day.first .day-tag{background:var(--oxblood)}
-  .day h3{font-family:"Zilla Slab",serif;font-size:1.1rem;font-weight:600;margin-bottom:5px}
-  .day p{font-size:.94rem;color:var(--ink-soft);line-height:1.5}
+  /* ---------- journey: phase bands ---------- */
+  .phases{display:flex;flex-direction:column;gap:14px}
+  .phase{background:var(--card);border:2px solid var(--ink)}
+  .phase.here{border:3px solid var(--oxblood);box-shadow:6px 6px 0 rgba(163,43,63,.22)}
+  .phase.coming{background:var(--oat-deep);border:2px solid var(--pencil)}
+  .ph-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 18px;border-bottom:2px solid var(--ink);flex-wrap:wrap}
+  .phase.here .ph-head{border-bottom-color:var(--oxblood)}
+  .phase.coming .ph-head{border-bottom:2px dashed var(--pencil)}
+  .ph-name{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.1rem}
+  .phase.coming .ph-name{color:var(--ink-soft)}
+  .ph-range{font-family:"Space Mono",monospace;font-size:11px;color:var(--pencil);margin-left:10px}
+  .ph-pill{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.08em}
+  .ph-pill.done{color:#fff;background:var(--green);padding:4px 10px}
+  .ph-pill.here{color:#fff;background:var(--oxblood);padding:4px 10px}
+  .ph-pill.open{color:var(--ink-soft);background:var(--oat-deep);border:1px solid var(--pencil);padding:4px 10px}
+  .ph-pill.coming{color:var(--pencil);background:var(--oat);border:1px solid var(--pencil);padding:4px 10px}
+  .tiles{display:flex;flex-wrap:wrap;gap:9px;padding:16px 18px;align-items:center}
+  .tile{border:2px solid var(--ink);background:var(--oat);padding:8px 13px;font-family:"Space Mono",monospace;font-size:12px;font-weight:700;color:var(--ink);text-decoration:none}
+  a.tile:hover{background:var(--ink);color:var(--oat)}
+  .tile.done{border-color:var(--green);color:var(--green);background:#EAF3ED}
+  a.tile.done:hover{background:var(--green);color:#fff}
+  .tile.next{border-color:var(--oxblood);color:#fff;background:var(--oxblood)}
+  a.tile.next:hover{background:#B93248;color:#fff}
+  .tile.locked{border:2px dashed var(--pencil);color:var(--pencil);font-weight:400}
+  .tile-open{margin-left:auto;font-family:"Karla",sans-serif;font-size:.85rem;font-weight:700;background:var(--oxblood);color:#fff;border:2px solid var(--ink);padding:8px 16px;text-decoration:none}
+  a.tile-open:hover{background:#B93248}
 
   /* ---------- sign in form ---------- */
   .signin{padding:58px 0 80px}
@@ -141,6 +103,9 @@
   .signin .lede{margin-bottom:8px}
   .note-top{margin-top:52px}
   @media(max-width:860px){.note-top{margin-top:0}}
+  .prose p{margin-bottom:15px;color:var(--ink-soft);font-size:1rem}
+  .prose p:last-child{margin-bottom:0}
+  .prose b{color:var(--ink);font-weight:700}
   label{display:block;font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);margin-bottom:6px;margin-top:16px}
   input[type=email]{width:100%;padding:13px 14px;border:2px solid var(--ink);background:#fff;font-family:"Karla",sans-serif;font-size:1rem;color:var(--ink)}
   input[type=email]:focus{outline:none;border-color:var(--oxblood)}
@@ -160,17 +125,6 @@
   .btn-go{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
   .btn:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px}
   @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover,.btn:active{transform:none}}
-
-  /* ---------- foundations progress rows ---------- */
-  .frow{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--pencil)}
-  .frow:last-child{border-bottom:none}
-  .frow-tag{font-family:"Space Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.05em;color:#fff;background:var(--ink);padding:4px 8px;text-align:center}
-  .frow.done .frow-tag{background:var(--green)}
-  .frow-name{font-size:.94rem;line-height:1.35;color:var(--ink);font-weight:700;margin-bottom:6px}
-  .fbar{background:var(--oat-deep);border:1px solid var(--ink);height:10px}
-  .fbar-fill{background:var(--green);height:100%;width:0}
-  .frow-count{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--pencil);margin-top:5px}
-  .btn-found{margin-top:0;padding:12px 24px;font-size:1rem;box-shadow:4px 4px 0 rgba(36,28,34,.3)}
 
   .status{display:none;margin-top:18px;padding:13px 15px;font-size:.94rem;font-weight:600;line-height:1.5}
   .status.show{display:block}
@@ -231,139 +185,25 @@
 
 <!-- ============ signed in, enrolled ============ -->
 <div id="enrolled" class="hidden">
-  <header class="head"><div class="wrap">
-    <div class="kicker good">Enrollment confirmed</div>
-    <h1>You are in.<span>Here is what happens next.</span></h1>
-    <p class="lede" id="enrolledLede">Your place is secured and paid for. Nothing is expected of you yet.</p>
-  </div></header>
-
-  <section class="cols"><div class="wrap">
-    <div class="cols-grid">
-      <div class="prose">
-        <h2>Start with Foundations</h2>
-        <p>Days 1 to 4 are open now. They rebuild the basics that most lost points actually sit on, before anything gets measured. Work them in order.</p>
-        <p>Your progress saves to your account as you go, so you can stop halfway and pick it up on any device.</p>
-        <h2 style="margin-top:34px">Then Day 5, the first test</h2>
-        <p>Day 5 is your first full timed test, and it is open. Sit it once Foundations is behind you, because it sets the baseline everything after it is measured against. <b>Give it about ninety minutes and do not stop halfway.</b> The test cannot be paused or resumed, the same as the real thing.</p>
-        <h2 style="margin-top:34px">Day 6 reads your test back to you</h2>
-        <p>Day 6 names the specific mistakes behind the questions you missed, and the foundational gaps underneath them. It only works once Day 5 is done.</p>
-        <h2 style="margin-top:34px">Days 7 to 11 are the content days</h2>
-        <p>Five days working through the four areas the test covers, weighted the way the real test weights them. <b>Each one is untimed and you choose how many questions and at what level.</b> Questions you have already seen are left out, so nothing repeats.</p>
-        <h2 style="margin-top:34px">Days 12 and 13 are Desmos</h2>
-        <p>Two days on the graphing calculator that sits on screen for the whole math section and most students never open. Each question comes with a short video showing how Desmos turns it into a few seconds. <b>Try each one first, then watch, or open the walkthrough straight away if you are stuck.</b></p>
-        <h2 style="margin-top:34px">The rest is coming</h2>
-        <p>Day 14 onward is being built and released in order. <b>You will be emailed the moment each one opens.</b> If the first email landed in spam, mark it as not spam so the rest reach you.</p>
-        <h2 style="margin-top:34px">While you wait</h2>
-        <p>Ask your counselor which day your school is running the PSAT. Schools choose their own date inside the October window, so yours may differ from a friend's. Once you know it, count back thirty days and that is your start date.</p>
+  <section class="jhero"><div class="wrap">
+    <div class="kicker" style="color:var(--oxblood);margin-bottom:14px">Your 30-day plan</div>
+    <div class="jhead">
+      <div>
+        <div class="jbig" id="jBig">Loading your plan</div>
+        <div class="jsub" id="jSub"></div>
       </div>
+      <a class="jcont" id="jCont" href="#" style="display:none">Continue</a>
+    </div>
+    <div class="jbar"><div class="jbar-fill" id="jbarFill"></div></div>
+  </div></section>
 
-      <div class="side">
-        <div class="panel">
-          <div class="panel-top ink">
-            <span class="panel-title">Foundations</span>
-            <span class="panel-tag" id="foundTag">Days 1 to 4</span>
-          </div>
-          <div class="panel-body" id="foundBody">
-            <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading your progress</p>
-          </div>
-          <div class="panel-foot">
-            <a class="btn btn-found" href="/foundations/" id="foundBtn">Open Foundations</a>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-top blood">
-            <span class="panel-title">Day 5, your first test</span>
-            <span class="panel-tag" id="testTag">Not sat yet</span>
-          </div>
-          <div class="panel-body" id="testBody">
-            <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading</p>
-          </div>
-          <div class="panel-foot">
-            <a class="btn btn-found btn-go" href="/test/?test=1" id="testBtn">Open the test</a>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-top ink">
-            <span class="panel-title">Day 6, your diagnosis</span>
-            <span class="panel-tag" id="day6Tag">Needs Day 5</span>
-          </div>
-          <div class="panel-body" id="day6Body">
-            <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading</p>
-          </div>
-          <div class="panel-foot">
-            <a class="btn btn-found" href="/day6/" id="day6Btn">Open Day 6</a>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-top ink">
-            <span class="panel-title">Days 7 to 11</span>
-            <span class="panel-tag" id="contentTag">The content days</span>
-          </div>
-          <div class="panel-body" id="contentBody">
-            <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading</p>
-          </div>
-          <div class="panel-foot">
-            Untimed. You choose how many questions and at what level. Nothing you have already seen comes round again.
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-top ink">
-            <span class="panel-title">Days 12 to 13</span>
-            <span class="panel-tag" id="desmosTag">Desmos days</span>
-          </div>
-          <div class="panel-body" id="desmosBody">
-            <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);margin:0">Loading</p>
-          </div>
-          <div class="panel-foot">
-            A video walkthrough for each question. Try it first, then watch how the on-screen calculator solves it.
-          </div>
-        </div>
-      </div>
+  <section style="padding:10px 0 0"><div class="wrap">
+    <div class="phases" id="planPhases">
+      <p class="loading" style="padding:30px 0">Loading your progress</p>
     </div>
   </div></section>
 
-  <div class="strip"><div class="wrap"><div class="strip-in">
-    <div class="stat"><div class="stat-n">30</div><div class="stat-l">Days planned</div></div>
-    <div class="stat"><div class="stat-n">7</div><div class="stat-l">Timed tests</div></div>
-    <div class="stat"><div class="stat-n">24</div><div class="stat-l">Desmos walkthroughs</div></div>
-    <div class="stat"><div class="stat-n">160&ndash;760</div><div class="stat-l">Math scale</div></div>
-  </div></div></div>
-
-  <section class="days"><div class="wrap">
-    <h2 style="font-size:clamp(1.6rem,3.2vw,2.2rem);max-width:24ch">What the thirty days hold</h2>
-    <div class="day-grid">
-      <div class="day first">
-        <div><span class="day-tag">Days 1&ndash;4</span></div>
-        <div><h3>Foundations</h3><p>Fractions, ratios, percentages, linear equations, exponents. Four days rebuilding the floor before anything is measured.</p></div>
-      </div>
-      <div class="day">
-        <div><span class="day-tag">Days 5&ndash;6</span></div>
-        <div><h3>First diagnostic</h3><p>Forty-four questions in two timed modules, then a review naming every error and the skill underneath it.</p></div>
-      </div>
-      <div class="day">
-        <div><span class="day-tag">Days 7&ndash;11</span></div>
-        <div><h3>The four content areas</h3><p>Algebra, Advanced Math, Data Analysis, Geometry and Trigonometry, weighted the way the real test weights them.</p></div>
-      </div>
-      <div class="day">
-        <div><span class="day-tag">Days 12&ndash;13</span></div>
-        <div><h3>Desmos</h3><p>Twenty-four walkthroughs on which questions the on-screen calculator collapses into seconds, and which it slows down.</p></div>
-      </div>
-      <div class="day">
-        <div><span class="day-tag">Days 14&ndash;22</span></div>
-        <div><h3>Second diagnostic, then your own gaps</h3><p>A fresh test with questions you have not seen, then days aimed at whatever your results say is weakest.</p></div>
-      </div>
-      <div class="day">
-        <div><span class="day-tag">Days 23&ndash;30</span></div>
-        <div><h3>Third diagnostic, then four full tests</h3><p>The gap list should be visibly shorter. The last stretch is one timed test a day, then honest advice about the final night.</p></div>
-      </div>
-    </div>
-  </div></section>
-
-  <section style="padding:0 0 70px"><div class="wrap">
+  <section style="padding:44px 0 70px"><div class="wrap">
     <div class="note">
       <h3>Questions, or something not working?</h3>
       <p>Write to <a href="mailto:dasbrink@gmail.com">dasbrink@gmail.com</a> and I will answer personally, usually the same day.</p>
@@ -451,89 +291,80 @@
     }catch(e){ console.error(e); }
 
     if (row){
-      if (row.enrolled_at){
-        const d = new Date(row.enrolled_at);
-        el('enrolledLede').innerHTML =
-          'Your place is secured and paid for, enrolled on <b>' +
-          d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) +
-          '</b>. Days 1 to 13 are open now.';
-      }
       show('enrolled');
-      loadFoundations();
-      loadDayFive();
-      loadContentDays();
-      loadDesmosDays();
+      loadPlan();
     } else {
       show('noEnrol');
     }
   }
 
-  // ---------- Foundations progress ----------
-  // These counts must match foundations/data.js. If a day gains or loses
-  // a concept there, change the number here too, otherwise the bar lies.
-  const FOUNDATION_DAYS = [
-    { day: 1, name: 'Number Sense and Algebra Foundations', total: 58 },
-    { day: 2, name: 'Linear Algebra, Exponents, and Radicals', total: 67 },
-    { day: 3, name: 'Quadratics, Nonlinear Algebra, and Functions', total: 84 },
-    { day: 4, name: 'Geometry and Statistics', total: 70 }
+  // ========================================================================
+  //  THE PLAN VIEW
+  //  The layout is a journey grouped into phases. Everything below only
+  //  READS progress and paints it. It writes nothing.
+  // ========================================================================
+
+  // Foundations concept counts. Must match foundations/data.js. If a day
+  // there gains or loses a concept, change the number here too.
+  const FOUNDATION_TOTALS = { 1: 58, 2: 67, 3: 84, 4: 70 };
+
+  const BUILT_MAX = 13; // highest day that exists so far
+
+  // Where each built day opens.
+  const DAY_HREF = {
+    1:  '/foundations/?day=1',
+    2:  '/foundations/?day=2',
+    3:  '/foundations/?day=3',
+    4:  '/foundations/?day=4',
+    5:  '/test/?test=1',
+    6:  '/day6/',
+    7:  '/practice/?domain=algebra&day=7',
+    8:  '/practice/?domain=algebra&day=8',
+    9:  '/practice/?domain=advanced-math&day=9',
+    10: '/practice/?domain=advanced-math&day=10',
+    11: '/practice/?domain=data-analysis&day=11',
+    12: '/desmos/?day=12',
+    13: '/desmos/?day=13'
+  };
+
+  function tileLabel(n){
+    if (n === 5) return 'Day 5 \u00B7 Test';
+    if (n === 6) return 'Day 6 \u00B7 Diagnosis';
+    return 'Day ' + n;
+  }
+
+  const PHASES = [
+    { name: 'Foundations',                      range: 'Days 1\u20134',  days: [1,2,3,4] },
+    { name: 'First diagnostic',                 range: 'Days 5\u20136',  days: [5,6] },
+    { name: 'The content areas',                range: 'Days 7\u201311', days: [7,8,9,10,11] },
+    { name: 'Desmos',                           range: 'Days 12\u201313',days: [12,13] },
+    { name: 'Second diagnostic and your gaps',  range: 'Days 14\u201322',days: [14,15,16,17,18,19,20,21,22], coming: true },
+    { name: 'Final stretch',                    range: 'Days 23\u201330',days: [23,24,25,26,27,28,29,30],     coming: true }
   ];
 
-  async function loadFoundations(){
-    const body = el('foundBody');
-    let rows = [];
+  async function loadPlan(){
+    // Progress for every built day, in one read.
+    let prog = [];
     try {
       const { data, error } = await sb
         .from('day_progress')
-        .select('day_number, detail')
-        .in('day_number', [1, 2, 3, 4]);
+        .select('day_number, completed, detail')
+        .in('day_number', [1,2,3,4,5,6,7,8,9,10,11,12,13]);
       if (error) console.error(error);
-      rows = data || [];
+      prog = data || [];
     } catch (e) {
       console.error(e);
-      body.innerHTML = '<p style="font-size:.95rem;color:var(--ink-soft);margin:0">' +
-        'Your progress could not be loaded just now. It is safe. Reload the page to try again.</p>';
+      el('planPhases').innerHTML =
+        '<p style="font-size:.97rem;color:var(--ink-soft)">Your progress could not be loaded just now. ' +
+        'It is safe. Reload the page to try again.</p>';
       return;
     }
 
-    const doneByDay = {};
-    rows.forEach(r => {
-      const d = (r.detail && typeof r.detail === 'object') ? r.detail : {};
-      doneByDay[r.day_number] = Object.keys(d).length;
-    });
+    const byDay = {};
+    prog.forEach(r => { byDay[r.day_number] = r; });
 
-    let anyStarted = false;
-    let daysFinished = 0;
-
-    const html = FOUNDATION_DAYS.map(f => {
-      const done = Math.min(doneByDay[f.day] || 0, f.total);
-      const pct  = f.total ? Math.round((done / f.total) * 100) : 0;
-      const finished = done >= f.total && f.total > 0;
-      if (done > 0) anyStarted = true;
-      if (finished) daysFinished++;
-      return '<div class="frow' + (finished ? ' done' : '') + '">' +
-        '<span class="frow-tag">Day ' + f.day + '</span>' +
-        '<div>' +
-          '<div class="frow-name">' + f.name + '</div>' +
-          '<div class="fbar"><div class="fbar-fill" style="width:' + pct + '%"></div></div>' +
-          '<div class="frow-count">' + done + ' of ' + f.total + ' done</div>' +
-        '</div>' +
-      '</div>';
-    }).join('');
-
-    body.innerHTML = html;
-
-    el('foundTag').textContent =
-      daysFinished === 4 ? 'All four complete' : daysFinished + ' of 4 complete';
-
-    el('foundBtn').textContent =
-      daysFinished === 4 ? 'Review Foundations' :
-      anyStarted ? 'Continue Foundations' : 'Start Foundations';
-  }
-
-  // ---------- Day 5, the first timed test ----------
-  async function loadDayFive(){
-    const body = el('testBody');
-    let row = null;
+    // Day 5 completion comes from an actual test result, not day_progress.
+    let testRow = null;
     try {
       const { data, error } = await sb
         .from('test_results')
@@ -542,171 +373,107 @@
         .order('created_at', { ascending: false })
         .limit(1);
       if (error) console.error(error);
-      row = data && data.length ? data[0] : null;
-    } catch (e) {
-      console.error(e);
-      body.innerHTML = '<p class="t-line">Your test record could not be read just now. ' +
-        'Nothing is lost. Reload the page to try again.</p>';
-      return;
+      testRow = data && data.length ? data[0] : null;
+    } catch (e) { console.error(e); }
+
+    const testDone = !!testRow;
+    const snap = testRow ? (testRow.snapshot || {}) : {};
+    const score = testRow ? (snap.score != null ? snap.score : testRow.score) : null;
+
+    function dayDone(n){
+      if (n >= 1 && n <= 4){
+        const r = byDay[n];
+        const d = (r && r.detail && typeof r.detail === 'object') ? r.detail : {};
+        return Object.keys(d).length >= FOUNDATION_TOTALS[n];
+      }
+      if (n === 5) return testDone;
+      const r = byDay[n];
+      return !!(r && r.completed);
+    }
+    function dayAvailable(n){
+      if (n > BUILT_MAX) return false;
+      if (n === 6) return testDone; // Day 6 reads the Day 5 test
+      return true;
     }
 
-    if (!row){
-      el('testTag').textContent = 'Not sat yet';
-      body.innerHTML =
-        '<div class="t-facts">' +
-          '<div><span>Questions</span><b>44, in two modules of 22</b></div>' +
-          '<div><span>Time per module</span><b>35 minutes</b></div>' +
-          '<div><span>Break</span><b>As long as you want</b></div>' +
-          '<div><span>Calculator</span><b>On screen throughout</b></div>' +
-        '</div>' +
-        '<p class="t-line" style="margin-top:16px">Set aside about ninety minutes. ' +
-        'The test cannot be paused, so closing the tab partway loses that module.</p>';
-      el('testBtn').textContent = 'Open the test';
-      setDaySix(false);
-      return;
+    // The next step is the lowest built, available, not-done day.
+    let next = null;
+    for (let n = 1; n <= BUILT_MAX; n++){
+      if (dayAvailable(n) && !dayDone(n)){ next = n; break; }
     }
 
-    const snap = row.snapshot || {};
-    const score = snap.score != null ? snap.score : row.score;
-    const when = new Date(row.created_at)
-      .toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+    let doneCount = 0;
+    for (let n = 1; n <= BUILT_MAX; n++){ if (dayDone(n)) doneCount++; }
 
-    el('testTag').textContent = 'Complete';
-    body.innerHTML =
-      '<div class="t-score">' + (score == null ? 'n/a' : score) + '</div>' +
-      '<div class="t-score-l">Estimated PSAT score, 160 to 760</div>' +
-      '<div class="t-facts">' +
-        '<div><span>Sat on</span><b>' + when + '</b></div>' +
-        (snap.totalCorrect != null && snap.total != null
-          ? '<div><span>Correct</span><b>' + snap.totalCorrect + ' of ' + snap.total + '</b></div>'
-          : '') +
-        (Array.isArray(snap.missed)
-          ? '<div><span>To review</span><b>' + snap.missed.length + '</b></div>'
-          : '') +
-      '</div>' +
-      '<p class="t-line" style="margin-top:16px">Tests are not retaken. This one is a fixed ' +
-      'checkpoint, so sitting it again would measure your memory of it rather than your progress.</p>';
-    el('testBtn').textContent = 'See my results again';
-    setDaySix(true);
+    renderHero(next, doneCount, score);
+    renderPhases({ dayDone, dayAvailable, next });
   }
 
-  // ---------- Day 6, the diagnosis ----------
-  function setDaySix(testDone){
-    const body = el('day6Body');
-    if (testDone){
-      el('day6Tag').textContent = 'Ready';
-      body.innerHTML =
-        '<p class="t-line">Day 6 reads your Day 5 test back to you: <b>the five mistakes you ' +
-        'keep making</b>, and <b>the five foundational gaps underneath them</b>, each with a ' +
-        'worked example and practice at three levels.</p>' +
-        '<p class="t-line">Give it about forty minutes and do not skim it. This is the day the ' +
-        'rest of the plan is built on.</p>';
-      el('day6Btn').textContent = 'Open Day 6';
-      el('day6Btn').style.pointerEvents = '';
-      el('day6Btn').style.opacity = '';
+  function renderHero(next, doneCount, score){
+    el('jbarFill').style.width = Math.round((doneCount / 30) * 100) + '%';
+
+    const cont = el('jCont');
+    if (next){
+      el('jBig').textContent = 'You are on Day ' + next;
+      cont.textContent = 'Continue with Day ' + next;
+      cont.href = DAY_HREF[next];
+      cont.style.display = '';
     } else {
-      el('day6Tag').textContent = 'Needs Day 5';
-      body.innerHTML =
-        '<p class="t-line">Day 6 works from your Day 5 results, so there is nothing for it to ' +
-        'read yet. Sit the test first and this opens on its own.</p>';
-      el('day6Btn').textContent = 'Sit Day 5 first';
-      el('day6Btn').style.pointerEvents = 'none';
-      el('day6Btn').style.opacity = '0.5';
+      el('jBig').textContent = 'You are all caught up';
+      cont.style.display = 'none';
     }
+
+    let sub = doneCount + ' of 30 days done';
+    if (!next) sub += '. The next day opens the moment it is built.';
+    if (score != null) sub += '  \u00B7  Day 5 estimate ' + score;
+    el('jSub').textContent = sub;
   }
 
-  // ---------- Days 7 to 11, the content days ----------
-  // All five run off one page, /practice/, with the domain in the address.
-  // Adding a content day later means adding a row here, nothing else.
-  const CONTENT_DAYS = [
-    { day: 7,  domain: 'algebra',       name: 'Algebra',                    note: 'Linear equations and systems' },
-    { day: 8,  domain: 'algebra',       name: 'Algebra again',              note: 'The same ground, harder' },
-    { day: 9,  domain: 'advanced-math', name: 'Advanced Math',              note: 'Quadratics and functions' },
-    { day: 10, domain: 'advanced-math', name: 'Advanced Math again',        note: 'Nonlinear and exponents' },
-    { day: 11, domain: 'data-analysis', name: 'Data Analysis',              note: 'Rates, ratios, and graphs' }
-  ];
+  function renderPhases(ctx){
+    el('planPhases').innerHTML = PHASES.map(ph => {
+      const builtDays = ph.days.filter(n => n <= BUILT_MAX);
+      const doneInPhase = builtDays.filter(n => ctx.dayDone(n)).length;
+      const allDone = builtDays.length > 0 && doneInPhase === builtDays.length;
+      const isHere = ctx.next != null && ph.days.indexOf(ctx.next) !== -1;
 
-  async function loadContentDays(){
-    const body = el('contentBody');
-    let rows = [];
-    try {
-      const { data, error } = await sb
-        .from('day_progress')
-        .select('day_number, completed')
-        .in('day_number', [7, 8, 9, 10, 11]);
-      if (error) console.error(error);
-      rows = data || [];
-    } catch (e) {
-      console.error(e);
-      body.innerHTML = '<p style="font-size:.95rem;color:var(--ink-soft);margin:0">' +
-        'These could not be loaded just now. Reload the page to try again.</p>';
-      return;
-    }
+      let pill;
+      if (ph.coming){
+        pill = '<span class="ph-pill coming"><i class="ti ti-lock" aria-hidden="true"></i> opens as built</span>';
+      } else if (allDone){
+        pill = '<span class="ph-pill done"><i class="ti ti-check" aria-hidden="true"></i> complete</span>';
+      } else if (isHere){
+        pill = '<span class="ph-pill here">you are here</span>';
+      } else {
+        pill = '<span class="ph-pill open">' + doneInPhase + ' of ' + builtDays.length + ' done</span>';
+      }
 
-    const doneDays = new Set(rows.filter(r => r.completed).map(r => r.day_number));
+      let tiles;
+      if (ph.coming){
+        tiles = '<div class="tiles"><div class="tile locked">' + ph.range + '</div></div>';
+      } else {
+        tiles = '<div class="tiles">' + ph.days.map(n => {
+          if (!ctx.dayAvailable(n)){
+            return '<div class="tile locked">Day ' + n + ' \u00B7 needs Day 5</div>';
+          }
+          const done = ctx.dayDone(n);
+          const isNext = n === ctx.next;
+          const cls = 'tile' + (done ? ' done' : '') + (isNext ? ' next' : '');
+          const check = done ? ' <i class="ti ti-check" aria-hidden="true"></i>' : '';
+          return '<a class="' + cls + '" href="' + DAY_HREF[n] + '">' + tileLabel(n) + check + '</a>';
+        }).join('') +
+        (isHere ? '<a class="tile-open" href="' + DAY_HREF[ctx.next] + '">Open Day ' + ctx.next + '</a>' : '') +
+        '</div>';
+      }
 
-    body.innerHTML = CONTENT_DAYS.map(c => {
-      const done = doneDays.has(c.day);
-      const href = '/practice/?domain=' + c.domain + '&day=' + c.day;
-      return '<div class="crow' + (done ? ' done' : '') + '">' +
-        '<span class="crow-tag">Day ' + c.day + '</span>' +
-        '<div>' +
-          '<div class="crow-name">' + c.name + '</div>' +
-          '<div class="crow-sub">' + (done ? 'Complete' : c.note) + '</div>' +
+      const cls = 'phase' + (ph.coming ? ' coming' : (isHere ? ' here' : ''));
+      return '<div class="' + cls + '">' +
+        '<div class="ph-head">' +
+          '<div><span class="ph-name">' + ph.name + '</span><span class="ph-range">' + ph.range + '</span></div>' +
+          pill +
         '</div>' +
-        '<a class="crow-go" href="' + href + '">' + (done ? 'Again' : 'Open') + '</a>' +
+        tiles +
       '</div>';
     }).join('');
-
-    el('contentTag').textContent =
-      doneDays.size === 0 ? 'The content days' :
-      doneDays.size === 5 ? 'All five complete' :
-      doneDays.size + ' of 5 complete';
-  }
-
-  // ---------- Days 12 to 13, the Desmos days ----------
-  // Both run off one page, /desmos/, with the day in the address.
-  const DESMOS_DAYS = [
-    { day: 12, name: 'Desmos walkthroughs', note: 'The first half' },
-    { day: 13, name: 'Desmos walkthroughs', note: 'The second half' }
-  ];
-
-  async function loadDesmosDays(){
-    const body = el('desmosBody');
-    let rows = [];
-    try {
-      const { data, error } = await sb
-        .from('day_progress')
-        .select('day_number, completed')
-        .in('day_number', [12, 13]);
-      if (error) console.error(error);
-      rows = data || [];
-    } catch (e) {
-      console.error(e);
-      body.innerHTML = '<p style="font-size:.95rem;color:var(--ink-soft);margin:0">' +
-        'These could not be loaded just now. Reload the page to try again.</p>';
-      return;
-    }
-
-    const doneDays = new Set(rows.filter(r => r.completed).map(r => r.day_number));
-
-    body.innerHTML = DESMOS_DAYS.map(c => {
-      const done = doneDays.has(c.day);
-      const href = '/desmos/?day=' + c.day;
-      return '<div class="crow' + (done ? ' done' : '') + '">' +
-        '<span class="crow-tag">Day ' + c.day + '</span>' +
-        '<div>' +
-          '<div class="crow-name">' + c.name + '</div>' +
-          '<div class="crow-sub">' + (done ? 'Complete' : c.note) + '</div>' +
-        '</div>' +
-        '<a class="crow-go" href="' + href + '">' + (done ? 'Again' : 'Open') + '</a>' +
-      '</div>';
-    }).join('');
-
-    el('desmosTag').textContent =
-      doneDays.size === 0 ? 'Desmos days' :
-      doneDays.size === 2 ? 'Both complete' :
-      doneDays.size + ' of 2 complete';
   }
 
   el('sendLinkBtn').addEventListener('click', async () => {

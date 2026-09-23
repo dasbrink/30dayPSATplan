@@ -4,6 +4,8 @@
         hero headline, opening a full-page overlay in Dr. Brink's voice.
      2. Replaces the tagline "The plan is already written. You just have to open it."
         with "Your personalized PSAT prep plan. Start today".
+     3. Adds a card just above the footer with a plain link to /psat-math-skills/
+        (a real <a href>, so Google and Bing can follow it from the homepage).
    No existing markup, checkout, or enroll code is touched.
 
    Load this AFTER the page's own scripts, just before </body> in the ROOT
@@ -202,9 +204,65 @@
     });
   }
 
+  // ---- Link card to the free skills page, just above the footer ---------------
+  function insertSkillsLink() {
+    if (document.getElementById("psatSkillsLink")) return;
+
+    var sec = document.createElement("section");
+    sec.id = "psatSkillsLink";
+    sec.style.cssText = "padding:56px 0;";
+
+    var wrap = document.createElement("div");
+    wrap.className = "wrap";
+
+    var card = document.createElement("div");
+    card.style.cssText = [
+      "background:" + CARD,
+      "border:2px solid " + INK,
+      "box-shadow:8px 8px 0 " + INK,
+      "padding:28px 28px 30px",
+      "max-width:760px",
+      "font-family:" + BODY,
+      "color:" + INK,
+      "line-height:1.6"
+    ].join(";");
+
+    var tag = document.createElement("p");
+    tag.style.cssText = "margin:0 0 8px 0;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:" + OXBLOOD + ";";
+    tag.textContent = "Free to read";
+
+    var h = document.createElement("h3");
+    h.style.cssText = "margin:0 0 12px 0;font-family:" + DISPLAY + ";font-size:26px;line-height:1.2;color:" + INK + ";";
+    h.textContent = "Every skill the PSAT math section tests";
+
+    var p = document.createElement("p");
+    p.style.cssText = "margin:0 0 20px 0;";
+    p.textContent = "All 280 skills behind the PSAT math questions, grouped from Grade 5 up, with the four content areas and how they are weighted. Most of them are what you are learning in 9th and 10th grade right now.";
+
+    var a = document.createElement("a");
+    a.href = "/psat-math-skills/";
+    a.textContent = "See the PSAT math skills";
+    a.style.cssText = "display:inline-block;background:" + OXBLOOD + ";color:" + CARD + ";text-decoration:none;border-radius:6px;padding:12px 24px;font-size:16px;font-weight:700;font-family:" + DISPLAY + ";";
+
+    card.appendChild(tag);
+    card.appendChild(h);
+    card.appendChild(p);
+    card.appendChild(a);
+    wrap.appendChild(card);
+    sec.appendChild(wrap);
+
+    var footer = document.querySelector("footer");
+    if (footer && footer.parentNode) {
+      footer.parentNode.insertBefore(sec, footer);
+    } else if (document.body) {
+      document.body.appendChild(sec);
+    }
+  }
+
   function run() {
     insertButton();
     replaceTagline();
+    insertSkillsLink();
   }
 
   if (document.readyState === "loading") {

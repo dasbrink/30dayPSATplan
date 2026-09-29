@@ -271,7 +271,7 @@
   <header class="head"><div class="wrap">
     <div class="kicker" id="wKicker">Day 5 of 30</div>
     <h1 id="wTitle">Your first full test.<span>This is the baseline.</span></h1>
-    <p class="lede">Forty-four questions in two timed modules. It is not meant to feel comfortable, and the score is not the point. The point is finding out exactly which things are costing you marks, so the next twenty-five days can go after those and leave the rest alone.</p>
+    <p class="lede" id="wLede">Forty-four questions in two timed modules. It is not meant to feel comfortable, and the score is not the point. The point is finding out exactly which things are costing you marks, so the next twenty-five days can go after those and leave the rest alone.</p>
   </div></header>
 
   <section><div class="wrap"><div class="cols-grid">
@@ -959,7 +959,7 @@ async function beginTest(noClock){
   el('clock').classList.toggle('hidden', untimed);
 
   showScreen('screenTest');
-  el('qtext').innerHTML = '<div class="loading"><b>Building your test</b>Assembling 44 questions. This takes a few seconds.</div>';
+  el('qtext').innerHTML = '<div class="loading"><b>Building your test</b>Assembling 44 questions. ' + (TEST_NUMBER === 1 ? 'This takes a few seconds.' : 'This can take up to half a minute, because every question is chosen fresh for you.') + '</div>';
   el('qchoices').innerHTML = '';
 
   try {
@@ -1347,8 +1347,17 @@ el('viewSaved').addEventListener('click', () => {
     }
   } catch (e){ console.error(e); }
 
-  el('wKicker').textContent = TEST_NUMBER === 1 ? 'Day 5 of 30' : 'Test ' + TEST_NUMBER;
+  // The day each test sits on in the 30-day plan.
+  const TEST_DAY = { 1: 5, 2: 14, 3: 23, 4: 27, 5: 28, 6: 29, 7: 30 };
+  el('wKicker').textContent = 'Day ' + TEST_DAY[TEST_NUMBER] + ' of 30';
   el('wTestTag').textContent = 'Test ' + TEST_NUMBER + ' of 7';
+  if (TEST_NUMBER === 2){
+    el('wTitle').innerHTML = 'Your second full test.<span>Did the last nine days stick?</span>';
+    el('wLede').textContent = 'Forty-four new questions in two timed modules. None of them are questions you have seen before, and they are built to the same pattern as your Day 5 test, the same difficulty and the same topics in every slot, so the two scores compare fairly. Tomorrow names what still goes wrong.';
+  } else if (TEST_NUMBER > 2){
+    el('wTitle').innerHTML = 'Full test ' + TEST_NUMBER + ' of 7.<span>New questions, same pattern.</span>';
+    el('wLede').textContent = 'Forty-four new questions in two timed modules, none of them seen before, built to the same pattern as your Day 5 test so every score compares fairly with the last.';
+  }
   showScreen('screenWelcome');
 })();
 </script>

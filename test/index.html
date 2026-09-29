@@ -189,8 +189,8 @@
   .nbtn.quit{margin-left:auto;border-color:var(--pencil);color:var(--pencil);background:none;font-size:.84rem}
 
   /* calculator */
-  #calc{position:fixed;right:-640px;top:0;bottom:0;width:var(--calc-w,520px);background:#fff;border-left:2px solid var(--ink);z-index:100;transition:right .25s ease;display:flex;flex-direction:column}
-  #calc.open{right:0}
+  #calc{position:fixed;right:0;top:0;bottom:0;width:var(--calc-w,520px);background:#fff;border-left:2px solid var(--ink);z-index:100;transform:translateX(calc(100% + 24px));visibility:hidden;transition:transform .25s ease,visibility 0s linear .25s;display:flex;flex-direction:column}
+  #calc.open{transform:none;visibility:visible;transition:transform .25s ease,visibility 0s}
   #calcGrip{position:absolute;left:0;top:0;bottom:0;width:12px;cursor:ew-resize;z-index:120;background:transparent}
   #calcGrip:hover{background:var(--oxblood)}
   #calcGrip.dragging{background:var(--oxblood)}
@@ -403,7 +403,7 @@
 
       <h2 style="margin-top:36px">What to do next</h2>
       <p style="color:var(--ink-soft);margin-bottom:14px">Your answers are saved. The session tomorrow works through every question you missed, names the error behind each one, and points at the skill underneath it.</p>
-      <p style="color:var(--ink-soft)">Do not read too much into the number today. It is a starting point, and it is meant to be lower than where you finish.</p>
+      <p style="color:var(--ink-soft)" id="rNumberNote">Do not read too much into the number today. It is a starting point, and it is meant to be lower than where you finish.</p>
       <div class="cta-row">
         <button class="btn" id="btnSolutions">Worked solutions</button>
         <a class="btn btn-alt" href="/dashboard/">Back to my dashboard</a>
@@ -1163,10 +1163,20 @@ function renderResults(s){
   el('rKicker').textContent = 'Test ' + s.testNumber + ' complete';
   el('rTag').textContent = 'Test ' + s.testNumber + ' of 7';
   el('scoreN').textContent = s.score == null ? 'n/a' : s.score;
-  el('scoreCaveat').textContent =
-    'This is an estimate rather than a score, and it is built to read low ' +
-    'rather than high. Treat it as a floor: a starting point to measure the ' +
-    'next four weeks against, not a prediction of your October result.';
+  if (s.testNumber === 1){
+    el('scoreCaveat').textContent =
+      'This is an estimate rather than a score, and it is built to read low ' +
+      'rather than high. Treat it as a floor: a starting point to measure the ' +
+      'next four weeks against, not a prediction of your October result.';
+  } else {
+    el('scoreCaveat').textContent =
+      'An estimate built to read low, on new questions set to the same ' +
+      'pattern as your Day 5 test, so the two numbers compare fairly.';
+    el('rNumberNote').textContent =
+      'One test is one day. What matters is the direction across the tests, ' +
+      'and tomorrow shows exactly what is still costing you marks.';
+    showComparison(s);
+  }
 
   const missedCount = (s.missed || []).length;
   el('breakdown').innerHTML =
@@ -1181,6 +1191,27 @@ function renderResults(s){
 
   el('btnSolutions').disabled = missedCount === 0;
   showScreen('screenResults');
+}
+
+// Tests 2 to 7: set today's estimate beside the Day 5 one.
+async function showComparison(s){
+  try {
+    const { data } = await sb.from('test_results')
+      .select('score, snapshot, created_at')
+      .eq('test_number', 1)
+      .order('created_at', { ascending: false })
+      .limit(1);
+    if (!data || !data.length) return;
+    const r = data[0];
+    const first = (r.snapshot && r.snapshot.score != null) ? r.snapshot.score : r.score;
+    if (first == null || s.score == null) return;
+    const diff = s.score - first;
+    let line = 'Day 5: ' + first + '. Today: ' + s.score + '. ';
+    if (diff > 0) line += 'Up ' + diff + ' points.';
+    else if (diff === 0) line += 'Level with Day 5.';
+    else line += 'Down ' + (-diff) + ' points. That happens on a single day; the review tomorrow shows why.';
+    el('scoreCaveat').textContent = line + ' ' + el('scoreCaveat').textContent;
+  } catch (e){ console.error(e); }
 }
 
 // ---------------- worked solutions ----------------

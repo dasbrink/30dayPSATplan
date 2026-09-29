@@ -156,8 +156,8 @@
   .tools-note b{color:var(--ink)}
 
   /* ---------- calculator ---------- */
-  #calcPanel{position:fixed;right:-640px;top:0;bottom:0;width:520px;background:#fff;border-left:2px solid var(--ink);z-index:2000;transition:right .25s ease;display:flex;flex-direction:column}
-  #calcPanel.open{right:0}
+  #calcPanel{position:fixed;right:0;top:0;bottom:0;width:520px;background:#fff;border-left:2px solid var(--ink);z-index:2000;transform:translateX(calc(100% + 24px));visibility:hidden;transition:transform .25s ease,visibility 0s linear .25s;display:flex;flex-direction:column}
+  #calcPanel.open{transform:none;visibility:visible;transition:transform .25s ease,visibility 0s}
   #calcGrip{position:absolute;left:0;top:0;bottom:0;width:10px;cursor:ew-resize;background:transparent;z-index:120}
   #calcGrip:hover{background:rgba(163,43,63,.3)}
   #calcHead{background:var(--ink);color:var(--oat);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;flex-shrink:0}

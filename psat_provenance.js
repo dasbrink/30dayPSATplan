@@ -248,6 +248,13 @@
     card.appendChild(h);
     card.appendChild(p);
     card.appendChild(a);
+
+    var a2 = document.createElement("a");
+    a2.href = "/good-psat-math-score/";
+    a2.textContent = "What is a good PSAT math score?";
+    a2.style.cssText = "display:inline-block;margin:12px 0 0 0;background:transparent;color:" + OXBLOOD + ";text-decoration:none;border:2px solid " + OXBLOOD + ";border-radius:6px;padding:10px 22px;font-size:16px;font-weight:700;font-family:" + DISPLAY + ";";
+    card.appendChild(document.createTextNode(" "));
+    card.appendChild(a2);
     wrap.appendChild(card);
     sec.appendChild(wrap);
 

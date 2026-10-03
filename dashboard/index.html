@@ -308,7 +308,7 @@
   // there gains or loses a concept, change the number here too.
   const FOUNDATION_TOTALS = { 1: 58, 2: 67, 3: 84, 4: 70 };
 
-  const BUILT_MAX = 17; // highest day that exists so far
+  const BUILT_MAX = 22; // highest day that exists so far
 
   // Where each built day opens.
   const DAY_HREF = {
@@ -328,7 +328,12 @@
     14: '/test/?test=2',
     15: '/day15/',
     16: '/weakness/?day=16',
-    17: '/weakness/?day=17'
+    17: '/weakness/?day=17',
+    18: '/practice/?domain=algebra&day=18',
+    19: '/practice/?domain=advanced-math&day=19',
+    20: '/practice/?domain=geometry&day=20',
+    21: '/practice/?domain=data-analysis&day=21',
+    22: '/practice/?domain=geometry&day=22'
   };
 
   function tileLabel(n){
@@ -348,7 +353,7 @@
     { name: 'Desmos',                           range: 'Days 12\u201313',days: [12,13] },
     { name: 'Second diagnostic',                range: 'Days 14\u201315',days: [14,15] },
     { name: 'Your two weakest areas',           range: 'Days 16\u201317',days: [16,17] },
-    { name: 'More content',                     range: 'Days 18\u201322',days: [18,19,20,21,22], coming: true },
+    { name: 'More content',                     range: 'Days 18\u201322',days: [18,19,20,21,22] },
     { name: 'Final stretch',                    range: 'Days 23\u201330',days: [23,24,25,26,27,28,29,30],     coming: true }
   ];
 
@@ -359,7 +364,7 @@
       const { data, error } = await sb
         .from('day_progress')
         .select('day_number, completed, detail')
-        .in('day_number', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]);
+        .in('day_number', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]);
       if (error) console.error(error);
       prog = data || [];
     } catch (e) {

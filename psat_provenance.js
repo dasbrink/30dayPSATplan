@@ -233,49 +233,21 @@
 
     var h = document.createElement("h3");
     h.style.cssText = "margin:0 0 12px 0;font-family:" + DISPLAY + ";font-size:26px;line-height:1.2;color:" + INK + ";";
-    h.textContent = "Every skill the PSAT math section tests";
+    h.textContent = "Free PSAT math reading";
 
     var p = document.createElement("p");
     p.style.cssText = "margin:0 0 20px 0;";
-    p.textContent = "All 280 skills behind the PSAT math questions, grouped from Grade 5 up, with the four content areas and how they are weighted. Most of them are what you are learning in 9th and 10th grade right now.";
+    p.textContent = "Five short guides from Dr. Brink: what is on the PSAT math section, every skill it tests, what a good score is, how to use Desmos, and whether one month is enough.";
 
     var a = document.createElement("a");
-    a.href = "/psat-math-skills/";
-    a.textContent = "See the PSAT math skills";
+    a.href = "/reading/";
+    a.textContent = "Read the free guides";
     a.style.cssText = "display:inline-block;background:" + OXBLOOD + ";color:" + CARD + ";text-decoration:none;border-radius:6px;padding:12px 24px;font-size:16px;font-weight:700;font-family:" + DISPLAY + ";";
 
     card.appendChild(tag);
     card.appendChild(h);
     card.appendChild(p);
     card.appendChild(a);
-
-    var a2 = document.createElement("a");
-    a2.href = "/good-psat-math-score/";
-    a2.textContent = "What is a good PSAT math score?";
-    a2.style.cssText = "display:inline-block;margin:12px 0 0 0;background:transparent;color:" + OXBLOOD + ";text-decoration:none;border:2px solid " + OXBLOOD + ";border-radius:6px;padding:10px 22px;font-size:16px;font-weight:700;font-family:" + DISPLAY + ";";
-    card.appendChild(document.createTextNode(" "));
-    card.appendChild(a2);
-
-    var a3 = document.createElement("a");
-    a3.href = "/how-to-use-desmos-on-the-psat/";
-    a3.textContent = "How to use Desmos on the PSAT";
-    a3.style.cssText = a2.style.cssText;
-    card.appendChild(document.createTextNode(" "));
-    card.appendChild(a3);
-
-    var a4 = document.createElement("a");
-    a4.href = "/whats-on-the-psat-math-section/";
-    a4.textContent = "What is on the PSAT math section?";
-    a4.style.cssText = a2.style.cssText;
-    card.appendChild(document.createTextNode(" "));
-    card.appendChild(a4);
-
-    var a5 = document.createElement("a");
-    a5.href = "/is-one-month-enough-for-psat-math/";
-    a5.textContent = "Is one month enough for PSAT math?";
-    a5.style.cssText = a2.style.cssText;
-    card.appendChild(document.createTextNode(" "));
-    card.appendChild(a5);
     wrap.appendChild(card);
     sec.appendChild(wrap);
 

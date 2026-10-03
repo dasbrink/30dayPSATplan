@@ -269,6 +269,13 @@
     a4.style.cssText = a2.style.cssText;
     card.appendChild(document.createTextNode(" "));
     card.appendChild(a4);
+
+    var a5 = document.createElement("a");
+    a5.href = "/is-one-month-enough-for-psat-math/";
+    a5.textContent = "Is one month enough for PSAT math?";
+    a5.style.cssText = a2.style.cssText;
+    card.appendChild(document.createTextNode(" "));
+    card.appendChild(a5);
     wrap.appendChild(card);
     sec.appendChild(wrap);
 

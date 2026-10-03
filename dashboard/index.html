@@ -308,7 +308,7 @@
   // there gains or loses a concept, change the number here too.
   const FOUNDATION_TOTALS = { 1: 58, 2: 67, 3: 84, 4: 70 };
 
-  const BUILT_MAX = 15; // highest day that exists so far
+  const BUILT_MAX = 17; // highest day that exists so far
 
   // Where each built day opens.
   const DAY_HREF = {
@@ -326,7 +326,9 @@
     12: '/desmos/?day=12',
     13: '/desmos/?day=13',
     14: '/test/?test=2',
-    15: '/day15/'
+    15: '/day15/',
+    16: '/weakness/?day=16',
+    17: '/weakness/?day=17'
   };
 
   function tileLabel(n){
@@ -334,6 +336,8 @@
     if (n === 6) return 'Day 6 \u00B7 Diagnosis';
     if (n === 14) return 'Day 14 \u00B7 Test';
     if (n === 15) return 'Day 15 \u00B7 Diagnosis';
+    if (n === 16) return 'Day 16 \u00B7 Gap 1';
+    if (n === 17) return 'Day 17 \u00B7 Gap 2';
     return 'Day ' + n;
   }
 
@@ -343,7 +347,8 @@
     { name: 'The content areas',                range: 'Days 7\u201311', days: [7,8,9,10,11] },
     { name: 'Desmos',                           range: 'Days 12\u201313',days: [12,13] },
     { name: 'Second diagnostic',                range: 'Days 14\u201315',days: [14,15] },
-    { name: 'Your gaps, then more content',     range: 'Days 16\u201322',days: [16,17,18,19,20,21,22], coming: true },
+    { name: 'Your two weakest areas',           range: 'Days 16\u201317',days: [16,17] },
+    { name: 'More content',                     range: 'Days 18\u201322',days: [18,19,20,21,22], coming: true },
     { name: 'Final stretch',                    range: 'Days 23\u201330',days: [23,24,25,26,27,28,29,30],     coming: true }
   ];
 
@@ -354,7 +359,7 @@
       const { data, error } = await sb
         .from('day_progress')
         .select('day_number, completed, detail')
-        .in('day_number', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
+        .in('day_number', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]);
       if (error) console.error(error);
       prog = data || [];
     } catch (e) {
@@ -406,6 +411,7 @@
       if (n > BUILT_MAX) return false;
       if (n === 6) return testDone;   // Day 6 reads the Day 5 test
       if (n === 15) return test2Done; // Day 15 reads the Day 14 test
+      if (n === 16 || n === 17) return test2Done; // weakness days read it too
       return true;
     }
 
@@ -467,7 +473,7 @@
       } else {
         tiles = '<div class="tiles">' + ph.days.map(n => {
           if (!ctx.dayAvailable(n)){
-            return '<div class="tile locked">Day ' + n + ' \u00B7 needs Day ' + (n === 15 ? 14 : 5) + '</div>';
+            return '<div class="tile locked">Day ' + n + ' \u00B7 needs Day ' + (n >= 15 ? 14 : 5) + '</div>';
           }
           const done = ctx.dayDone(n);
           const isNext = n === ctx.next;

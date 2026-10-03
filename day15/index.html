@@ -365,6 +365,8 @@ async function markDone(){
     const { error } = await sb.from('day_progress').upsert({
       user_id: uid,
       day_number: THIS_DAY,
+      completed: true,
+      completed_at: new Date().toISOString(),
       detail: { reviewed_test: THIS_TEST, at: new Date().toISOString() }
     }, { onConflict: 'user_id,day_number' });
     if (error) throw error;

@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Weakness day | 30 Day PSAT Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] },
+    svg: { fontCache: 'global' },
+    startup: { typeset: false }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://www.desmos.com/api/v1.10/calculator.js?apiKey=2f23c0c34b08448e8e167dba1a6c32c4"></script>
+<style>
+  :root{
+    --oat:#EDE6D6;
+    --oat-deep:#E2D9C5;
+    --ink:#241C22;
+    --ink-soft:#4A3F46;
+    --oxblood:#A32B3F;
+    --pencil:#8C8577;
+    --graph:#B9C6D2;
+    --card:#F7F2E7;
+    --green:#2F6B4F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--oat);color:var(--ink);
+    font-family:"Karla",system-ui,-apple-system,sans-serif;
+    font-size:17.5px;line-height:1.62;-webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(var(--graph) 1px,transparent 1px),
+      linear-gradient(90deg,var(--graph) 1px,transparent 1px);
+    background-size:28px 28px;background-position:-1px -1px;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 34px}
+  @media(max-width:640px){.wrap{padding:0 20px}}
+  a{color:var(--oxblood)}
+
+  /* ---------- masthead ---------- */
+  .mast{background:var(--ink);color:var(--oat)}
+  .mast .wrap{display:flex;justify-content:space-between;align-items:center;padding:15px 34px;gap:14px;flex-wrap:wrap}
+  @media(max-width:640px){.mast .wrap{padding:13px 20px}}
+  .mast-name{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.05rem;letter-spacing:-.01em;color:var(--oat);text-decoration:none}
+  .mast-right{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .mast-day{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:#C9BFAE}
+  .mast-btn{font-family:"Karla",sans-serif;font-size:.86rem;font-weight:700;background:none;color:var(--oat);border:1px solid rgba(237,230,214,.45);padding:8px 15px;cursor:pointer;text-decoration:none;display:inline-block}
+  .mast-btn:hover{background:rgba(237,230,214,.12)}
+
+  .head{padding:52px 0 34px}
+  .kicker{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+  .kicker.blood{color:var(--oxblood)}
+  .kicker.good{color:var(--green)}
+  h1{font-family:"Zilla Slab",serif;font-weight:700;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.08;letter-spacing:-.02em;max-width:20ch}
+  h1 span{display:block;color:var(--oxblood)}
+  .lede{margin-top:20px;max-width:54ch;color:var(--ink-soft);font-size:1.06rem}
+  .lede b{color:var(--ink);font-weight:700}
+
+  h2{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.35rem;line-height:1.18;letter-spacing:-.015em;margin-bottom:14px}
+
+  /* ---------- panel ---------- */
+  .panel{background:var(--card);border:2px solid var(--ink);box-shadow:9px 9px 0 var(--ink);max-width:620px}
+  .panel-top{padding:14px 24px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .panel-top.ink{background:var(--ink);color:var(--oat)}
+  .panel-top.blood{background:var(--oxblood);color:#FBF3E9}
+  .panel-top.green{background:var(--green);color:#F1F7F3}
+  .panel-title{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.15rem;letter-spacing:-.01em}
+  .panel-tag{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+  .panel-top.ink .panel-tag{color:#C9BFAE}
+  .panel-top.blood .panel-tag{color:#F0D5D9}
+  .panel-top.green .panel-tag{color:#CBE0D4}
+  .panel-body{padding:22px 24px 24px}
+
+  /* ---------- setup controls ---------- */
+  .ctl-label{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);margin-bottom:10px;margin-top:22px}
+  .ctl-label:first-child{margin-top:0}
+  .count-row{display:flex;align-items:center;gap:18px}
+  .count-btn{width:44px;height:44px;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-family:"Zilla Slab",serif;font-size:1.5rem;font-weight:700;line-height:1;cursor:pointer}
+  .count-btn:hover{background:var(--ink);color:var(--oat)}
+  .count-n{font-family:"Zilla Slab",serif;font-size:2.2rem;font-weight:700;min-width:52px;text-align:center;line-height:1}
+  .diff-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  @media(max-width:520px){.diff-row{grid-template-columns:repeat(2,1fr)}}
+  .diff-btn{padding:11px 6px;border:2px solid var(--ink);background:var(--card);font-family:"Karla",sans-serif;font-size:.92rem;font-weight:700;color:var(--ink);cursor:pointer;text-align:center}
+  .diff-btn:hover{background:var(--oat-deep)}
+  .diff-btn.on{background:var(--ink);color:var(--oat)}
+
+  .btn{
+    display:inline-block;text-decoration:none;
+    font-family:"Zilla Slab",serif;font-size:1.05rem;font-weight:700;
+    padding:15px 32px;border:2px solid var(--ink);cursor:pointer;
+    background:var(--ink);color:var(--oat);box-shadow:5px 5px 0 rgba(36,28,34,.32);
+    transition:transform .12s ease,box-shadow .12s ease;margin-top:26px;
+  }
+  .btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 rgba(36,28,34,.32)}
+  .btn:active{transform:translate(5px,5px);box-shadow:0 0 0 rgba(36,28,34,.32)}
+  .btn:disabled{opacity:.55;cursor:default;transform:none;box-shadow:5px 5px 0 rgba(36,28,34,.16)}
+  .btn:focus-visible{outline:3px solid var(--oxblood);outline-offset:3px}
+  .btn-go{background:var(--oxblood);border-color:var(--oxblood);color:#fff}
+  .btn-alt{background:var(--card);color:var(--ink)}
+  .btn-sm{padding:11px 22px;font-size:.98rem;margin-top:0;box-shadow:4px 4px 0 rgba(36,28,34,.3)}
+  @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover,.btn:active{transform:none}}
+
+  /* ---------- paper notice ---------- */
+  .paper{background:var(--oat-deep);border:2px solid var(--ink);border-left:9px solid var(--oxblood);padding:20px 22px;max-width:620px;margin-top:26px}
+  .paper h3{font-family:"Zilla Slab",serif;font-size:1.08rem;margin-bottom:7px}
+  .paper p{font-size:.97rem;color:var(--ink-soft);margin-bottom:10px}
+  .paper p:last-child{margin-bottom:0}
+  .paper b{color:var(--ink)}
+
+  /* ---------- instructions list ---------- */
+  .instr{list-style:none;padding:0;margin:0}
+  .instr li{padding:11px 0 11px 26px;border-bottom:1px dashed var(--pencil);font-size:.97rem;color:var(--ink-soft);line-height:1.55;position:relative}
+  .instr li:last-child{border-bottom:none}
+  .instr li::before{content:'';position:absolute;left:6px;top:20px;width:7px;height:7px;background:var(--oxblood)}
+  .instr b{color:var(--ink);font-weight:700}
+
+  /* ---------- question screen ---------- */
+  .q-head{padding:34px 0 0}
+  .bar{background:var(--oat-deep);border:2px solid var(--ink);height:14px;margin-bottom:14px}
+  .bar-fill{background:var(--oxblood);height:100%;width:0;transition:width .25s ease}
+  .q-count{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .q-grid{display:grid;grid-template-columns:1fr 250px;gap:32px;align-items:start;padding:22px 0 70px}
+  @media(max-width:860px){.q-grid{grid-template-columns:1fr;gap:22px}}
+  .q-card{background:var(--card);border:2px solid var(--ink);box-shadow:9px 9px 0 var(--ink);padding:26px 26px 24px}
+  .q-text{font-size:1.05rem;line-height:1.65;margin-bottom:22px}
+  .q-figure{width:100%;max-width:420px;height:300px;margin:0 auto 16px;border:2px solid var(--ink);background:#fff;overflow:hidden}
+  .q-figure svg{max-width:100%;height:auto;display:block;margin:0 auto}
+  .q-body{line-height:1.65}
+  .choices{display:flex;flex-direction:column;gap:11px}
+  .choice{display:flex;align-items:flex-start;gap:13px;width:100%;text-align:left;background:#fff;border:2px solid var(--ink);padding:13px 15px;font-family:"Karla",sans-serif;font-size:1rem;color:var(--ink);cursor:pointer;line-height:1.5}
+  .choice:hover{background:var(--oat-deep)}
+  .choice.on{background:var(--ink);color:var(--oat)}
+  .choice-l{font-family:"Space Mono",monospace;font-weight:700;flex-shrink:0}
+  .choice-t{flex:1}
+  .choice-x{font-family:"Space Mono",monospace;font-size:11px;border:1px solid var(--pencil);background:transparent;color:var(--pencil);padding:2px 7px;cursor:pointer;flex-shrink:0}
+  .choice.out .choice-l,.choice.out .choice-t{text-decoration:line-through;opacity:.45}
+  .submit-row{display:flex;justify-content:flex-end;margin-top:20px}
+
+  .tools{display:flex;flex-direction:column;gap:11px}
+  .tool-btn{width:100%;background:var(--card);border:2px solid var(--ink);padding:12px 15px;font-family:"Karla",sans-serif;font-size:.94rem;font-weight:700;color:var(--ink);cursor:pointer;text-align:left}
+  .tool-btn:hover{background:var(--ink);color:var(--oat)}
+  .tools-note{font-size:.88rem;color:var(--ink-soft);line-height:1.5;margin-top:6px;border-top:1px dashed var(--pencil);padding-top:14px}
+  .tools-note b{color:var(--ink)}
+
+  /* ---------- calculator ---------- */
+  #calcPanel{position:fixed;right:0;top:0;bottom:0;width:520px;background:#fff;border-left:2px solid var(--ink);z-index:2000;transform:translateX(calc(100% + 24px));visibility:hidden;transition:transform .25s ease,visibility 0s linear .25s;display:flex;flex-direction:column}
+  #calcPanel.open{transform:none;visibility:visible;transition:transform .25s ease,visibility 0s}
+  #calcGrip{position:absolute;left:0;top:0;bottom:0;width:10px;cursor:ew-resize;background:transparent;z-index:120}
+  #calcGrip:hover{background:rgba(163,43,63,.3)}
+  #calcHead{background:var(--ink);color:var(--oat);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;flex-shrink:0}
+  #calcClose{background:none;border:none;color:var(--oat);font-size:1.5rem;line-height:1;cursor:pointer;padding:0 4px}
+  #calcMount{flex:1}
+  #fsModal{display:none;position:fixed;inset:0;background:rgba(36,28,34,.72);z-index:2000;align-items:center;justify-content:center;padding:20px}
+  #fsModal.open{display:flex}
+  .fs-inner{background:#fff;border:2px solid var(--ink);padding:18px;max-width:520px;width:100%;position:relative}
+  .fs-inner img{width:100%;display:block}
+  .fs-close{position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:var(--ink)}
+
+  /* ---------- results ---------- */
+  .res-head{padding:52px 0 26px}
+  .score-strip{background:var(--ink);color:var(--oat)}
+  .score-in{display:grid;grid-template-columns:repeat(3,1fr)}
+  @media(max-width:620px){.score-in{grid-template-columns:1fr}}
+  .score-cell{padding:26px 24px;border-right:1px solid #3D3239}
+  .score-cell:last-child{border-right:none}
+  @media(max-width:620px){.score-cell{border-right:none;border-bottom:1px solid #3D3239}.score-cell:last-child{border-bottom:none}}
+  .score-n{font-family:"Zilla Slab",serif;font-size:2rem;font-weight:700;line-height:1;letter-spacing:-.02em}
+  .score-l{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#C9BFAE;margin-top:9px}
+  .res-actions{display:flex;gap:14px;flex-wrap:wrap;padding:30px 0 10px}
+  .review{padding:16px 0 80px}
+  .miss{background:var(--card);border:2px solid var(--ink);margin-top:18px}
+  .miss-head{padding:14px 20px;background:var(--oxblood);color:#FBF3E9;display:flex;justify-content:space-between;align-items:center;gap:14px;cursor:pointer}
+  .miss-head-t{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.02rem}
+  .miss-head-x{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#F0D5D9}
+  .miss-body{display:none;padding:20px 22px 22px}
+  .miss-body.open{display:block}
+  .ans-row{padding:11px 14px;margin-bottom:11px;font-size:.96rem;line-height:1.5}
+  .ans-yours{background:#F7E6E9;border-left:4px solid var(--oxblood)}
+  .ans-right{background:#E7F1EB;border-left:4px solid var(--green)}
+  .sol-label{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);margin:18px 0 7px}
+  .sol-body{font-size:.98rem;line-height:1.65;color:var(--ink-soft)}
+  .miss-q{margin-bottom:16px;line-height:1.6}
+
+  .status{display:none;margin-top:20px;padding:14px 16px;font-size:.95rem;font-weight:600;line-height:1.5;max-width:620px}
+  .status.show{display:block}
+  .status.err{background:#F7E6E9;color:var(--oxblood);border-left:4px solid var(--oxblood)}
+  .status.ok{background:#E7F1EB;color:var(--green);border-left:4px solid var(--green)}
+
+  footer{background:var(--ink);color:#C9BFAE;padding:34px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:baseline}
+  footer p{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  footer a{color:var(--oat)}
+
+  .hidden{display:none}
+  .loading{padding:80px 0;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil)}
+  /* ---------- lesson (weakness days) ---------- */
+  .lesson{background:var(--card);border:2px solid var(--ink);box-shadow:9px 9px 0 var(--ink);padding:26px 28px;max-width:760px}
+  .lesson-meta{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--pencil);margin-bottom:10px}
+  .lesson-title{font-family:"Zilla Slab",serif;font-size:1.45rem;font-weight:700;line-height:1.25;margin-bottom:14px}
+  .lesson-body{font-size:1rem;color:var(--ink-soft);line-height:1.65}
+  .lesson-body p{margin-bottom:12px}
+  .sub{margin-top:20px;border-top:1px dashed var(--pencil);padding-top:16px}
+  .sub-h{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:8px;font-weight:700}
+  .sub-body{font-size:.99rem;color:var(--ink);line-height:1.65}
+  .prac{margin-top:10px;display:grid;gap:10px}
+  .prac-row{background:#fff;border:1px solid var(--pencil);padding:12px 15px;font-size:.97rem;line-height:1.55}
+  .prac-tag{font-family:"Space Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--ink);padding:3px 8px;display:inline-block;margin-bottom:7px}
+  .prac-row.med .prac-tag{background:#6B5B3F}
+  .prac-row.hard .prac-tag{background:var(--oxblood)}
+  .steps{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .step{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--ink);padding:6px 11px;background:var(--card)}
+  .step.on{background:var(--ink);color:var(--oat)}
+</style>
+</head>
+<body>
+
+<div class="mast"><div class="wrap">
+  <a class="mast-name" href="/dashboard/">30dayPSATplan.com</a>
+  <div class="mast-right">
+    <span class="mast-day" id="mastDay"></span>
+    <a class="mast-btn" href="/dashboard/">Dashboard</a>
+  </div>
+</div></div>
+
+<!-- ============ loading ============ -->
+<div id="scrLoading"><div class="wrap"><p class="loading" id="loadingText">Reading your test</p></div></div>
+
+<!-- ============ gate: not signed in, no test, nothing to do, error ============ -->
+<div id="scrBlocked" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker blood" id="blockKicker">Sign in needed</div>
+    <h1 id="blockTitle">You need to be signed in.</h1>
+    <p class="lede" id="blockLede">Head to the dashboard, enter your email address and I will send you a link that signs you straight in.</p>
+    <div id="blockCta"><a class="btn btn-go" href="/dashboard/">Go to the dashboard</a></div>
+  </div></header>
+</div>
+
+<!-- ============ the lesson ============ -->
+<div id="scrLesson" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker blood" id="lessonKicker">Day 16 of 30</div>
+    <h1 id="lessonH1">Your weakest area.<span>One thing, fixed properly.</span></h1>
+    <p class="lede" id="lessonLede"></p>
+    <div class="steps">
+      <span class="step on">1 &middot; Read the lesson</span>
+      <span class="step">2 &middot; Work it on paper</span>
+      <span class="step">3 &middot; The questions</span>
+    </div>
+  </div></header>
+
+  <section style="padding:0 0 30px"><div class="wrap">
+    <div class="lesson" id="lessonCard"></div>
+    <div class="status" id="lessonStatus"></div>
+    <div id="lessonCta" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center"></div>
+  </div></section>
+</div>
+
+<!-- ============ instructions ============ -->
+<div id="scrInstr" class="hidden">
+  <header class="head"><div class="wrap">
+    <div class="kicker blood">Before you start</div>
+    <h1>Get a pencil<span>and some paper.</span></h1>
+  </div></header>
+
+  <section style="padding:0 0 70px"><div class="wrap">
+    <div class="paper">
+      <h3>This matters more than anything else on this page</h3>
+      <p>Do not do this in your head, and do not stare at the four choices waiting for one to look right. <b>Work each problem out properly on paper, showing as many steps as you can.</b></p>
+      <p>Every question in this set leans on the skill you just read about. They start easy and get harder, so the first few should feel manageable. Use them to make the method automatic.</p>
+    </div>
+
+    <div class="panel" style="margin-top:30px">
+      <div class="panel-top ink">
+        <span class="panel-title">How this works</span>
+        <span class="panel-tag" id="instrTag">Untimed</span>
+      </div>
+      <div class="panel-body">
+        <ul class="instr">
+          <li>There is <b>no clock</b>. Take as long as each question needs.</li>
+          <li>The questions run from <b>easy to hard</b>.</li>
+          <li>You will not be told right or wrong as you go. Everything is reviewed at the end, with a worked solution for each one you miss.</li>
+          <li>The <b>calculator</b> and <b>formula sheet</b> are there throughout.</li>
+          <li>Finishing the set marks the day complete on your dashboard.</li>
+        </ul>
+        <button class="btn btn-go" id="btnBegin">Begin</button>
+        <button class="btn btn-alt" id="btnBackLesson" style="margin-left:10px">Back to the lesson</button>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============ question ============ -->
+<div id="scrQuestion" class="hidden">
+  <div class="wrap q-head">
+    <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+    <div class="q-count">
+      <span id="qCount">Question 1 of 12</span>
+      <span id="qDiff"></span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="q-grid">
+      <div class="q-card">
+        <div class="q-text" id="qText"></div>
+        <div class="choices" id="qChoices"></div>
+        <div class="submit-row">
+          <button class="btn btn-go btn-sm" id="btnSubmit" disabled>Submit answer</button>
+        </div>
+      </div>
+
+      <div class="tools">
+        <button class="tool-btn" id="btnCalc">Graphing calculator</button>
+        <button class="tool-btn" id="btnFormula">Formula sheet</button>
+        <button class="tool-btn" id="btnPeek">Look at the lesson again</button>
+        <p class="tools-note"><b>Paper first.</b> Work it out by hand and show your steps, then use the calculator to check or to graph.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ lesson peek (during questions) ============ -->
+<div id="peekModal" style="display:none;position:fixed;inset:0;background:rgba(36,28,34,.72);z-index:2100;align-items:flex-start;justify-content:center;padding:30px 16px;overflow:auto">
+  <div style="background:var(--card);border:2px solid var(--ink);max-width:760px;width:100%;position:relative;padding:26px 28px">
+    <button class="fs-close" id="peekClose" aria-label="Close">&times;</button>
+    <div id="peekBody"></div>
+  </div>
+</div>
+
+<!-- ============ results ============ -->
+<div id="scrResults" class="hidden">
+  <header class="res-head"><div class="wrap">
+    <div class="kicker good" id="resKicker">Session complete</div>
+    <h1 id="resTitle">Done.<span>Now the part that teaches.</span></h1>
+    <p class="lede" id="resLede"></p>
+  </div></header>
+
+  <div class="score-strip"><div class="wrap"><div class="score-in">
+    <div class="score-cell"><div class="score-n" id="resCorrect">0</div><div class="score-l">Correct</div></div>
+    <div class="score-cell"><div class="score-n" id="resWrong">0</div><div class="score-l">To review</div></div>
+    <div class="score-cell"><div class="score-n" id="resPct">0%</div><div class="score-l">This session</div></div>
+  </div></div></div>
+
+  <div class="wrap">
+    <div class="res-actions">
+      <a class="btn btn-go btn-sm" href="/dashboard/">Back to the dashboard</a>
+      <button class="btn btn-alt btn-sm" id="btnLessonAgain">Read the lesson again</button>
+    </div>
+    <div class="status" id="resStatus"></div>
+  </div>
+
+  <section class="review"><div class="wrap">
+    <h2 id="reviewHeading"></h2>
+    <div id="reviewList"></div>
+  </div></section>
+</div>
+
+<!-- ============ calculator ============ -->
+<div id="calcPanel">
+  <div id="calcGrip"></div>
+  <div id="calcHead">
+    <span>Graphing calculator</span>
+    <button id="calcClose" aria-label="Close calculator">&times;</button>
+  </div>
+  <div id="calcMount"></div>
+</div>
+
+<div id="fsModal">
+  <div class="fs-inner">
+    <button class="fs-close" id="fsClose" aria-label="Close">&times;</button>
+    <img src="/formula_sheet.png" alt="Formula sheet">
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <p>&copy; 2026 Dr. Brink SAT Math</p>
+  <p><a href="mailto:dasbrink@gmail.com">dasbrink@gmail.com</a></p>
+</div></footer>
+
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+  const SUPABASE_URL = 'https://jotbwtkvwkunihvwmqqj.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_finn6Vwaqa2nBqG_DD5ZLg_Wpe-qZxW';
+  const FN_GET_WEAKNESS = SUPABASE_URL + '/functions/v1/get-weakness';
+
+  const sb = createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: { detectSessionInUrl: true, persistSession: true, autoRefreshToken: true }
+  });
+
+  // ── Which day. One page serves every weakness day. ─────────────────────
+  //    16 and 17 read Test 2 (Day 14). 25 and 26 read Test 3 (Day 23).
+  //    Anything else falls back to 16, so a mistyped address cannot write
+  //    progress against a day that does not exist.
+  const DAY_INFO = {
+    16: { test: 2, testDay: 14, rank: 'weakest',        nextNote: 'Tomorrow takes the second one.' },
+    17: { test: 2, testDay: 14, rank: 'second weakest', nextNote: 'Tomorrow goes back to the content areas.' },
+    25: { test: 3, testDay: 23, rank: 'weakest',        nextNote: 'Tomorrow takes the second one.' },
+    26: { test: 3, testDay: 23, rank: 'second weakest', nextNote: 'Tomorrow the final tests begin.' }
+  };
+  const params = new URLSearchParams(window.location.search);
+  let DAY = parseInt(params.get('day'), 10);
+  if (!DAY_INFO[DAY]) DAY = 16;
+  const INFO = DAY_INFO[DAY];
+
+  const el   = (id) => document.getElementById(id);
+  const show = (id) => el(id).classList.remove('hidden');
+  const hide = (id) => el(id).classList.add('hidden');
+
+  function screen(id){
+    ['scrLoading','scrBlocked','scrLesson','scrInstr','scrQuestion','scrResults']
+      .forEach(s => hide(s));
+    show(id);
+    window.scrollTo(0, 0);
+  }
+
+  function setStatus(id, msg, kind){
+    const s = el(id);
+    if (!msg){ s.className = 'status'; s.textContent = ''; return; }
+    s.textContent = msg;
+    s.className = 'status show ' + (kind || '');
+  }
+
+  function esc(s){
+    return String(s == null ? '' : s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  // Prerequisite text holds LaTeX between dollar signs and line breaks.
+  function content(s){ return esc(s).replace(/\n/g, '<br>'); }
+
+  let mathQueue = Promise.resolve();
+  function renderMath(node){
+    if (!node) return;
+    mathQueue = mathQueue.then(() => {
+      if (window.MathJax && MathJax.typesetPromise){
+        try { MathJax.typesetClear([node]); } catch(e) {}
+        return MathJax.typesetPromise([node]).catch(() => {});
+      }
+      return new Promise(r => setTimeout(r, 300));
+    });
+  }
+
+  function safeParseJSON(raw){
+    if (!raw) return null;
+    if (typeof raw !== 'string') return raw;
+    try { return JSON.parse(raw.trim()); } catch(e) { return null; }
+  }
+
+  function blocked(kicker, title, lede, ctaHtml){
+    el('blockKicker').textContent = kicker;
+    el('blockTitle').innerHTML = title;
+    el('blockLede').textContent = lede;
+    el('blockCta').innerHTML = ctaHtml || '<a class="btn btn-go" href="/dashboard/">Back to my dashboard</a>';
+    screen('scrBlocked');
+  }
+
+  // ── State ────────────────────────────────────────────────────────────────
+  let focus = null;
+  let questions = [];
+  let idx = 0;
+  let picked = null;
+  let answers = [];
+  let graphs = [];
+  let calc = null, calcOpen = false, calcW = 520;
+
+  el('mastDay').textContent = 'Day ' + DAY + ' of 30';
+  document.title = 'Day ' + DAY + ', your ' + INFO.rank + ' area | 30 Day PSAT Plan';
+
+  // ── Boot ─────────────────────────────────────────────────────────────────
+  async function start(){
+    let session = null;
+    try {
+      const { data } = await sb.auth.getSession();
+      session = data?.session ?? null;
+    } catch(e) { console.error(e); }
+
+    if (!session){
+      blocked('Sign in needed', 'This is part of the plan.<span>Sign in to open it.</span>',
+        'Head to the dashboard, enter the email you enrolled with, and I will send you a link that signs you straight in.',
+        '<a class="btn btn-go" href="/dashboard/">Go to the dashboard</a>');
+      return;
+    }
+
+    el('loadingText').textContent = 'Choosing today’s area from your Day ' + INFO.testDay + ' test';
+
+    let j = null, res = null;
+    try {
+      res = await fetch(FN_GET_WEAKNESS, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + session.access_token },
+        body: JSON.stringify({ day: DAY })
+      });
+      j = await res.json().catch(() => ({}));
+    } catch(err){
+      console.error(err);
+      blocked('Something went wrong', 'Today could not be built.',
+        'Please reload the page. If it keeps happening, write to dasbrink@gmail.com.');
+      return;
+    }
+
+    if (!res.ok){
+      if (j.code === 'no_result'){
+        blocked('Test first',
+          'Day ' + DAY + ' reads your Day ' + INFO.testDay + ' test.<span>Sit it first.</span>',
+          'Everything on this page is chosen from your own answers, so it only opens once the Day ' +
+          INFO.testDay + ' test has been sat.',
+          '<a class="btn btn-go" href="/test/?test=' + INFO.test + '">Open the Day ' + INFO.testDay + ' test</a> ' +
+          '<a class="btn btn-alt" href="/dashboard/">Back to my dashboard</a>');
+        return;
+      }
+      if (res.status === 403){
+        blocked('Enrollment', 'I cannot find your enrollment.',
+          'You are signed in, but there is no enrollment on this address. If a parent paid using their own email, sign out and sign back in with that one.');
+        return;
+      }
+      blocked('Something went wrong', 'Today could not be built.',
+        j.error || 'Please try again in a moment, and write to dasbrink@gmail.com if it keeps happening.');
+      return;
+    }
+
+    if (j.code === 'no_gaps'){
+      renderNoGaps();
+      return;
+    }
+
+    focus = j.focus || {};
+    questions = j.questions || [];
+    renderLesson(j.reusedSeen);
+  }
+
+  // ── Nothing to work on (missed almost nothing) ───────────────────────────
+  function renderNoGaps(){
+    el('lessonKicker').textContent = 'Day ' + DAY + ' of 30';
+    el('lessonH1').innerHTML = 'Nothing left to fix.<span>That is a good problem.</span>';
+    el('lessonLede').textContent =
+      'Your Day ' + INFO.testDay + ' test did not leave a gap for today. Mark the day done and carry on. ' +
+      'If you want work anyway, run a Hard set from any content day.';
+    el('lessonCard').innerHTML = '<div class="lesson-title">No gap to work on today.</div>';
+    el('lessonCta').innerHTML = '<button class="btn btn-go" id="btnNoGapsDone">Mark Day ' + DAY + ' done</button>' +
+      '<a class="btn btn-alt" href="/dashboard/">Back to my dashboard</a>';
+    el('btnNoGapsDone').addEventListener('click', async (e) => {
+      e.target.disabled = true;
+      await markDayComplete('lessonStatus');
+    });
+    screen('scrLesson');
+  }
+
+  // ── The lesson ───────────────────────────────────────────────────────────
+  function lessonHtml(){
+    const meta = [];
+    if (focus.domain) meta.push(esc(focus.domain));
+    if (focus.gradeFloor) meta.push(esc(focus.gradeFloor));
+
+    let html = (meta.length ? '<div class="lesson-meta">' + meta.join(' &middot; ') + '</div>' : '') +
+      '<div class="lesson-title">' + content(focus.name) + '</div>';
+
+    const teach = focus.concept || focus.summary;
+    if (teach) html += '<div class="lesson-body"><p>' + content(teach) + '</p></div>';
+
+    if (focus.workedExample){
+      html += '<div class="sub"><div class="sub-h">Worked example</div>' +
+              '<div class="sub-body">' + content(focus.workedExample) + '</div></div>';
+    }
+
+    const prac = [];
+    if (focus.practiceEasy)   prac.push(['', 'Easy', focus.practiceEasy]);
+    if (focus.practiceMedium) prac.push(['med', 'Medium', focus.practiceMedium]);
+    if (focus.practiceHard)   prac.push(['hard', 'Hard', focus.practiceHard]);
+    if (prac.length){
+      html += '<div class="sub"><div class="sub-h">Work these on paper first</div><div class="prac">';
+      for (const [cls, tag, text] of prac){
+        html += '<div class="prac-row ' + cls + '"><span class="prac-tag">' + tag + '</span><br>' + content(text) + '</div>';
+      }
+      html += '</div></div>';
+    }
+    return html;
+  }
+
+  function renderLesson(reusedSeen){
+    el('lessonKicker').textContent = 'Day ' + DAY + ' of 30';
+    el('lessonH1').innerHTML = 'Your ' + INFO.rank + ' area.<span>One thing, fixed properly.</span>';
+    el('lessonLede').innerHTML =
+      'Taken from your Day ' + INFO.testDay + ' test: this is the earlier skill that sat underneath ' +
+      'the most of the questions you missed. <b>Read the lesson, work the three problems on paper, then do the ' +
+      'questions.</b> ' + esc(INFO.nextNote);
+
+    el('lessonCard').innerHTML = lessonHtml();
+
+    if (questions.length){
+      el('lessonCta').innerHTML =
+        '<button class="btn btn-go" id="btnToQuestions">I have worked these. On to the questions</button>';
+      el('btnToQuestions').addEventListener('click', () => {
+        el('instrTag').textContent = questions.length + ' questions, easy to hard';
+        screen('scrInstr');
+      });
+      if (reusedSeen){
+        setStatus('lessonStatus',
+          'You have already met many of the questions on this skill, so a few in today’s set may look familiar. Work them properly anyway.', 'ok');
+      }
+    } else {
+      el('lessonCta').innerHTML =
+        '<button class="btn btn-go" id="btnLessonOnlyDone">Mark Day ' + DAY + ' done</button>' +
+        '<a class="btn btn-alt" href="/dashboard/">Back to my dashboard</a>';
+      setStatus('lessonStatus',
+        'There are no bank questions linked to this skill yet, so today is the lesson and the three problems above. Mark the day done once they are worked on paper.', 'ok');
+      el('btnLessonOnlyDone').addEventListener('click', async (e) => {
+        e.target.disabled = true;
+        await markDayComplete('lessonStatus');
+      });
+    }
+
+    screen('scrLesson');
+    renderMath(el('lessonCard'));
+  }
+
+  el('btnBegin').addEventListener('click', () => {
+    idx = 0;
+    answers = [];
+    renderQuestion();
+    screen('scrQuestion');
+  });
+  el('btnBackLesson').addEventListener('click', () => screen('scrLesson'));
+  el('btnLessonAgain').addEventListener('click', openPeek);
+
+  // ── Lesson peek during the questions ─────────────────────────────────────
+  function openPeek(){
+    el('peekBody').innerHTML = lessonHtml();
+    el('peekModal').style.display = 'flex';
+    renderMath(el('peekBody'));
+  }
+  el('btnPeek').addEventListener('click', openPeek);
+  el('peekClose').addEventListener('click', () => { el('peekModal').style.display = 'none'; });
+  el('peekModal').addEventListener('click', function(e){ if (e.target === this) this.style.display = 'none'; });
+
+  // ── Graphs ───────────────────────────────────────────────────────────────
+  function killGraphs(){
+    graphs.forEach(g => { try { if (g && g.destroy) g.destroy(); } catch(e) {} });
+    graphs = [];
+  }
+
+  function drawGraph(mount, q){
+    if (typeof Desmos === 'undefined'){ mount.textContent = 'The graph could not load.'; return; }
+    const expressions = safeParseJSON(q.graphExpressions) || [];
+    const bounds = safeParseJSON(q.graphWindow);
+    const points = safeParseJSON(q.graphPoints) || [];
+    const g = Desmos.GraphingCalculator(mount, {
+      expressions:false, settingsMenu:false, zoomButtons:false, expressionsTopbar:false,
+      border:false, keypad:false, lockViewport:true, images:false, folders:false,
+      notes:false, sliders:false, links:false, distributions:false,
+      xAxisNumbers: q.graphShowAxisNumbers === true,
+      yAxisNumbers: q.graphShowAxisNumbers === true,
+      showGrid: q.graphShowGrid === true,
+      xAxisLabel: q.graphXAxisLabel || 'x',
+      yAxisLabel: q.graphYAxisLabel || 'y'
+    });
+    g.updateSettings({
+      xAxisArrowMode: Desmos.AxisArrowModes.POSITIVE,
+      yAxisArrowMode: Desmos.AxisArrowModes.POSITIVE
+    });
+    expressions.forEach((e, i) => g.setExpression(Object.assign({ id:'e'+i }, e)));
+    points.forEach((p, i) => g.setExpression(Object.assign({ id:'p'+i, showLabel:true, dragMode:'NONE' }, p)));
+    if (bounds && typeof bounds.left === 'number') g.setMathBounds(bounds);
+    graphs.push(g);
+  }
+
+  function mountQuestion(container, q){
+    container.innerHTML = '';
+    const type = (q.graphType || '').toLowerCase();
+
+    if (type === 'desmos'){
+      const fig = document.createElement('div');
+      fig.className = 'q-figure';
+      container.appendChild(fig);
+      const body = document.createElement('div');
+      body.className = 'q-body';
+      body.innerHTML = q.text || '';
+      container.appendChild(body);
+      drawGraph(fig, q);
+      renderMath(body);
+      return;
+    }
+
+    if (q.visualSvg && q.visualSvg.trim()){
+      const fig = document.createElement('div');
+      fig.className = 'q-figure';
+      fig.innerHTML = q.visualSvg;
+      container.appendChild(fig);
+      const body = document.createElement('div');
+      body.className = 'q-body';
+      body.innerHTML = q.text || '';
+      container.appendChild(body);
+      renderMath(body);
+      return;
+    }
+
+    container.innerHTML = q.text || '';
+    renderMath(container);
+  }
+
+  // ── One question ─────────────────────────────────────────────────────────
+  function renderQuestion(){
+    const q = questions[idx];
+    picked = null;
+    killGraphs();
+
+    el('barFill').style.width = ((idx / questions.length) * 100) + '%';
+    el('qCount').textContent = 'Question ' + (idx + 1) + ' of ' + questions.length;
+    el('qDiff').textContent = (focus.name ? focus.name.replace(/\$/g, '') + ' · ' : '') + (q.difficulty || '');
+
+    mountQuestion(el('qText'), q);
+
+    const letters = ['A','B','C','D'];
+    const box = el('qChoices');
+    box.innerHTML = '';
+
+    q.choices.forEach((choice, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'choice';
+      btn.dataset.choice = choice;
+      btn.innerHTML =
+        '<span class="choice-l">' + letters[i] + '</span>' +
+        '<span class="choice-t">' + choice + '</span>' +
+        '<span class="choice-x" role="button">rule out</span>';
+
+      btn.addEventListener('click', (ev) => {
+        if (ev.target.classList.contains('choice-x')){
+          ev.stopPropagation();
+          btn.classList.toggle('out');
+          return;
+        }
+        document.querySelectorAll('.choice').forEach(c => c.classList.remove('on'));
+        btn.classList.add('on');
+        picked = choice;
+        el('btnSubmit').disabled = false;
+      });
+
+      box.appendChild(btn);
+    });
+
+    el('btnSubmit').disabled = true;
+    renderMath(box);
+  }
+
+  el('btnSubmit').addEventListener('click', () => {
+    if (picked === null) return;
+    const q = questions[idx];
+    answers.push({ i: idx, chosen: picked, correct: picked === q.correct });
+    if (idx < questions.length - 1){
+      idx++;
+      renderQuestion();
+      window.scrollTo(0, 0);
+    } else {
+      showResults();
+    }
+  });
+
+  // ── Results ──────────────────────────────────────────────────────────────
+  function showResults(){
+    killGraphs();
+    markDayComplete('resStatus');
+    const right = answers.filter(a => a.correct).length;
+    const wrong = answers.length - right;
+    const pct = Math.round((right / answers.length) * 100);
+
+    el('resCorrect').textContent = right;
+    el('resWrong').textContent = wrong;
+    el('resPct').textContent = pct + '%';
+    el('resLede').textContent = 'Day ' + DAY + ', ' + questions.length + ' questions on one skill, easy to hard. ' + INFO.nextNote;
+
+    if (wrong === 0){
+      el('resTitle').innerHTML = 'Every one right.<span>That gap is closing.</span>';
+      el('reviewHeading').textContent = 'Nothing to review';
+      el('reviewList').innerHTML =
+        '<p class="lede" style="margin-top:0">A clean sheet on your weakest area is exactly what today was for.</p>';
+      screen('scrResults');
+      return;
+    }
+
+    el('resTitle').innerHTML = 'Done.<span>Now the part that teaches.</span>';
+    el('reviewHeading').textContent = wrong === 1 ? 'The one you missed' : 'The ' + wrong + ' you missed';
+
+    const list = el('reviewList');
+    list.innerHTML = '';
+    const mountJobs = [];
+
+    answers.filter(a => !a.correct).forEach((a, n) => {
+      const q = questions[a.i];
+      const card = document.createElement('div');
+      card.className = 'miss';
+      const mountId = 'missq-' + a.i;
+      card.innerHTML =
+        '<div class="miss-head">' +
+          '<span class="miss-head-t">Question ' + (a.i + 1) + (q.difficulty ? ' · ' + q.difficulty : '') + '</span>' +
+          '<span class="miss-head-x">' + (n === 0 ? 'Open' : 'Show') + '</span>' +
+        '</div>' +
+        '<div class="miss-body' + (n === 0 ? ' open' : '') + '">' +
+          '<div class="miss-q" id="' + mountId + '"></div>' +
+          '<div class="ans-row ans-yours">You answered: ' + a.chosen + '</div>' +
+          '<div class="ans-row ans-right">The answer is: ' + q.correct + '</div>' +
+          (q.solution
+            ? '<div class="sol-label">How it is done</div><div class="sol-body">' + q.solution + '</div>'
+            : '<div class="sol-label">How it is done</div><div class="sol-body">No worked solution is recorded for this one. Write to me and I will add it.</div>') +
+        '</div>';
+
+      const head = card.querySelector('.miss-head');
+      const body = card.querySelector('.miss-body');
+      head.addEventListener('click', () => {
+        const open = body.classList.toggle('open');
+        head.querySelector('.miss-head-x').textContent = open ? 'Open' : 'Show';
+        if (open) renderMath(body);
+      });
+
+      list.appendChild(card);
+      mountJobs.push({ mountId, q });
+    });
+
+    screen('scrResults');
+
+    mountJobs.forEach(job => {
+      const node = document.getElementById(job.mountId);
+      if (node) mountQuestion(node, job.q);
+    });
+    renderMath(list);
+  }
+
+  // ── Marking the day complete ─────────────────────────────────────────────
+  // Fires on reaching the results screen, like the content days. The
+  // saved choice of gap lives in the same row's detail column and is
+  // left alone, because only completed fields are written here.
+  async function markDayComplete(statusId){
+    try {
+      const { data } = await sb.auth.getSession();
+      const uid = data?.session?.user?.id;
+      if (!uid) return;
+      const { error } = await sb.from('day_progress').upsert({
+        user_id: uid,
+        day_number: DAY,
+        completed: true,
+        completed_at: new Date().toISOString()
+      }, { onConflict: 'user_id,day_number' });
+      if (error) throw error;
+      setStatus(statusId, 'Day ' + DAY + ' is marked complete on your dashboard.', 'ok');
+    } catch(e){
+      console.error('markDayComplete failed:', e);
+      setStatus(statusId,
+        'Your work is fine, but Day ' + DAY + ' could not be marked complete just now. ' +
+        'Reload the dashboard in a minute and it should be there.', 'err');
+    }
+  }
+
+  // ── Calculator ───────────────────────────────────────────────────────────
+  function setCalcWidth(px){
+    const min = 320;
+    const max = Math.min(window.innerWidth - 60, window.innerWidth * 0.95);
+    calcW = Math.max(min, Math.min(max, px));
+    el('calcPanel').style.width = calcW + 'px';
+    if (calc && calc.resize) calc.resize();
+  }
+
+  function initCalc(){
+    if (calc) return;
+    if (typeof Desmos === 'undefined') return;
+    calc = Desmos.GraphingCalculator(el('calcMount'), {
+      keypad:true, expressions:true, settingsMenu:true, zoomButtons:true,
+      expressionsTopbar:true, border:false, lockViewport:false, images:false,
+      folders:false, notes:false, sliders:true, links:false,
+      qwertyKeyboard:true, distributions:false
+    });
+    window.addEventListener('resize', () => { if (calcOpen) setCalcWidth(calcW); });
+  }
+
+  function toggleCalc(){
+    const panel = el('calcPanel');
+    if (!calcOpen){
+      initCalc();
+      setCalcWidth(calcW);
+      panel.classList.add('open');
+      calcOpen = true;
+      setTimeout(() => { if (calc && calc.resize) calc.resize(); }, 280);
+    } else {
+      panel.classList.remove('open');
+      calcOpen = false;
+    }
+  }
+
+  (function initGrip(){
+    const grip = el('calcGrip');
+    let dragging = false;
+    const move = (e) => {
+      if (!dragging) return;
+      const x = e.touches ? e.touches[0].clientX : e.clientX;
+      setCalcWidth(window.innerWidth - x);
+    };
+    const up = () => {
+      if (!dragging) return;
+      dragging = false;
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('touchmove', move);
+      document.removeEventListener('mouseup', up);
+      document.removeEventListener('touchend', up);
+    };
+    const down = (e) => {
+      e.preventDefault();
+      dragging = true;
+      document.body.style.userSelect = 'none';
+      document.body.style.cursor = 'ew-resize';
+      document.addEventListener('mousemove', move);
+      document.addEventListener('touchmove', move, { passive:false });
+      document.addEventListener('mouseup', up);
+      document.addEventListener('touchend', up);
+    };
+    grip.addEventListener('mousedown', down);
+    grip.addEventListener('touchstart', down, { passive:false });
+  })();
+
+  el('btnCalc').addEventListener('click', toggleCalc);
+  el('calcClose').addEventListener('click', toggleCalc);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && calcOpen) toggleCalc();
+  });
+
+  el('btnFormula').addEventListener('click', () => el('fsModal').classList.add('open'));
+  el('fsClose').addEventListener('click', () => el('fsModal').classList.remove('open'));
+  el('fsModal').addEventListener('click', function(e){
+    if (e.target === this) this.classList.remove('open');
+  });
+
+  start();
+</script>
+<script src="/track.js"></script>
+</body>
+</html>

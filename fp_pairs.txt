@@ -10,102 +10,102 @@ Answer: B, f(x) 	Answer: B, $f(x)$
 @@ sat-math/special-right-triangles/index.html
 divide by √3.</strong>	divide by $\sqrt{3}$.</strong>
 @@ blog/what-is-on-the-sat-math-section.html
-<li>30-60-90 triangle side ratios: 1 : √3 : 2	<li>30-60-90 triangle side ratios: $1 : \sqrt{3} : 2$
-<li>45-45-90 triangle side ratios: 1 : 1 : √2	<li>45-45-90 triangle side ratios: $1 : 1 : \sqrt{2}$
-<li>Arc length as a fraction of circumference: (θ/360) × 2πr	<li>Arc length as a fraction of circumference: $\dfrac{\theta}{360} \times 2\pi r$
-<li>Area formula for a circle: A = πr²	<li>Area formula for a circle: $A = \pi r^2$
-<li>Area formula for a rectangle: A = length × width	<li>Area formula for a rectangle: $A = \text{length} \times \text{width}$
-<li>Area formula for a triangle: A = ½ × base × height	<li>Area formula for a triangle: $A = \dfrac{1}{2} \times \text{base} \times \text{height}$
-<li>Basics of f(x) notation (f(a)=b ↔ point (a,b); f(0) = y-intercept; f(x)=0 gives x-intercept)	<li>Basics of $f(x)$ notation ($f(a) = b$ means the point $(a, b)$; $f(0)$ is the $y$-intercept; $f(x) = 0$ gives the $x$-intercept)
-<li>Circumference of a circle: C = 2πr = πd	<li>Circumference of a circle: $C = 2\pi r = \pi d$
-<li>Complementary angle identity: sin(θ) = cos(90° − θ)	<li>Complementary angle identity: $\sin\theta = \cos(90^\circ - \theta)$
-<li>Complementary probability: P(not A) = 1 - P(A)	<li>Complementary probability: $P(\text{not } A) = 1 - P(A)$
-<li>Completing the square to rewrite ax² + bx + c as a(x − h)² + k	<li>Completing the square to rewrite $ax^2 + bx + c$ as $a(x - h)^2 + k$
-<li>Compound inequalities (and / or, written as a &lt; x &lt; b or two separate inequalities)	<li>Compound inequalities (and / or, written as $a &lt; x &lt; b$ or two separate inequalities)
-<li>Concept of a proportion: two ratios set equal (a : b = c : d)	<li>Concept of a proportion: two ratios set equal ($a : b = c : d$)
-<li>Concept of a quadratic expression (ax² + bx + c)	<li>Concept of a quadratic expression ($ax^2 + bx + c$)
-<li>Concept of an equation (LHS = RHS)	<li>Concept of an equation (left side $=$ right side)
-<li>Concept of an inequality (&gt;, &lt;, ≥, ≤)	<li>Concept of an inequality ($&gt;$, $&lt;$, $\geq$, $\leq$)
-<li>Converting degrees to radians: multiply by π/180	<li>Converting degrees to radians: multiply by $\dfrac{\pi}{180}$
-<li>Converting radians to degrees: multiply by 180/π	<li>Converting radians to degrees: multiply by $\dfrac{180}{\pi}$
-<li>Discriminant (b² − 4ac) and what it tells you about the roots	<li>Discriminant ($b^2 - 4ac$) and what it tells you about the roots
-<li>Distinguishing f(0) from f(x) = 0	<li>Distinguishing $f(0)$ from $f(x) = 0$
-<li>Distinguishing growth (b &gt; 1) from decay (0 &lt; b &lt; 1)	<li>Distinguishing growth ($b &gt; 1$) from decay ($0 &lt; b &lt; 1$)
-<li>Distinguishing rate of change from initial value in a linear context (slope vs y-intercept)	<li>Distinguishing rate of change from initial value in a linear context (slope vs $y$-intercept)
-<li>Distributing a negative across parentheses (or factoring out a −1 from a binomial)	<li>Distributing a negative across parentheses (or factoring out a $-1$ from a binomial)
-<li>Distributive property: a(b+c) = ab+ac	<li>Distributive property: $a(b + c) = ab + ac$
-<li>Domain restriction from an even-index radical (set radicand ≥ 0)	<li>Domain restriction from an even-index radical (set radicand $\geq 0$)
-<li>Equivalent terms for the solutions of a quadratic: roots = solutions = x-intercepts = zeros	<li>Equivalent terms for the solutions of a quadratic: roots, solutions, $x$-intercepts, and zeros
-<li>Expanding products like 2(3x + 5)	<li>Expanding products like $2(3x + 5)$
-<li>Factoring a difference of squares (a² − b² = (a−b)(a+b))	<li>Factoring a difference of squares ($a^2 - b^2 = (a - b)(a + b)$)
-<li>Factoring a perfect-square trinomial (a² ± 2ab + b² = (a±b)²)	<li>Factoring a perfect-square trinomial ($a^2 \pm 2ab + b^2 = (a \pm b)^2$)
-<li>Factoring a trinomial of the form x² + bx + c (find two numbers that sum to b and multiply to c)	<li>Factoring a trinomial of the form $x^2 + bx + c$ (find two numbers that sum to $b$ and multiply to $c$)
-<li>Factoring a trinomial with leading coefficient ≠ 1 (ax² + bx + c)	<li>Factoring a trinomial with leading coefficient $\neq 1$ ($ax^2 + bx + c$)
-<li>Finding the vertex from standard form using −b/(2a)	<li>Finding the vertex from standard form using $x = -\dfrac{b}{2a}$
-<li>Fractional exponent 1/n means the nth root	<li>Fractional exponent $\dfrac{1}{n}$ means the $n$th root
-<li>Fractional exponent m/n: take the root, then the power	<li>Fractional exponent $\dfrac{m}{n}$: take the root, then the power
-<li>Function composition is not multiplication: f(g(x)) is not f(x) × g(x)	<li>Function composition is not multiplication: $f(g(x))$ is not $f(x) \times g(x)$
-<li>Function composition: f(g(x)) means evaluate g first, then f	<li>Function composition: $f(g(x))$ means evaluate $g$ first, then $f$
-<li>Generating an ordered pair from a complete equation by choosing an x and computing y	<li>Generating an ordered pair from a complete equation by choosing an $x$ and computing $y$
-<li>Growth factor vs growth rate: b = 1 + r for growth, b = 1 - r for decay	<li>Growth factor vs growth rate: $b = 1 + r$ for growth, $b = 1 - r$ for decay
-<li>Horizontal stretch and compression: f(bx)	<li>Horizontal stretch and compression: $f(bx)$
-<li>Identifying ordered pairs (x, y) as points on the coordinate plane	<li>Identifying ordered pairs $(x, y)$ as points on the coordinate plane
-<li>Initial value of an exponential model: a = y when x = 0	<li>Initial value of an exponential model: $a = y$ when $x = 0$
-<li>Inter-relating algebraic equations, function notation, the coordinate plane, the graphical representation of functions (equations) and tables of x- and y-values	<li>Inter-relating algebraic equations, function notation, the coordinate plane, the graphical representation of functions (equations) and tables of $x$- and $y$-values
-<li>Interpreting f(a) = b in a word problem context	<li>Interpreting $f(a) = b$ in a word problem context
-<li>Interpreting f(a) = k as a condition on x	<li>Interpreting $f(a) = k$ as a condition on $x$
-<li>Interpreting f(x + h) in context	<li>Interpreting $f(x + h)$ in context
-<li>Leading term dominance for large |x|	<li>Leading term dominance for large $|x|$
-<li>Midpoint formula: average the two x-values and the two y-values	<li>Midpoint formula: average the two $x$-values and the two $y$-values
-<li>Pattern recognition: identifying a hidden quadratic form (e.g., x⁴ − 5x² + 4 is quadratic in x²)	<li>Pattern recognition: identifying a hidden quadratic form (e.g., $x^4 - 5x^2 + 4$ is quadratic in $x^2$)
-<li>Percent increase: new = original × (1 + r); percent decrease: new = original × (1 − r)	<li>Percent increase: $\text{new} = \text{original} \times (1 + r)$; percent decrease: $\text{new} = \text{original} \times (1 - r)$
-<li>Percent of a quantity: (percent as decimal) × quantity	<li>Percent of a quantity: $(\text{percent as a decimal}) \times \text{quantity}$
-<li>Perpendicular lines have negative reciprocal slopes (m₁ · m₂ = −1)	<li>Perpendicular lines have negative reciprocal slopes ($m_1 \cdot m_2 = -1$)
-<li>Point-slope form: y − y₁ = m(x − x₁)	<li>Point-slope form: $y - y_1 = m(x - x_1)$
-<li>Power of a product: (xy)ᵃ = xᵃ · yᵃ	<li>Power of a product: $(xy)^a = x^a \cdot y^a$
-<li>Predicting y from x using the line of best fit equation	<li>Predicting $y$ from $x$ using the line of best fit equation
-<li>Probability range: 0 ≤ P(A) ≤ 1	<li>Probability range: $0 \leq P(A) \leq 1$
-<li>Product rule for square roots: √(ab) = √a · √b	<li>Product rule for square roots: $\sqrt{ab} = \sqrt{a} \cdot \sqrt{b}$
-<li>Pythagorean theorem: a² + b² = c² (right triangles only)	<li>Pythagorean theorem: $a^2 + b^2 = c^2$ (right triangles only)
-<li>Quadratic formula: x = (−b ± √(b² − 4ac)) / 2a	<li>Quadratic formula: $x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
-<li>Reading algebraic notation (3x means 3·x, implicit multiplication)	<li>Reading algebraic notation ($3x$ means $3 \cdot x$, implicit multiplication)
-<li>Recognizing infinite-solution equations (e.g. 0 = 0)	<li>Recognizing infinite-solution equations (e.g. $0 = 0$)
-<li>Recognizing no-solution equations (e.g. 3 = 5)	<li>Recognizing no-solution equations (e.g. $3 = 5$)
-<li>Reflection across the x-axis: -f(x) vs reflection across the y-axis: f(-x)	<li>Reflection across the $x$-axis: $-f(x)$ vs reflection across the $y$-axis: $f(-x)$
-<li>Relating the input (x-value, independent variable) of an equation to the output (y-value, dependent variable)	<li>Relating the input ($x$-value, independent variable) of an equation to the output ($y$-value, dependent variable)
-<li>Reverse percent: dividing by (1 + r) or (1 - r) to find the original	<li>Reverse percent: dividing by $(1 + r)$ or $(1 - r)$ to find the original
-<li>Rewriting bases to match (e.g., 8 = 2³, 27 = 3³, 16 = 2⁴)	<li>Rewriting bases to match (e.g., $8 = 2^3$, $27 = 3^3$, $16 = 2^4$)
-<li>Roots, multiplicity, and x-intercepts of polynomials	<li>Roots, multiplicity, and $x$-intercepts of polynomials
-<li>Scaling factor k effects: perimeter scales by k, area by k², volume by k³	<li>Scaling factor $k$ effects: perimeter scales by $k$, area by $k^2$, volume by $k^3$
-<li>Scientific notation: a × 10ⁿ form (1 ≤ |a| &lt; 10)	<li>Scientific notation: $a \times 10^n$ form ($1 \leq |a| &lt; 10$)
-<li>Sector area as a fraction of full circle area: (θ/360) × πr²	<li>Sector area as a fraction of full circle area: $\dfrac{\theta}{360} \times \pi r^2$
-<li>Setting up the two cases for |ax+b| = c (isolate the absolute value first, then split)	<li>Setting up the two cases for $|ax + b| = c$ (isolate the absolute value first, then split)
-<li>Sideways parabola: x = a(y − k)² + h has horizontal axis of symmetry, vertex (h, k), opens left/right	<li>Sideways parabola: $x = a(y - k)^2 + h$ has horizontal axis of symmetry, vertex $(h, k)$, opens left/right
-<li>Sign of an algebraic expression containing a parameter (e.g., -16/p when p &lt; 0)	<li>Sign of an algebraic expression containing a parameter (e.g., $-\dfrac{16}{p}$ when $p &lt; 0$)
-<li>Sign-flip cancellation: (a − b)/(b − a) = −1	<li>Sign-flip cancellation: $\dfrac{a - b}{b - a} = -1$
-<li>Slope-intercept form: y = mx + b	<li>Slope-intercept form: $y = mx + b$
-<li>Solving ax = b (one-step, divide)	<li>Solving $ax = b$ (one-step, divide)
-<li>Solving equations with parameters (solving for k given x)	<li>Solving equations with parameters (solving for $k$ given $x$)
-<li>Solving two-step equations like ax + b = c	<li>Solving two-step equations like $ax + b = c$
-<li>Solving x + a = b (one-step, add or subtract)	<li>Solving $x + a = b$ (one-step, add or subtract)
-<li>Solving x ÷ a = b (one-step, multiply)	<li>Solving $x \div a = b$ (one-step, multiply)
-<li>Squaring a binomial: (a+b)² = a² + 2ab + b², not a² + b²	<li>Squaring a binomial: $(a + b)^2 = a^2 + 2ab + b^2$, not $a^2 + b^2$
-<li>Standard deviation under linear transformation: adding a constant leaves SD unchanged; multiplying every value by k scales SD by |k|	<li>Standard deviation under linear transformation: adding a constant leaves SD unchanged; multiplying every value by $k$ scales SD by $|k|$
-<li>Standard form of a circle: (x − h)² + (y − k)² = r²	<li>Standard form of a circle: $(x - h)^2 + (y - k)^2 = r^2$
-<li>Standard form of a linear equation: Ax + By = C	<li>Standard form of a linear equation: $Ax + By = C$
-<li>Standard form of exponential model: y = a × bˣ	<li>Standard form of exponential model: $y = a \cdot b^x$
-<li>Substitution to simplify a complicated expression (let u = ...)	<li>Substitution to simplify a complicated expression (let $u = \ldots$)
-<li>Two-case structure of absolute value equations (|A| = B means A = B or A = -B)	<li>Two-case structure of absolute value equations ($|A| = B$ means $A = B$ or $A = -B$)
-<li>Vertical stretch and compression: a × f(x)	<li>Vertical stretch and compression: $a \cdot f(x)$
-<li>Volume of a cylinder: V = πr²h	<li>Volume of a cylinder: $V = \pi r^2 h$
-<li>Volume of a prism: V = (area of base) × height	<li>Volume of a prism: $V = (\text{area of base}) \times \text{height}$
-<li>Volume of a rectangular prism: V = length × width × height	<li>Volume of a rectangular prism: $V = \text{length} \times \text{width} \times \text{height}$
-<li>Y-intercept as initial value in context (starting amount when x = 0)	<li>$y$-intercept as initial value in context (starting amount when $x = 0$)
-<li>Zero exponent: x⁰ = 1 (for x ≠ 0)	<li>Zero exponent: $x^0 = 1$ (for $x \neq 0$)
-<li>Zero of a function as an x-intercept	<li>Zero of a function as an $x$-intercept
-<li>Zero product property: if AB = 0, then A = 0 or B = 0	<li>Zero product property: if $AB = 0$, then $A = 0$ or $B = 0$
-<li>x-intercept: set y = 0 and solve for x; y-intercept: set x = 0 and solve for y	<li>$x$-intercept: set $y = 0$ and solve for $x$; $y$-intercept: set $x = 0$ and solve for $y$
-<li>|expression| = negative has no solution	<li>$|\text{expression}| = \text{negative}$ has no solution
-<li>|x| = a has two solutions: x = a and x = −a (for a &gt; 0)	<li>$|x| = a$ has two solutions: $x = a$ and $x = -a$ (for $a &gt; 0$)
+<li>30-60-90 triangle side ratios: 1 : √3 : 2	<li><span>30-60-90 triangle side ratios: $1 : \sqrt{3} : 2$</span>
+<li>45-45-90 triangle side ratios: 1 : 1 : √2	<li><span>45-45-90 triangle side ratios: $1 : 1 : \sqrt{2}$</span>
+<li>Arc length as a fraction of circumference: (θ/360) × 2πr	<li><span>Arc length as a fraction of circumference: $\dfrac{\theta}{360} \times 2\pi r$</span>
+<li>Area formula for a circle: A = πr²	<li><span>Area formula for a circle: $A = \pi r^2$</span>
+<li>Area formula for a rectangle: A = length × width	<li><span>Area formula for a rectangle: $A = \text{length} \times \text{width}$</span>
+<li>Area formula for a triangle: A = ½ × base × height	<li><span>Area formula for a triangle: $A = \dfrac{1}{2} \times \text{base} \times \text{height}$</span>
+<li>Basics of f(x) notation (f(a)=b ↔ point (a,b); f(0) = y-intercept; f(x)=0 gives x-intercept)	<li><span>Basics of $f(x)$ notation ($f(a) = b$ means the point $(a, b)$; $f(0)$ is the $y$-intercept; $f(x) = 0$ gives the $x$-intercept)</span>
+<li>Circumference of a circle: C = 2πr = πd	<li><span>Circumference of a circle: $C = 2\pi r = \pi d$</span>
+<li>Complementary angle identity: sin(θ) = cos(90° − θ)	<li><span>Complementary angle identity: $\sin\theta = \cos(90^\circ - \theta)$</span>
+<li>Complementary probability: P(not A) = 1 - P(A)	<li><span>Complementary probability: $P(\text{not } A) = 1 - P(A)$</span>
+<li>Completing the square to rewrite ax² + bx + c as a(x − h)² + k	<li><span>Completing the square to rewrite $ax^2 + bx + c$ as $a(x - h)^2 + k$</span>
+<li>Compound inequalities (and / or, written as a &lt; x &lt; b or two separate inequalities)	<li><span>Compound inequalities (and / or, written as $a &lt; x &lt; b$ or two separate inequalities)</span>
+<li>Concept of a proportion: two ratios set equal (a : b = c : d)	<li><span>Concept of a proportion: two ratios set equal ($a : b = c : d$)</span>
+<li>Concept of a quadratic expression (ax² + bx + c)	<li><span>Concept of a quadratic expression ($ax^2 + bx + c$)</span>
+<li>Concept of an equation (LHS = RHS)	<li><span>Concept of an equation (left side $=$ right side)</span>
+<li>Concept of an inequality (&gt;, &lt;, ≥, ≤)	<li><span>Concept of an inequality ($&gt;$, $&lt;$, $\geq$, $\leq$)</span>
+<li>Converting degrees to radians: multiply by π/180	<li><span>Converting degrees to radians: multiply by $\dfrac{\pi}{180}$</span>
+<li>Converting radians to degrees: multiply by 180/π	<li><span>Converting radians to degrees: multiply by $\dfrac{180}{\pi}$</span>
+<li>Discriminant (b² − 4ac) and what it tells you about the roots	<li><span>Discriminant ($b^2 - 4ac$) and what it tells you about the roots</span>
+<li>Distinguishing f(0) from f(x) = 0	<li><span>Distinguishing $f(0)$ from $f(x) = 0$</span>
+<li>Distinguishing growth (b &gt; 1) from decay (0 &lt; b &lt; 1)	<li><span>Distinguishing growth ($b &gt; 1$) from decay ($0 &lt; b &lt; 1$)</span>
+<li>Distinguishing rate of change from initial value in a linear context (slope vs y-intercept)	<li><span>Distinguishing rate of change from initial value in a linear context (slope vs $y$-intercept)</span>
+<li>Distributing a negative across parentheses (or factoring out a −1 from a binomial)	<li><span>Distributing a negative across parentheses (or factoring out a $-1$ from a binomial)</span>
+<li>Distributive property: a(b+c) = ab+ac	<li><span>Distributive property: $a(b + c) = ab + ac$</span>
+<li>Domain restriction from an even-index radical (set radicand ≥ 0)	<li><span>Domain restriction from an even-index radical (set radicand $\geq 0$)</span>
+<li>Equivalent terms for the solutions of a quadratic: roots = solutions = x-intercepts = zeros	<li><span>Equivalent terms for the solutions of a quadratic: roots, solutions, $x$-intercepts, and zeros</span>
+<li>Expanding products like 2(3x + 5)	<li><span>Expanding products like $2(3x + 5)$</span>
+<li>Factoring a difference of squares (a² − b² = (a−b)(a+b))	<li><span>Factoring a difference of squares ($a^2 - b^2 = (a - b)(a + b)$)</span>
+<li>Factoring a perfect-square trinomial (a² ± 2ab + b² = (a±b)²)	<li><span>Factoring a perfect-square trinomial ($a^2 \pm 2ab + b^2 = (a \pm b)^2$)</span>
+<li>Factoring a trinomial of the form x² + bx + c (find two numbers that sum to b and multiply to c)	<li><span>Factoring a trinomial of the form $x^2 + bx + c$ (find two numbers that sum to $b$ and multiply to $c$)</span>
+<li>Factoring a trinomial with leading coefficient ≠ 1 (ax² + bx + c)	<li><span>Factoring a trinomial with leading coefficient $\neq 1$ ($ax^2 + bx + c$)</span>
+<li>Finding the vertex from standard form using −b/(2a)	<li><span>Finding the vertex from standard form using $x = -\dfrac{b}{2a}$</span>
+<li>Fractional exponent 1/n means the nth root	<li><span>Fractional exponent $\dfrac{1}{n}$ means the $n$th root</span>
+<li>Fractional exponent m/n: take the root, then the power	<li><span>Fractional exponent $\dfrac{m}{n}$: take the root, then the power</span>
+<li>Function composition is not multiplication: f(g(x)) is not f(x) × g(x)	<li><span>Function composition is not multiplication: $f(g(x))$ is not $f(x) \times g(x)$</span>
+<li>Function composition: f(g(x)) means evaluate g first, then f	<li><span>Function composition: $f(g(x))$ means evaluate $g$ first, then $f$</span>
+<li>Generating an ordered pair from a complete equation by choosing an x and computing y	<li><span>Generating an ordered pair from a complete equation by choosing an $x$ and computing $y$</span>
+<li>Growth factor vs growth rate: b = 1 + r for growth, b = 1 - r for decay	<li><span>Growth factor vs growth rate: $b = 1 + r$ for growth, $b = 1 - r$ for decay</span>
+<li>Horizontal stretch and compression: f(bx)	<li><span>Horizontal stretch and compression: $f(bx)$</span>
+<li>Identifying ordered pairs (x, y) as points on the coordinate plane	<li><span>Identifying ordered pairs $(x, y)$ as points on the coordinate plane</span>
+<li>Initial value of an exponential model: a = y when x = 0	<li><span>Initial value of an exponential model: $a = y$ when $x = 0$</span>
+<li>Inter-relating algebraic equations, function notation, the coordinate plane, the graphical representation of functions (equations) and tables of x- and y-values	<li><span>Inter-relating algebraic equations, function notation, the coordinate plane, the graphical representation of functions (equations) and tables of $x$- and $y$-values</span>
+<li>Interpreting f(a) = b in a word problem context	<li><span>Interpreting $f(a) = b$ in a word problem context</span>
+<li>Interpreting f(a) = k as a condition on x	<li><span>Interpreting $f(a) = k$ as a condition on $x$</span>
+<li>Interpreting f(x + h) in context	<li><span>Interpreting $f(x + h)$ in context</span>
+<li>Leading term dominance for large |x|	<li><span>Leading term dominance for large $|x|$</span>
+<li>Midpoint formula: average the two x-values and the two y-values	<li><span>Midpoint formula: average the two $x$-values and the two $y$-values</span>
+<li>Pattern recognition: identifying a hidden quadratic form (e.g., x⁴ − 5x² + 4 is quadratic in x²)	<li><span>Pattern recognition: identifying a hidden quadratic form (e.g., $x^4 - 5x^2 + 4$ is quadratic in $x^2$)</span>
+<li>Percent increase: new = original × (1 + r); percent decrease: new = original × (1 − r)	<li><span>Percent increase: $\text{new} = \text{original} \times (1 + r)$; percent decrease: $\text{new} = \text{original} \times (1 - r)$</span>
+<li>Percent of a quantity: (percent as decimal) × quantity	<li><span>Percent of a quantity: $(\text{percent as a decimal}) \times \text{quantity}$</span>
+<li>Perpendicular lines have negative reciprocal slopes (m₁ · m₂ = −1)	<li><span>Perpendicular lines have negative reciprocal slopes ($m_1 \cdot m_2 = -1$)</span>
+<li>Point-slope form: y − y₁ = m(x − x₁)	<li><span>Point-slope form: $y - y_1 = m(x - x_1)$</span>
+<li>Power of a product: (xy)ᵃ = xᵃ · yᵃ	<li><span>Power of a product: $(xy)^a = x^a \cdot y^a$</span>
+<li>Predicting y from x using the line of best fit equation	<li><span>Predicting $y$ from $x$ using the line of best fit equation</span>
+<li>Probability range: 0 ≤ P(A) ≤ 1	<li><span>Probability range: $0 \leq P(A) \leq 1$</span>
+<li>Product rule for square roots: √(ab) = √a · √b	<li><span>Product rule for square roots: $\sqrt{ab} = \sqrt{a} \cdot \sqrt{b}$</span>
+<li>Pythagorean theorem: a² + b² = c² (right triangles only)	<li><span>Pythagorean theorem: $a^2 + b^2 = c^2$ (right triangles only)</span>
+<li>Quadratic formula: x = (−b ± √(b² − 4ac)) / 2a	<li><span>Quadratic formula: $x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}$</span>
+<li>Reading algebraic notation (3x means 3·x, implicit multiplication)	<li><span>Reading algebraic notation ($3x$ means $3 \cdot x$, implicit multiplication)</span>
+<li>Recognizing infinite-solution equations (e.g. 0 = 0)	<li><span>Recognizing infinite-solution equations (e.g. $0 = 0$)</span>
+<li>Recognizing no-solution equations (e.g. 3 = 5)	<li><span>Recognizing no-solution equations (e.g. $3 = 5$)</span>
+<li>Reflection across the x-axis: -f(x) vs reflection across the y-axis: f(-x)	<li><span>Reflection across the $x$-axis: $-f(x)$ vs reflection across the $y$-axis: $f(-x)$</span>
+<li>Relating the input (x-value, independent variable) of an equation to the output (y-value, dependent variable)	<li><span>Relating the input ($x$-value, independent variable) of an equation to the output ($y$-value, dependent variable)</span>
+<li>Reverse percent: dividing by (1 + r) or (1 - r) to find the original	<li><span>Reverse percent: dividing by $(1 + r)$ or $(1 - r)$ to find the original</span>
+<li>Rewriting bases to match (e.g., 8 = 2³, 27 = 3³, 16 = 2⁴)	<li><span>Rewriting bases to match (e.g., $8 = 2^3$, $27 = 3^3$, $16 = 2^4$)</span>
+<li>Roots, multiplicity, and x-intercepts of polynomials	<li><span>Roots, multiplicity, and $x$-intercepts of polynomials</span>
+<li>Scaling factor k effects: perimeter scales by k, area by k², volume by k³	<li><span>Scaling factor $k$ effects: perimeter scales by $k$, area by $k^2$, volume by $k^3$</span>
+<li>Scientific notation: a × 10ⁿ form (1 ≤ |a| &lt; 10)	<li><span>Scientific notation: $a \times 10^n$ form ($1 \leq |a| &lt; 10$)</span>
+<li>Sector area as a fraction of full circle area: (θ/360) × πr²	<li><span>Sector area as a fraction of full circle area: $\dfrac{\theta}{360} \times \pi r^2$</span>
+<li>Setting up the two cases for |ax+b| = c (isolate the absolute value first, then split)	<li><span>Setting up the two cases for $|ax + b| = c$ (isolate the absolute value first, then split)</span>
+<li>Sideways parabola: x = a(y − k)² + h has horizontal axis of symmetry, vertex (h, k), opens left/right	<li><span>Sideways parabola: $x = a(y - k)^2 + h$ has horizontal axis of symmetry, vertex $(h, k)$, opens left/right</span>
+<li>Sign of an algebraic expression containing a parameter (e.g., -16/p when p &lt; 0)	<li><span>Sign of an algebraic expression containing a parameter (e.g., $-\dfrac{16}{p}$ when $p &lt; 0$)</span>
+<li>Sign-flip cancellation: (a − b)/(b − a) = −1	<li><span>Sign-flip cancellation: $\dfrac{a - b}{b - a} = -1$</span>
+<li>Slope-intercept form: y = mx + b	<li><span>Slope-intercept form: $y = mx + b$</span>
+<li>Solving ax = b (one-step, divide)	<li><span>Solving $ax = b$ (one-step, divide)</span>
+<li>Solving equations with parameters (solving for k given x)	<li><span>Solving equations with parameters (solving for $k$ given $x$)</span>
+<li>Solving two-step equations like ax + b = c	<li><span>Solving two-step equations like $ax + b = c$</span>
+<li>Solving x + a = b (one-step, add or subtract)	<li><span>Solving $x + a = b$ (one-step, add or subtract)</span>
+<li>Solving x ÷ a = b (one-step, multiply)	<li><span>Solving $x \div a = b$ (one-step, multiply)</span>
+<li>Squaring a binomial: (a+b)² = a² + 2ab + b², not a² + b²	<li><span>Squaring a binomial: $(a + b)^2 = a^2 + 2ab + b^2$, not $a^2 + b^2$</span>
+<li>Standard deviation under linear transformation: adding a constant leaves SD unchanged; multiplying every value by k scales SD by |k|	<li><span>Standard deviation under linear transformation: adding a constant leaves SD unchanged; multiplying every value by $k$ scales SD by $|k|$</span>
+<li>Standard form of a circle: (x − h)² + (y − k)² = r²	<li><span>Standard form of a circle: $(x - h)^2 + (y - k)^2 = r^2$</span>
+<li>Standard form of a linear equation: Ax + By = C	<li><span>Standard form of a linear equation: $Ax + By = C$</span>
+<li>Standard form of exponential model: y = a × bˣ	<li><span>Standard form of exponential model: $y = a \cdot b^x$</span>
+<li>Substitution to simplify a complicated expression (let u = ...)	<li><span>Substitution to simplify a complicated expression (let $u = \ldots$)</span>
+<li>Two-case structure of absolute value equations (|A| = B means A = B or A = -B)	<li><span>Two-case structure of absolute value equations ($|A| = B$ means $A = B$ or $A = -B$)</span>
+<li>Vertical stretch and compression: a × f(x)	<li><span>Vertical stretch and compression: $a \cdot f(x)$</span>
+<li>Volume of a cylinder: V = πr²h	<li><span>Volume of a cylinder: $V = \pi r^2 h$</span>
+<li>Volume of a prism: V = (area of base) × height	<li><span>Volume of a prism: $V = (\text{area of base}) \times \text{height}$</span>
+<li>Volume of a rectangular prism: V = length × width × height	<li><span>Volume of a rectangular prism: $V = \text{length} \times \text{width} \times \text{height}$</span>
+<li>Y-intercept as initial value in context (starting amount when x = 0)	<li><span>$y$-intercept as initial value in context (starting amount when $x = 0$)</span>
+<li>Zero exponent: x⁰ = 1 (for x ≠ 0)	<li><span>Zero exponent: $x^0 = 1$ (for $x \neq 0$)</span>
+<li>Zero of a function as an x-intercept	<li><span>Zero of a function as an $x$-intercept</span>
+<li>Zero product property: if AB = 0, then A = 0 or B = 0	<li><span>Zero product property: if $AB = 0$, then $A = 0$ or $B = 0$</span>
+<li>x-intercept: set y = 0 and solve for x; y-intercept: set x = 0 and solve for y	<li><span>$x$-intercept: set $y = 0$ and solve for $x$; $y$-intercept: set $x = 0$ and solve for $y$</span>
+<li>|expression| = negative has no solution	<li><span>$|\text{expression}| = \text{negative}$ has no solution</span>
+<li>|x| = a has two solutions: x = a and x = −a (for a &gt; 0)	<li><span>$|x| = a$ has two solutions: $x = a$ and $x = -a$ (for $a &gt; 0$)</span>
 <li>Inverse operations (addition↔subtraction, multiplication↔division)	<li>Inverse operations (addition and subtraction, multiplication and division)
 <li>Converting between linear equation forms (slope-intercept ↔ point-slope ↔ standard)	<li>Converting between linear equation forms (slope-intercept, point-slope, standard)

@@ -121,5 +121,31 @@ EOF
 ins_before "$F" '<div class="cta">' "$T/box"
 fi
 echo "psat link: $(grep -c 30daypsatplan.com/how-to-use-desmos "$F") doctype: $(grep -c '<!DOCTYPE' "$F")"
+
+# ---------- FONT FIX: math shown as proper math (LaTeX)
+MJF="$T/mj"
+cat > "$MJF" <<'EOF2'
+<script>
+  window.MathJax = { tex: { inlineMath: [['$','$']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+EOF2
+F=blog/how-to-use-desmos-on-the-sat.html
+if [ -f "$F" ] && ! grep -q MathJax "$F"; then
+  sed -i 's#<code>#$#g; s#</code>#$#g; s#&sup2;#^2#g' "$F"
+  ins_before "$F" '</head>' "$MJF"
+fi
+echo "desmos post: code tags left=$(grep -c '<code>' "$F") mathjax=$(grep -c 'MathJax' "$F")"
+F=blog/what-is-on-the-sat-math-section.html
+if [ -f "$F" ] && ! grep -q MathJax "$F"; then ins_before "$F" '</head>' "$MJF"; fi
+curl -sL 30daypsatplan.com/fp_pairs.txt -o "$T/pairs"
+awk -F'\t' '
+function rep(s,a,b,  i,o){o="";while((i=index(s,a))>0){o=o substr(s,1,i-1) b; s=substr(s,i+length(a));N++} return o s}
+function flush(){ if(cur!=""){ printf "%s", txt > cur; close(cur); print "  " cur ": " N " fixes" } }
+/^@@ /{ flush(); cur=substr($0,4); N=0; txt=""; ok=0
+  while((r=(getline l < cur))>0){ txt=txt l "\n"; ok=1 }
+  close(cur); if(!ok){ print "  MISSING " cur; cur="" } ; next }
+cur!="" { txt=rep(txt,$1,$2) }
+END{ flush() }' "$T/pairs"
 rm -rf "$T"
 echo "ALL DONE. Now click Republish."

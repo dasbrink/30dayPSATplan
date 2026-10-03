@@ -262,6 +262,13 @@
     a3.style.cssText = a2.style.cssText;
     card.appendChild(document.createTextNode(" "));
     card.appendChild(a3);
+
+    var a4 = document.createElement("a");
+    a4.href = "/whats-on-the-psat-math-section/";
+    a4.textContent = "What is on the PSAT math section?";
+    a4.style.cssText = a2.style.cssText;
+    card.appendChild(document.createTextNode(" "));
+    card.appendChild(a4);
     wrap.appendChild(card);
     sec.appendChild(wrap);
 

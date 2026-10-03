@@ -255,6 +255,13 @@
     a2.style.cssText = "display:inline-block;margin:12px 0 0 0;background:transparent;color:" + OXBLOOD + ";text-decoration:none;border:2px solid " + OXBLOOD + ";border-radius:6px;padding:10px 22px;font-size:16px;font-weight:700;font-family:" + DISPLAY + ";";
     card.appendChild(document.createTextNode(" "));
     card.appendChild(a2);
+
+    var a3 = document.createElement("a");
+    a3.href = "/how-to-use-desmos-on-the-psat/";
+    a3.textContent = "How to use Desmos on the PSAT";
+    a3.style.cssText = a2.style.cssText;
+    card.appendChild(document.createTextNode(" "));
+    card.appendChild(a3);
     wrap.appendChild(card);
     sec.appendChild(wrap);
 

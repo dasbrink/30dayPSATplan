@@ -1255,7 +1255,10 @@ function solutionsDoc(items){
     '<scr'+'ipt src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></scr'+'ipt>' +
     '<style>body{font-family:Karla,sans-serif;background:#EDE6D6;color:#241C22;margin:0}' +
     '.top{background:#241C22;color:#EDE6D6;padding:14px 20px;position:sticky;top:0}' +
-    '.top button{background:#A32B3F;color:#fff;border:none;padding:10px 20px;font-family:Zilla Slab,serif;font-weight:700;font-size:1rem;cursor:pointer}' +
+    '.top{display:flex;gap:12px;flex-wrap:wrap;align-items:center}' +
+    '.top button,.top a,.back a{background:#A32B3F;color:#fff;border:none;padding:10px 20px;font-family:Zilla Slab,serif;font-weight:700;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}' +
+    '.top a{background:transparent;border:1px solid rgba(237,230,214,.55);color:#EDE6D6}' +
+    '.back{margin-top:26px}.back a{background:#241C22}' +
     '.sheet{max-width:760px;margin:0 auto;padding:30px 26px 60px}' +
     'h1{font-family:Zilla Slab,serif;font-size:1.7rem;margin:0 0 6px}' +
     '.sub{color:#4A3F46;font-size:.93rem;margin:0 0 26px}' +
@@ -1270,11 +1273,13 @@ function solutionsDoc(items){
     '.blank{font-size:.88rem;color:#A32B3F;margin:8px 0}' +
     '.sol{margin-top:14px;border-top:1px dashed #8C8577;padding-top:12px;line-height:1.55}' +
     '.sol-h{font-family:Zilla Slab,serif;font-weight:700;color:#2F6B4F;margin-bottom:6px}' +
-    '@media print{.top{display:none}}</style></head><body>' +
-    '<div class="top"><button onclick="window.print()">Print or save as PDF</button></div>' +
+    '@media print{.top,.back{display:none}}</style></head><body>' +
+    '<div class="top"><button onclick="window.print()">Print or save as PDF</button>' +
+    '<a href="https://30daypsatplan.com/dashboard/">Back to my dashboard</a></div>' +
     '<div class="sheet"><h1>Worked solutions</h1>' +
     '<p class="sub">Every question you missed, with the working set out step by step.</p>' +
-    body + '</div></body></html>';
+    body + '<div class="back"><a href="https://30daypsatplan.com/dashboard/">Back to my dashboard</a></div>' +
+    '</div></body></html>';
 }
 
 function openSolutions(){

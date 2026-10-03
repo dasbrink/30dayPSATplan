@@ -45,6 +45,8 @@
   .mast-name{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.05rem;color:var(--oat);text-decoration:none}
   .mast-who{font-family:"Space Mono",monospace;font-size:11.5px;color:#C9BFAE}
   @media(max-width:700px){.mast-who{display:none}}
+  .mast-btn{font-family:"Karla",sans-serif;font-size:.86rem;font-weight:700;color:var(--oat);border:1px solid rgba(237,230,214,.45);padding:8px 15px;text-decoration:none;display:inline-block}
+  .mast-btn:hover{background:rgba(237,230,214,.12)}
 
   .head{padding:56px 0 34px}
   .kicker{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--oxblood);margin-bottom:18px}
@@ -135,7 +137,10 @@
 
 <div class="mast"><div class="wrap">
   <a class="mast-name" href="/dashboard/">30dayPSATplan.com</a>
-  <span class="mast-who" id="who"></span>
+  <span style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+    <span class="mast-who" id="who"></span>
+    <a class="mast-btn" href="/dashboard/">Dashboard</a>
+  </span>
 </div></div>
 
 <!-- ---------- loading ---------- -->

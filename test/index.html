@@ -1173,8 +1173,15 @@ function renderResults(s){
       'An estimate built to read low, on new questions set to the same ' +
       'pattern as your Day 5 test, so the two numbers compare fairly.';
     el('rNumberNote').textContent =
-      'One test is one day. What matters is the direction across the tests, ' +
-      'and tomorrow shows exactly what is still costing you marks.';
+      s.testNumber <= 3
+        ? 'One test is one day. What matters is the direction across the tests, ' +
+          'and tomorrow shows exactly what is still costing you marks.'
+        : s.testNumber < 7
+          ? 'One test is one day. What matters is the direction across the tests. ' +
+            'Read the worked solutions to anything you missed, then rest. Tomorrow is another full test.'
+          : 'That is the last test of the plan. Read the worked solutions to anything you missed, ' +
+            'then stop for the day. Before the real PSAT: sleep properly the night before, eat breakfast, ' +
+            'bring a charged device and a pencil, and arrive early. You have done the work.';
     showComparison(s);
   }
 

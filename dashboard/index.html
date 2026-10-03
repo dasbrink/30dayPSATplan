@@ -308,7 +308,10 @@
   // there gains or loses a concept, change the number here too.
   const FOUNDATION_TOTALS = { 1: 58, 2: 67, 3: 84, 4: 70 };
 
-  const BUILT_MAX = 22; // highest day that exists so far
+  const BUILT_MAX = 30;
+
+  // Test days count as done from a saved test result, not day_progress.
+  const TEST_OF_DAY = { 5: 1, 14: 2, 23: 3, 27: 4, 28: 5, 29: 6, 30: 7 }; // highest day that exists so far
 
   // Where each built day opens.
   const DAY_HREF = {
@@ -333,7 +336,15 @@
     19: '/practice/?domain=advanced-math&day=19',
     20: '/practice/?domain=geometry&day=20',
     21: '/practice/?domain=data-analysis&day=21',
-    22: '/practice/?domain=geometry&day=22'
+    22: '/practice/?domain=geometry&day=22',
+    23: '/test/?test=3',
+    24: '/day24/',
+    25: '/weakness/?day=25',
+    26: '/weakness/?day=26',
+    27: '/test/?test=4',
+    28: '/test/?test=5',
+    29: '/test/?test=6',
+    30: '/test/?test=7'
   };
 
   function tileLabel(n){
@@ -343,6 +354,11 @@
     if (n === 15) return 'Day 15 \u00B7 Diagnosis';
     if (n === 16) return 'Day 16 \u00B7 Gap 1';
     if (n === 17) return 'Day 17 \u00B7 Gap 2';
+    if (n === 23) return 'Day 23 \u00B7 Test';
+    if (n === 24) return 'Day 24 \u00B7 Diagnosis';
+    if (n === 25) return 'Day 25 \u00B7 Gap 1';
+    if (n === 26) return 'Day 26 \u00B7 Gap 2';
+    if (TEST_OF_DAY[n] >= 4) return 'Day ' + n + ' \u00B7 Test ' + TEST_OF_DAY[n];
     return 'Day ' + n;
   }
 
@@ -354,7 +370,8 @@
     { name: 'Second diagnostic',                range: 'Days 14\u201315',days: [14,15] },
     { name: 'Your two weakest areas',           range: 'Days 16\u201317',days: [16,17] },
     { name: 'More content',                     range: 'Days 18\u201322',days: [18,19,20,21,22] },
-    { name: 'Final stretch',                    range: 'Days 23\u201330',days: [23,24,25,26,27,28,29,30],     coming: true }
+    { name: 'Third diagnostic',                 range: 'Days 23\u201326',days: [23,24,25,26] },
+    { name: 'The final four tests',             range: 'Days 27\u201330',days: [27,28,29,30] }
   ];
 
   async function loadPlan(){
@@ -364,7 +381,7 @@
       const { data, error } = await sb
         .from('day_progress')
         .select('day_number, completed, detail')
-        .in('day_number', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]);
+        .in('day_number', Array.from({ length: 30 }, (_, i) => i + 1));
       if (error) console.error(error);
       prog = data || [];
     } catch (e) {
@@ -385,7 +402,7 @@
       const { data, error } = await sb
         .from('test_results')
         .select('test_number, score, snapshot, created_at')
-        .in('test_number', [1, 2])
+        .in('test_number', [1, 2, 3, 4, 5, 6, 7])
         .order('created_at', { ascending: false });
       if (error) console.error(error);
       (data || []).forEach(r => { if (!testRows[r.test_number]) testRows[r.test_number] = r; });
@@ -399,7 +416,12 @@
     const testDone  = !!testRows[1];
     const test2Done = !!testRows[2];
     const score  = rowScore(testRows[1]);
-    const score2 = rowScore(testRows[2]);
+    // Latest test after the first, shown beside the Day 5 baseline.
+    let latestTest = null;
+    for (let t = 7; t >= 2; t--){ if (testRows[t]) { latestTest = t; break; } }
+    const score2 = latestTest ? rowScore(testRows[latestTest]) : null;
+    const DAY_OF_TEST = { 2: 14, 3: 23, 4: 27, 5: 28, 6: 29, 7: 30 };
+    const latestDay = latestTest ? DAY_OF_TEST[latestTest] : null;
 
     function dayDone(n){
       if (n >= 1 && n <= 4){
@@ -407,8 +429,7 @@
         const d = (r && r.detail && typeof r.detail === 'object') ? r.detail : {};
         return Object.keys(d).length >= FOUNDATION_TOTALS[n];
       }
-      if (n === 5) return testDone;
-      if (n === 14) return test2Done;
+      if (TEST_OF_DAY[n]) return !!testRows[TEST_OF_DAY[n]];
       const r = byDay[n];
       return !!(r && r.completed);
     }
@@ -417,6 +438,7 @@
       if (n === 6) return testDone;   // Day 6 reads the Day 5 test
       if (n === 15) return test2Done; // Day 15 reads the Day 14 test
       if (n === 16 || n === 17) return test2Done; // weakness days read it too
+      if (n >= 24 && n <= 26) return !!testRows[3]; // read the Day 23 test
       return true;
     }
 
@@ -429,11 +451,11 @@
     let doneCount = 0;
     for (let n = 1; n <= BUILT_MAX; n++){ if (dayDone(n)) doneCount++; }
 
-    renderHero(next, doneCount, score, score2);
+    renderHero(next, doneCount, score, score2, latestDay);
     renderPhases({ dayDone, dayAvailable, next });
   }
 
-  function renderHero(next, doneCount, score, score2){
+  function renderHero(next, doneCount, score, score2, latestDay){
     el('jbarFill').style.width = Math.round((doneCount / 30) * 100) + '%';
 
     const cont = el('jCont');
@@ -450,7 +472,7 @@
     let sub = doneCount + ' of 30 days done';
     if (!next) sub += '. The next day opens the moment it is built.';
     if (score != null) sub += '  \u00B7  Day 5 estimate ' + score;
-    if (score2 != null) sub += '  \u00B7  Day 14 estimate ' + score2;
+    if (score2 != null) sub += '  \u00B7  Day ' + latestDay + ' estimate ' + score2;
     el('jSub').textContent = sub;
   }
 
@@ -478,7 +500,7 @@
       } else {
         tiles = '<div class="tiles">' + ph.days.map(n => {
           if (!ctx.dayAvailable(n)){
-            return '<div class="tile locked">Day ' + n + ' \u00B7 needs Day ' + (n >= 15 ? 14 : 5) + '</div>';
+            return '<div class="tile locked">Day ' + n + ' \u00B7 needs Day ' + (n >= 24 ? 23 : (n >= 15 ? 14 : 5)) + '</div>';
           }
           const done = ctx.dayDone(n);
           const isNext = n === ctx.next;
